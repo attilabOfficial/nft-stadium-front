@@ -5,6 +5,7 @@ const Title = styled.h1`
   font-size: 4rem;
   text-align: center;
   padding: 1rem 0;
+  margin: 0;
 `
 
 const Header = () => {
