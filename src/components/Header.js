@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 
+const HeaderContainer = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  width: 100vw;
+  max-width: 100vw;
+`
+
 const Title = styled.h1`
   background-color: red;
   font-size: 4rem;
@@ -10,7 +19,9 @@ const Title = styled.h1`
 
 const Header = () => {
   return (
-    <Title>NFT Stade Rennais</Title>
+    <HeaderContainer>
+      <Title>NFT Stade Rennais</Title>
+    </HeaderContainer>
   )
 }
 
