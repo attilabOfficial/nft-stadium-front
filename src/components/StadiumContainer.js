@@ -11,10 +11,6 @@ const Container = styled.div`
 const StadiumContainer = () => {
     let [mapSize, setMapSize] = useState(1);
 
-    const changeState = () => {
-        setMapSize(containerRef.style.transform)
-    };
-
     const containerRef = useRef(null);
 
     useEffect(() => {
@@ -22,7 +18,7 @@ const StadiumContainer = () => {
             if (e.deltaY > 0) {
                 containerRef.current.style.transform = `scale(${(mapSize += 0.02)})`;
                 console.log('zoom +', containerRef.current.style.transform)
-            } else if (mapSize >= 0) {
+            } else if (mapSize > 1) {
                 containerRef.current.style.transform = `scale(${(mapSize -= 0.02)})`;
                 console.log('zoom -', containerRef.current.style.transform);
             }
