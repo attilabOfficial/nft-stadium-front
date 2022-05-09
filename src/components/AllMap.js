@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
-import ReactDOM from "react-dom/client";
 import styled from 'styled-components';
 import stade from '../images/Stade.png';
 import OneCell from './OneCell'
 
 // Grid property
 const columnsNbr = 25;
-const rowsNbr = 15;
+const rowsNbr = 17;
 const gridWidth = 30;
-const cellWidth = gridWidth / columnsNbr;
 const cellsTotal = columnsNbr * rowsNbr;
 
 const cells = [];
@@ -29,11 +27,11 @@ const StadeGrid = styled.div`
   display: grid;
   gap: 1px;
   grid-template-columns: repeat(${columnsNbr}, 1fr);
-  grid-template-rows: repeat(${rowsNbr}, 1fr);
+  grid-template-rows: repeat(${rowsNbr} ,1fr);
   border: solid 1px transparent;
 `
 
-const AllMap = (columnsNbr, rowsNbr) => {
+const AllMap = () => {
   const [cellsNbr, setCellsNbr] = useState(0);
 
   useEffect(() => {
@@ -49,7 +47,7 @@ const AllMap = (columnsNbr, rowsNbr) => {
     <>
       <GridContainer>
         <StadeGrid>
-          {cells.map((cell, index) => <OneCell key={index} />)}
+          {cells.map((cell, index) => <OneCell key={index} id={index} />)}
         </StadeGrid>
       </GridContainer>
     </>
