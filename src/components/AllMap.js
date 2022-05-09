@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import styled from 'styled-components';
-import stade from '../images/Stade.png'
+import stade from '../images/Stade.png';
+import OneCell from './OneCell'
 
 // Grid property
 const columnsNbr = 25;
 const rowsNbr = 15;
 const gridWidth = 30;
+const cellWidth = gridWidth / columnsNbr;
 const cellsTotal = columnsNbr * rowsNbr;
 
 const cells = [];
@@ -31,11 +33,6 @@ const StadeGrid = styled.div`
   border: solid 1px transparent;
 `
 
-const Cell = styled.div`
-  background-color: red;
-  aspect-ratio: 1;
-`
-
 const AllMap = (columnsNbr, rowsNbr) => {
   const [cellsNbr, setCellsNbr] = useState(0);
 
@@ -44,7 +41,6 @@ const AllMap = (columnsNbr, rowsNbr) => {
       for (let c = 0; c <= cellsTotal - 1; c++) {
         cells.push(c);
         setCellsNbr((cellsNbr) => cellsNbr + 1);
-        console.log(cells.length)
       }
     }
   }, []);
@@ -53,7 +49,7 @@ const AllMap = (columnsNbr, rowsNbr) => {
     <>
       <GridContainer>
         <StadeGrid>
-          {cells.map((cell, index) => <Cell key={index} />)}
+          {cells.map((cell, index) => <OneCell key={index} />)}
         </StadeGrid>
       </GridContainer>
     </>
