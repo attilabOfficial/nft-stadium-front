@@ -10,7 +10,8 @@ const HeaderContainer = styled.div`
 `
 
 const Title = styled.h1`
-  background-color: red;
+  background-color: #ca180b;
+  font-family: "Open Sans",sans-serif;
   font-size: 4rem;
   text-align: center;
   padding: 1rem 0;

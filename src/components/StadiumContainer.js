@@ -6,6 +6,7 @@ const Container = styled.div`
   width: 100vw;
   text-align: center;
   background-color: black;
+  margin-top: 119.5px;
 `
 
 const StadiumContainer = () => {
@@ -14,7 +15,7 @@ const StadiumContainer = () => {
     const containerRef = useRef(null);
 
     useEffect(() => {
-        document.addEventListener('wheel', function (e){
+        containerRef.current.addEventListener('wheel', function (e){
             if (e.deltaY > 0) {
                 containerRef.current.style.transform = `scale(${(mapSize += 0.02)})`;
                 console.log('zoom +', containerRef.current.style.transform)
@@ -26,7 +27,7 @@ const StadiumContainer = () => {
     }, [mapSize]);
 
     return (
-        <Container ref={containerRef} >
+        <Container ref={containerRef} id="container" >
             <AllMap />
         </Container>
     )
