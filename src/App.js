@@ -1,8 +1,14 @@
-import {StadiumContainer} from './components/StadiumContainer'
+import GlobalStyleReset from './components/GlobalStyleReset';
+import Header from './components/Header';
+import StadiumContainer from './components/StadiumContainer';
 
 function App() {
   return (
+    <>
+      <GlobalStyleReset />
+      <Header />
       <StadiumContainer/>
+    </>
   );
 }
 

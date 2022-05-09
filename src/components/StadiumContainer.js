@@ -1,11 +1,18 @@
-
 import styled from 'styled-components';
+import AllMap from './AllMap';
 
-const Title = styled.h1`
-    color:red;
+const Container = styled.div`
+  width: 100vw;
+  text-align: center;
+  background-color: black;
 `
 
-
-export const StadiumContainer =()=>{
-    return <Title>Hello</Title>
+const StadiumContainer = () => {
+    return (
+        <Container>
+            <AllMap />
+        </Container>
+    )
 }
+
+export default StadiumContainer;
