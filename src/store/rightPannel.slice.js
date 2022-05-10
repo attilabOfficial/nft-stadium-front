@@ -13,5 +13,3 @@ export const rightPanelSlice = createSlice({
 });
 
 export const { openRightPanel } = rightPanelSlice.actions;
-
-export default rightPanelSlice.reducer;

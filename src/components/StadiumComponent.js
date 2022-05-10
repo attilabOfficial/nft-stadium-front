@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import AllMap from './AllMap';
 import ZoomButton from './ZoomButton';
@@ -17,23 +17,7 @@ const ZoomButtonsContainer = styled.div`
   transform: translateX(-50%);
 `
 
-const StadiumContainer = () => {
-    let [mapSize, setMapSize] = useState(1);
-
-    const containerRef = useRef(null);
-
-    const zoomIn = () => {
-        containerRef.current.style.transform = `scale(${(mapSize += 0.5)})`;
-        console.log('click +');
-    };
-    
-    const zoomOut = () => {
-        if (mapSize > 1) {
-            containerRef.current.style.transform = `scale(${(mapSize -= 0.5)})`;
-            console.log('click -')
-        }
-    };
-
+export const StadiumComponent = ({containerRef, zoomIn, zoomOut}) => {
     return (
         <div>
             <Container ref={containerRef} >
@@ -47,4 +31,3 @@ const StadiumContainer = () => {
     )
 }
 
-export default StadiumContainer;

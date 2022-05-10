@@ -1,10 +1,15 @@
 import React from "react";
 
 import { NetworkErrorMessage } from "./NetworkErrorMessage";
+import  styled from 'styled-components';
 
-export function ConnectWallet({ connectWallet, networkError, dismiss }) {
+const ConnectWalletStyle = styled.div`
+  margin-top:150px;
+`;
+
+export const ConnectWallet = ({ connectWallet, networkError, dismiss }) =>{
   return (
-    <div className="container">
+    <ConnectWalletStyle>
       <div className="row justify-content-md-center">
         <div className="col-12 text-center">
           {networkError && (
@@ -25,6 +30,6 @@ export function ConnectWallet({ connectWallet, networkError, dismiss }) {
           </button>
         </div>
       </div>
-    </div>
+    </ConnectWalletStyle>
   );
 }
