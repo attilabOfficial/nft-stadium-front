@@ -17,6 +17,9 @@ export const mapInfoSlice = createSlice({
     name: 'mapInfotate',
     initialState,
     reducers: {
+        mockData: (state) => {
+            state.imgMap = ["mock", "mock"]; // ajouter ici une fonction qui génére automatiquement les données
+          },
     },
     extraReducers: (builder) => {
         // Add reducers for additional action types here, and handle loading state as needed
@@ -28,4 +31,5 @@ export const mapInfoSlice = createSlice({
 export const mapSelector = (state) => state.imgMap;
 
 
-export const mapInfotateActions = mapInfoSlice.actions;
+// Action creators are generated for each case reducer function
+export const { mockData } = mapInfoSlice.actions

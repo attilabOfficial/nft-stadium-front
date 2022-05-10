@@ -4,6 +4,7 @@ import { ethers } from 'ethers';
 import TokenArtifact from "../contracts/Token.json";
 import contractAddress from "../contracts/contract-address.json";
 import { createContext, useState } from "react";
+import { MOCK } from '../index';
 
 
 const HARDHAT_NETWORK_ID = '80001';
@@ -14,6 +15,13 @@ export const Web3Context = createContext({});
 export const DappContainer = ({children}) =>{
     const [selectedAddress, setSelectedAddress] = useState("");
     const [contract, setContract] = useState(null);
+
+
+    if(MOCK){
+      return <>
+        {children}
+      </>
+    }
 
     const _connectWallet = async()=> {
       const [_selectedAddress] = await window.ethereum.request({ method: 'eth_requestAccounts' });
