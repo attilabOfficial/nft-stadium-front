@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { NFTDetailContainer } from '../container/NFTDetailContainer';
+
 
 const Panel = styled.div`
   background-color: #ca180b;
@@ -16,7 +18,7 @@ const Panel = styled.div`
 const RightPanel = () => {
   return (
       <Panel>
-        <h2>Formulaire</h2>
+        <NFTDetailContainer/>
       </Panel>
   )
 }
