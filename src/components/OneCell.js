@@ -1,4 +1,6 @@
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import { openRightPanel } from '../features/rightPannel/rightPannel.slice'
 
 const CellContainer = styled.div`
   background-color: cyan;
@@ -21,9 +23,16 @@ const Cell = styled.img`
 `
 
 const OneCell = ({ id }) => {
+  const dispatch = useDispatch();
+
+  const clickOnCell = () => {
+    dispatch(openRightPanel());
+    console.log('cell clicked');
+  }
+
   return (
     <CellContainer>
-      <Cell src={`https://picsum.photos/id/${id}/200`} alt="" />
+      <Cell onClick={(clickOnCell)} src={`https://picsum.photos/id/${id}/200`} alt="" />
     </CellContainer>
   )
 }
