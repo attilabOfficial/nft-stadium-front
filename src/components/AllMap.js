@@ -22,6 +22,7 @@ const GridContainer = styled.div`
 
 const StadeGrid = styled.div`
   margin: 0 auto;
+  padding-top: 3vh;
   width: ${gridWidth}%;
   heigth: 100%;
   display: grid;
