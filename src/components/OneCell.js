@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import { setCurrentNFT } from '../store/NFTDetailSlice'
 import { openRightPanel } from '../store/rightPannel.slice'
 
 const CellContainer = styled.div`
@@ -27,6 +28,7 @@ const OneCell = ({ id }) => {
 
   const clickOnCell = () => {
     dispatch(openRightPanel());
+    dispatch(setCurrentNFT(id));
     console.log('cell clicked');
   }
 

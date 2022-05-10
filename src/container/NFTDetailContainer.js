@@ -1,20 +1,40 @@
+import { useEffect , useContext} from "react";
+import { useSelector,useDispatch } from "react-redux";
+import { curNftSelector, getOwner, curNftOwnerSelector } from '../store/NFTDetailSlice';
+import { Web3Context } from './DappContainer';
+import { MOCK } from '../index';
 
 
 
 export const NFTDetailContainer = () =>{
 
-    // 1) Créer un NFTDetailslice qui contient l'id du NFT séléctionné
+    const { currentNFT, owner }= useSelector((state) =>({
+        currentNFT : curNftSelector(state),
+        owner : curNftOwnerSelector(state)
+    }));
 
-    // 2) au click sur la map, j'ajoute dans NFTDetailslice l'id de l'image cliquée
+    const web3Context = useContext(Web3Context);
+    const dispatch = useDispatch();
 
-    // 3) useSeletor pour récupérer NFTDetailslice l'id de l'image cliquée
+    useEffect(()=>{
+        if(MOCK){
+            // TODO dispatch getMockMap
+        }else{
+            if(web3Context.contract){
+                dispatch(getOwner(web3Context.contract,currentNFT ));
+            }
+        }
+    },[currentNFT,web3Context.contract, dispatch])
 
-    // 4 ) useEffect au changement de l'id dans le store, j'appelle contract.ownerOf du token id et j'entre le résultat dans le store
-    // cf appel complet depuis StadiumContainer if(web3Context.contract){
-        //dispatch(getAllMapInfo(web3Context.contract));
-    // }
+    //const onSumbit = ()=>{
+       // dispatch(changeImg(web3Context.contract,newImgUrl ));
+    //}
+    return <><div>
+        {currentNFT}
+        {owner}
 
-    // 5 ) completer le useSelector du 3 avec l'id du owner
-
-    // 6) Afficher l'identifiant du owner dans le panel
+        <form>
+            <input></input>
+        </form>
+    </div></>
 }
