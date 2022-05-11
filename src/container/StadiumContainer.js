@@ -21,7 +21,12 @@ export const StadiumContainer =()=>{
 
     const zoomIn = () => {
         containerRef.current.style.transform = `scale(${(mapSize += 0.5)})`;
+        containerRef.current.style.transformOrigin = `top left`;
+        containerRef.current.style.position = `${mapSize > 1 ? "absolute" : undefined}`;
+        containerRef.current.style.top = `${mapSize > 1 ? 0 : undefined}`;
+        containerRef.current.style.left = `${mapSize > 1 ? 0 : undefined}`;
         console.log('click +');
+        console.log(containerRef.current.style);
     };
 
     const zoomOut = () => {
@@ -44,5 +49,5 @@ export const StadiumContainer =()=>{
     }, [web3Context.contract, dispatch])
 
 
-    return <StadiumComponent containerRef={containerRef} zoomIn={zoomIn} zoomOut={zoomOut}/>
+    return <StadiumComponent containerRef={containerRef} zoomIn={zoomIn} zoomOut={zoomOut} />
 }
