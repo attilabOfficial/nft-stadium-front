@@ -3,6 +3,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { curNftSelector, getOwner, curNftOwnerSelector } from '../store/NFTDetailSlice';
 import { Web3Context } from './DappContainer';
 import { MOCK } from '../index';
+import { NFTDetailComponent } from "../components/NFTDetailComponent";
 
 
 
@@ -29,12 +30,15 @@ export const NFTDetailContainer = () =>{
     //const onSumbit = ()=>{
        // dispatch(changeImg(web3Context.contract,newImgUrl ));
     //}
-    return <><div>
-        {currentNFT}
-        {owner}
 
-        <form>
-            <input></input>
-        </form>
-    </div></>
+    return (
+        <>
+            <div>
+                <NFTDetailComponent currentNFT={currentNFT} owner={owner} />
+                <form>
+                    <input></input>
+                </form>
+            </div>
+        </>
+    )
 }

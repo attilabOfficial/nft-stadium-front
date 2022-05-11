@@ -9,7 +9,10 @@ export const rightPanelSlice = createSlice({
     openRightPanel: (state) => {
       state.isOpen = true;
     },
+    closeRightPanel: (state) => {
+      state.isOpen = false;
+    },
   }
 });
 
-export const { openRightPanel } = rightPanelSlice.actions;
+export const { openRightPanel, closeRightPanel } = rightPanelSlice.actions;
