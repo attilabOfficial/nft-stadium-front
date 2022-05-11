@@ -4,7 +4,22 @@ import { NetworkErrorMessage } from "./NetworkErrorMessage";
 import  styled from 'styled-components';
 
 const ConnectWalletStyle = styled.div`
-  margin-top:150px;
+  padding: 150px 0 2rem;
+  background-color: black;
+  font-family: "Open Sans",sans-serif;
+  color: white;
+  text-align: center;
+
+  button {
+    background-color: #ca180b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 1rem;
+    padding: 0.5rem;
+    width: 7rem;
+    height: 4rem;
+  }
 `;
 
 export const ConnectWallet = ({ connectWallet, networkError, dismiss }) =>{

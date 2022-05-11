@@ -7,6 +7,7 @@ import { closeRightPanel } from '../store/rightPannel.slice';
 const Panel = styled.div`
   background-color: #ca180b;
   font-family: "Open Sans",sans-serif;
+  color: white;
   position: fixed;
   right: 0;
   bottom: 0;
@@ -16,6 +17,7 @@ const Panel = styled.div`
   max-width: 20vw;
   max-height: 75vh;
   padding: 1rem;
+  border-radius: 5px 0 0 0;
 `
 
 const ClosePanel = styled.img`

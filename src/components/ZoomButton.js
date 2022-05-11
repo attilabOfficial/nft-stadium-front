@@ -10,10 +10,10 @@ const Zoom = styled.button`
   padding: 0.5rem;
   width: 4rem;
   height: 4rem;
-  font-size: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  fill: white;
 `
 
 const ZoomIcon = styled.img`

@@ -13,6 +13,7 @@ const Title = styled.h1`
   background-color: #ca180b;
   font-family: "Open Sans",sans-serif;
   font-size: 4rem;
+  color: white;
   text-align: center;
   padding: 1rem 0;
   margin: 0;
