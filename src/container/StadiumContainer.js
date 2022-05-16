@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import {useContext, useEffect} from 'react';
 import { Web3Context } from './DappContainer';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllMapInfo, mockData } from '../store/mapInfoSlice';
+import { getAllMapInfo, mockData, mapSelector } from '../store/mapInfoSlice';
 import { StadiumComponent } from '../components/StadiumComponent';
 import { MOCK } from '../index';
 
@@ -32,7 +32,7 @@ export const StadiumContainer =()=>{
         }
     };
 
-    const mockImg = useSelector((state) => state.web3Config.imgMap);
+    const mockImg = useSelector((state) => mapSelector(state));
 
     useEffect(()=>{
         if(MOCK){

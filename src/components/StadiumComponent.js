@@ -22,16 +22,22 @@ const ZoomButtonsContainer = styled.div`
 `
 
 export const StadiumComponent = ({containerRef, zoomIn, zoomOut, mockImg}) => {
-    return (
-        <div>
-            <Container ref={containerRef} >
-                <AllMap mockImg={mockImg} />
-            </Container>
-            <ZoomButtonsContainer>
-                <ZoomButton buttonLabel='zoom_in' fctOnClick={zoomIn} />
-                <ZoomButton buttonLabel='zoom_out' fctOnClick={zoomOut} />
-            </ZoomButtonsContainer>
-        </div>
-    )
+
+    if(mockImg && mockImg.length>0 && mockImg[0]){
+        return (
+            <div>
+                <Container ref={containerRef} >
+                    <AllMap mockImg={mockImg[0]} />
+                </Container>
+                <ZoomButtonsContainer>
+                    <ZoomButton buttonLabel='zoom_in' fctOnClick={zoomIn} />
+                    <ZoomButton buttonLabel='zoom_out' fctOnClick={zoomOut} />
+                </ZoomButtonsContainer>
+            </div>
+        )
+    }else{
+        return <h1>Loading</h1>
+    }
+  
 }
 

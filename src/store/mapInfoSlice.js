@@ -23,9 +23,10 @@ export const mapInfoSlice = createSlice({
             const cellsTotal = columnsNbr * rowsNbr;
 
             if (state.imgMap.length === 0) {
+                state.imgMap = [[], []]
                 for (let c = 0; c <= cellsTotal - 1; c++) {
                     const id = c;
-                    state.imgMap.push(`https://picsum.photos/id/${id}/200`);
+                    state.imgMap[0].push(`https://picsum.photos/id/${id}/200`);
                 };
             };
         },
@@ -36,6 +37,6 @@ export const mapInfoSlice = createSlice({
         })
       },
 });
-export const mapSelector = (state) => state.imgMap;
+export const mapSelector = (state) => state.web3Config.imgMap;
 
 export const { mockData } = mapInfoSlice.actions;
