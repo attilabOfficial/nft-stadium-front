@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import {useContext, useEffect} from 'react';
 import { Web3Context } from './DappContainer';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllMapInfo, mockData, mapSelector } from '../store/mapInfoSlice';
+import { getAllMapInfo, mockData, mapSelector, nftImgMap } from '../store/mapInfoSlice';
 import { StadiumComponent } from '../components/StadiumComponent';
 import { MOCK } from '../index';
 
@@ -17,12 +17,13 @@ export const StadiumContainer =()=>{
     const containerRef = useRef(null);
 
     const zoomIn = () => {
-        containerRef.current.style.transform = `scale(${(mapSize += 0.5)})`;
-        containerRef.current.style.transformOrigin = `top left`;
-        containerRef.current.style.position = `${mapSize > 1 ? "absolute" : undefined}`;
-        containerRef.current.style.top = `${mapSize > 1 ? 0 : undefined}`;
-        containerRef.current.style.left = `${mapSize > 1 ? 0 : undefined}`;
-        console.log('click +');
+        if (containerRef && containerRef.current && containerRef.current.style) {
+            containerRef.current.style.transform = `scale(${(mapSize += 0.5)})`;
+            containerRef.current.style.transformOrigin = `top left`;
+            containerRef.current.style.position = `${mapSize > 1 ? "absolute" : undefined}`;
+            containerRef.current.style.top = `${mapSize > 1 ? 0 : undefined}`;
+            containerRef.current.style.left = `${mapSize > 1 ? 0 : undefined}`;
+        } // else ?
     };
 
     const zoomOut = () => {
@@ -32,14 +33,15 @@ export const StadiumContainer =()=>{
         }
     };
 
-    const mockImg = useSelector((state) => mapSelector(state));
+    const nftImg = useSelector((state) => mapSelector(state));
 
     useEffect(()=>{
         if(MOCK){
             dispatch(mockData())
         }else{
             if(web3Context.contract){
-                dispatch(getAllMapInfo(web3Context.contract));
+                // dispatch(getAllMapInfo(web3Context.contract));
+                dispatch(nftImgMap())
             }
         }
       
@@ -48,7 +50,7 @@ export const StadiumContainer =()=>{
 
     return <StadiumComponent
         containerRef={containerRef}
-        mockImg={mockImg}
+        nftImg={nftImg}
         zoomIn={zoomIn}
         zoomOut={zoomOut}
     />

@@ -13,9 +13,9 @@ const Panel = styled.div`
   bottom: 0;
   z-index: 9999;
   min-width: 20vw;
-  min-height: 75vh;
+  min-height: calc(100vh - 150px);
   max-width: 20vw;
-  max-height: 75vh;
+  max-height: calc(100vh - 150px);
   padding: 1rem;
   border-radius: 5px 0 0 0;
 `

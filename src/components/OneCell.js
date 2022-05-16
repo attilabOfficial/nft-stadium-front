@@ -4,7 +4,7 @@ import { setCurrentNFT } from '../store/NFTDetailSlice'
 import { openRightPanel } from '../store/rightPannel.slice'
 
 const CellContainer = styled.div`
-  background-color: cyan;
+  background-color: rgba(202, 24, 11, 0.3);
   aspect-ratio: 1;
   display: grid;
   place-items: center;

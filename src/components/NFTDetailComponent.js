@@ -8,14 +8,15 @@ const NFTDetail = styled.div`
 `
 
 export const NFTDetailComponent = ({ currentNFT, owner }) => {
-  const mockImg = useSelector((state) => state.web3Config.imgMap);
+  const nftImg = useSelector((state) => state.web3Config.imgMap);
+  console.log(nftImg);
 
   return (
     <NFTDetail>
       <h2>{currentNFT}</h2>
       <h3>Owner :</h3>
       <p>{owner}</p>
-      <img src={mockImg[currentNFT]} alt='NFT' />
+      <img src={nftImg[currentNFT]} alt='NFT' />
     </NFTDetail>
   )
 }

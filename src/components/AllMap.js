@@ -28,13 +28,13 @@ const StadeGrid = styled.div`
   border: solid 1px transparent;
 `
 
-const AllMap = ({ mockImg }) => {
+const AllMap = ({ nftImg }) => {
   
   return (
     <>
       <GridContainer>
         <StadeGrid>
-          {mockImg.map((cell, index, img) => <OneCell key={index} id={index} img={img} />)}
+          {nftImg.map((cell, index, img) => <OneCell key={index} id={index} img={img} />)}
         </StadeGrid>
       </GridContainer>
     </>
