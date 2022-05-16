@@ -15,6 +15,10 @@ const ZoomButtonsContainer = styled.div`
   bottom: 3rem;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
 `
 
 export const StadiumComponent = ({containerRef, zoomIn, zoomOut}) => {
@@ -24,8 +28,8 @@ export const StadiumComponent = ({containerRef, zoomIn, zoomOut}) => {
                 <AllMap />
             </Container>
             <ZoomButtonsContainer>
-                <ZoomButton buttonLabel='Zoom +' fctOnClick={zoomIn} />
-                <ZoomButton buttonLabel='Zoom -' fctOnClick={zoomOut} />
+                <ZoomButton buttonLabel='zoom_in' fctOnClick={zoomIn} />
+                <ZoomButton buttonLabel='zoom_out' fctOnClick={zoomOut} />
             </ZoomButtonsContainer>
         </div>
     )
