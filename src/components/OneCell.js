@@ -29,7 +29,6 @@ const OneCell = ({ id, img }) => {
   const clickOnCell = () => {
     dispatch(openRightPanel());
     dispatch(setCurrentNFT(id));
-    console.log('cell clicked');
   }
 
   return (

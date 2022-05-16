@@ -31,32 +31,24 @@ export const mapInfoSlice = createSlice({
                 };
             };
         },
-        nftImgMap: (state) => {
-            // sortir columnsNbr & rowsNbr & cellsTotal de là !!! 
-            const columnsNbr = 25;
-            const rowsNbr = 17;
-            const cellsTotal = columnsNbr * rowsNbr;
-
-            if (state.imgMap.length === 0) {
-                state.imgMap = [[], []]
-                for (let c = 0; c <= cellsTotal - 1; c++) {
-                    const id = c;
-                    if (state.imgMap[0] === '') {
-                        state.imgMap[0].push(id);
-                        console.log(id);
-                    } else {
-                        state.imgMap[0] = state.imgMap[0];
-                        console.log(state.imgMap[0]);
-                    }
-                };
-            };
-        }
     },
     extraReducers: (builder) => {
         builder.addCase(getAllMapInfo.fulfilled, (state, action) => {
-            state.imgMap = action.payload;
+            const columnsNbr = 25;
+            const rowsNbr = 17;
+            const cellsTotal = columnsNbr * rowsNbr;
+            let imageTable = action.payload;
+            let newImageArray = [];
+            if(imageTable.length < cellsTotal){ 
+                const emptyArray = Array.apply(null, Array(cellsTotal-imageTable[0].length)).map( ()=>({}) )
+                newImageArray = [...imageTable[0], ...emptyArray];
+            }else{
+                newImageArray = imageTable[0];
+            }
+            state.imgMap = [newImageArray,imageTable[1] ];
+
         })
-      },
+    },
 });
 export const mapSelector = (state) => state.web3Config.imgMap;
 

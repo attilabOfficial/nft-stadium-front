@@ -9,9 +9,9 @@ import { NFTDetailComponent } from "../components/NFTDetailComponent";
 
 export const NFTDetailContainer = () =>{
 
-    const { currentNFT, owner }= useSelector((state) =>({
+    const { currentNFT, owner } = useSelector((state) =>({
         currentNFT : curNftSelector(state),
-        owner : curNftOwnerSelector(state)
+        owner : curNftOwnerSelector(state),
     }));
 
     const web3Context = useContext(Web3Context);

@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-
 const initialState = {
     curNft: undefined,
     owner : undefined
@@ -27,7 +26,6 @@ export const NFTDetailSlice = createSlice({
     initialState,
     reducers: {
         setCurrentNFT: (state, action) => {
-            console.log("******", action.payload)
             state.curNft = action.payload; 
           },
     },
@@ -42,7 +40,4 @@ export const NFTDetailSlice = createSlice({
 export const curNftSelector = (state) => state.nftDetail.curNft;
 export const curNftOwnerSelector = (state) => state.nftDetail.owner;
 
-
-
-// Action creators are generated for each case reducer function
 export const { setCurrentNFT } = NFTDetailSlice.actions

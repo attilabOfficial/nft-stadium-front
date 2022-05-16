@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import {useContext, useEffect} from 'react';
 import { Web3Context } from './DappContainer';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllMapInfo, mockData, mapSelector, nftImgMap } from '../store/mapInfoSlice';
+import { getAllMapInfo, mockData, mapSelector } from '../store/mapInfoSlice';
 import { StadiumComponent } from '../components/StadiumComponent';
 import { MOCK } from '../index';
 
@@ -40,8 +40,7 @@ export const StadiumContainer =()=>{
             dispatch(mockData())
         }else{
             if(web3Context.contract){
-                // dispatch(getAllMapInfo(web3Context.contract));
-                dispatch(nftImgMap())
+                dispatch(getAllMapInfo(web3Context.contract));
             }
         }
       
