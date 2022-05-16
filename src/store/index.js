@@ -1,8 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit';
 import { mapInfoSlice } from './mapInfoSlice';
 import { NFTDetailSlice } from './NFTDetailSlice';
 import { rightPanelSlice } from './rightPannel.slice';
-
 
 export const store = configureStore({
   reducer: {
@@ -10,4 +9,4 @@ export const store = configureStore({
     rightPanel: rightPanelSlice.reducer,
     nftDetail: NFTDetailSlice.reducer,
   },
-})
+});

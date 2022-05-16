@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import styled from 'styled-components';
 import stade from '../images/Stade.png';
 import OneCell from './OneCell'
@@ -7,9 +6,6 @@ import OneCell from './OneCell'
 const columnsNbr = 25;
 const rowsNbr = 17;
 const gridWidth = 30;
-const cellsTotal = columnsNbr * rowsNbr;
-
-const cells = [];
 
 const GridContainer = styled.div`
   background: no-repeat center url(${stade});
@@ -32,23 +28,13 @@ const StadeGrid = styled.div`
   border: solid 1px transparent;
 `
 
-const AllMap = () => {
-  const [cellsNbr, setCellsNbr] = useState(0);
-
-  useEffect(() => {
-    if (cells.length === 0) {
-      for (let c = 0; c <= cellsTotal - 1; c++) {
-        cells.push(c);
-        setCellsNbr((cellsNbr) => cellsNbr + 1);
-      }
-    }
-  }, []);
+const AllMap = ({ mockImg }) => {
   
   return (
     <>
       <GridContainer>
         <StadeGrid>
-          {cells.map((cell, index) => <OneCell key={index} id={index} />)}
+          {mockImg.map((cell, index, img) => <OneCell key={index} id={index} img={img} />)}
         </StadeGrid>
       </GridContainer>
     </>

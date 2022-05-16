@@ -21,11 +21,11 @@ const ZoomButtonsContainer = styled.div`
   flex-wrap: nowrap;
 `
 
-export const StadiumComponent = ({containerRef, zoomIn, zoomOut}) => {
+export const StadiumComponent = ({containerRef, zoomIn, zoomOut, mockImg}) => {
     return (
         <div>
             <Container ref={containerRef} >
-                <AllMap />
+                <AllMap mockImg={mockImg} />
             </Container>
             <ZoomButtonsContainer>
                 <ZoomButton buttonLabel='zoom_in' fctOnClick={zoomIn} />

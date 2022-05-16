@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-export const MOCK = false;
+export const MOCK = true;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

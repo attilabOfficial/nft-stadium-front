@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 
 const initialState = {
-    imgMap: undefined,
+    imgMap: [],
 };
 
 export const getAllMapInfo = createAsyncThunk(
@@ -11,18 +11,26 @@ export const getAllMapInfo = createAsyncThunk(
         const stadium = await contract.getStadium();
         return stadium;
     }
-  )
+)
 
 export const mapInfoSlice = createSlice({
-    name: 'mapInfotate',
+    name: 'mapInfoState',
     initialState,
     reducers: {
         mockData: (state) => {
-            state.imgMap = ["mock", "mock"]; // ajouter ici une fonction qui génére automatiquement les données
-          },
+            const columnsNbr = 25;
+            const rowsNbr = 17;
+            const cellsTotal = columnsNbr * rowsNbr;
+
+            if (state.imgMap.length === 0) {
+                for (let c = 0; c <= cellsTotal - 1; c++) {
+                    const id = c;
+                    state.imgMap.push(`https://picsum.photos/id/${id}/200`);
+                };
+            };
+        },
     },
     extraReducers: (builder) => {
-        // Add reducers for additional action types here, and handle loading state as needed
         builder.addCase(getAllMapInfo.fulfilled, (state, action) => {
             state.imgMap = action.payload;
         })
@@ -30,6 +38,4 @@ export const mapInfoSlice = createSlice({
 });
 export const mapSelector = (state) => state.imgMap;
 
-
-// Action creators are generated for each case reducer function
-export const { mockData } = mapInfoSlice.actions
+export const { mockData } = mapInfoSlice.actions;

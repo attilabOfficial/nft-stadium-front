@@ -23,7 +23,7 @@ const Cell = styled.img`
   grid-area: 1 / 1 / 2 / 2;
 `
 
-const OneCell = ({ id }) => {
+const OneCell = ({ id, img }) => {
   const dispatch = useDispatch();
 
   const clickOnCell = () => {
@@ -33,8 +33,8 @@ const OneCell = ({ id }) => {
   }
 
   return (
-    <CellContainer>
-      <Cell onClick={(clickOnCell)} src={`https://picsum.photos/id/${id}/200`} alt="" />
+    <CellContainer onClick={(clickOnCell)} >
+      <Cell src={img[id]} alt="" />
     </CellContainer>
   )
 }
