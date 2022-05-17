@@ -18,11 +18,10 @@ export const NFTDetailContainer = () =>{
     }));
 
     const mintNFT = ()=> {
+        // A transfert event will be fired after the transaction. DappContainer listen to this event
         dispatch(
             mint({contract:web3Context.contract, to:web3Context.selectedAddress, id: currentNFT.id})
-        ).then(() => {
-            dispatch(getAllMapInfo(web3Context.contract));
-          })
+        )
     }
     const changeNFTImg = (newImg)=> {
         dispatch(

@@ -1,10 +1,12 @@
 import {NoWalletDetected} from "../components/NoWalletDetected"
 import { ConnectWallet } from '../components/ConnectWallet';
-import { ethers } from 'ethers';
+import { ethers, utils } from 'ethers';
 import TokenArtifact from "../contracts/Token.json";
 import contractAddress from "../contracts/contract-address.json";
 import { createContext, useState } from "react";
 import { MOCK } from '../index';
+import { useDispatch } from 'react-redux';
+import {updateAddressNFT} from "../store/mapInfoSlice"
 
 
 const HARDHAT_NETWORK_ID = '80001';
@@ -15,7 +17,7 @@ export const Web3Context = createContext({});
 export const DappContainer = ({children}) =>{
     const [selectedAddress, setSelectedAddress] = useState("");
     const [contract, setContract] = useState(null);
-
+    const dispatch = useDispatch();
 
     if(MOCK){
       return <>
@@ -45,6 +47,16 @@ export const DappContainer = ({children}) =>{
         TokenArtifact.abi,
         provider.getSigner(0)
       ));
+      const mintedEventFilter = {
+        address: contractAddress.Token,
+        topics: [
+            utils.id("Transfer(address,address,uint256)")
+        ]
+      }
+      contract.on(mintedEventFilter, (from, to ,id) => {
+          dispatch(updateAddressNFT({id : id.toNumber(), address: to }))
+          console.log("Transfert appen", {id : id.toNumber(), address: to })
+      })
     }
     // This method checks if Metamask selected network is Localhost:8545 
     const _checkNetwork=() =>{
@@ -66,9 +78,9 @@ export const DappContainer = ({children}) =>{
             dismiss={() =>{}}
           />
         );
-      }
-      
-
+    }
+  
+    
     return <Web3Context.Provider value={{selectedAddress, contract}}>
         {children}
       </Web3Context.Provider>
