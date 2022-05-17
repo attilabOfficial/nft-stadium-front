@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { setCurrentNFT } from '../store/NFTDetailSlice'
-import { openRightPanel } from '../store/rightPannel.slice'
+import { setCurrentNFT, openRightPanel } from '../store/NFTDetailSlice'
 
 const CellContainer = styled.div`
   background-color: rgba(202, 24, 11, 0.3);
@@ -30,10 +29,9 @@ const OneCell = ({ id, img }) => {
     dispatch(openRightPanel());
     dispatch(setCurrentNFT(id));
   }
-
   return (
     <CellContainer onClick={(clickOnCell)} >
-      <Cell src={img[id]} alt="" />
+      {img !=='' && <Cell src={img} alt="" />}
     </CellContainer>
   )
 }

@@ -3,8 +3,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import {TOTAL_CELLS} from '../properties/gridProperties';
 
 const initialState = {
-    loading: 'idle',
-    imgMap: [],
+    loading: "idle",
+    mapInfo: [],
 };
 
 export const getAllMapInfo = createAsyncThunk(
@@ -20,11 +20,17 @@ export const mapInfoSlice = createSlice({
     initialState,
     reducers: {
         mockData: (state) => {
-            if (state.imgMap.length === 0) {
-                state.imgMap = [[], []]
+            if (state.mapInfo.length === 0) {
+                state.mapInfo = []
                 for (let c = 0; c <= TOTAL_CELLS - 1; c++) {
-                    const id = c;
-                    state.imgMap[0].push(`https://picsum.photos/id/${id}/200`);
+                    state.mapInfo.push(
+                        {
+                            id: c,
+                            owner : "mock_id",
+                            img: `https://picsum.photos/id/${c}/200`,
+                            link : 'test'
+                        }
+                    );
                 };
             };
         },
@@ -36,22 +42,27 @@ export const mapInfoSlice = createSlice({
                     state.loading = 'loading';
                 }
             })
-            .addCase(getAllMapInfo.fulfilled, (state, action) => {
-                let imageTable = action.payload;
-                let newImageArray = [];
-                // Complete the array with empty cells 
-                if(imageTable.length < TOTAL_CELLS){ 
-                    const emptyArray = Array.apply(null, Array(TOTAL_CELLS - imageTable[0].length)).map( ()=>({}) )
-                    newImageArray = [...imageTable[0], ...emptyArray];
-                }else{
-                    newImageArray = imageTable[0];
+
+        builder.addCase(getAllMapInfo.fulfilled, (state, action) => {
+            let mapTupple = action.payload;
+            const ownerMap = mapTupple[0];
+            const linkMap = mapTupple[1];
+            const imgMap = mapTupple[2];
+            const allData = ownerMap.map((owner, index)=>(
+                {
+                    id : index,
+                    owner,
+                    img: imgMap[index],
+                    link: linkMap[index]
                 }
-                state.imgMap = [newImageArray,imageTable[1] ];
-                state.loading = 'idle';
-            })
+            ))
+            state.mapInfo = allData;
+            state.loading = 'idle';
+
+        })
     },
 });
-export const mapSelector = (state) => state.map.imgMap;
+export const mapSelector = (state) => state.map.mapInfo;
 export const isMapLoading = (state) => state.map.loading;
 
 

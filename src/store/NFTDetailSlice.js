@@ -1,43 +1,34 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
-const initialState = {
-    curNft: undefined,
-    owner : undefined
-};
-
-export const getOwner = createAsyncThunk(
-    'web3/connect',
-    async (contract, nftId, thunkAPI) => {
-        const owner = await contract.ownerOf(nftId);
-        return owner;
-    }
-  )
-
-export const changeImg = createAsyncThunk(
-    'web3/connect',
-    async (contract, newUrl, thunkAPI) => {
-        const owner = await contract.changeImg(newUrl);
-        return owner;
-    }
-  )
+import { createSlice } from "@reduxjs/toolkit";
+import { mapSelector } from './mapInfoSlice';
 
 export const NFTDetailSlice = createSlice({
-    name: 'nftDetailState',
-    initialState,
-    reducers: {
-        setCurrentNFT: (state, action) => {
-            state.curNft = action.payload; 
-          },
+  name: 'nftDetail',
+  initialState: {
+    isOpen: false,
+    curNft : 0
+  },
+  reducers: {
+    openRightPanel: (state) => {
+      state.isOpen = true;
     },
-    extraReducers: (builder) => {
-        // Add reducers for additional action types here, and handle loading state as needed
-        builder.addCase(getOwner.fulfilled, (state, action) => {
-            state.owner = action.payload;
-        })
-      },
+    closeRightPanel: (state) => {
+      state.isOpen = false;
+    },
+    setCurrentNFT: (state, action) => {
+      state.curNft = action.payload; 
+    },
+  }
 });
+export const curNftIdSelector = (state) => state.nftDetail.curNft;
+export const isRightPanelOpenSelector = (state) => state.nftDetail.isOpen;
 
-export const curNftSelector = (state) => state.nftDetail.curNft;
-export const curNftOwnerSelector = (state) => state.nftDetail.owner;
+export const curNftSelector = (state) => {
+    const allNft = mapSelector(state);
+    const curNftId = curNftIdSelector(state);
+    return allNft && allNft.find((nft)=>nft.id ===curNftId)
+}
 
-export const { setCurrentNFT } = NFTDetailSlice.actions
+
+
+
+export const { openRightPanel, closeRightPanel, setCurrentNFT } = NFTDetailSlice.actions;

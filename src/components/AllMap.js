@@ -24,13 +24,12 @@ const StadeGrid = styled.div`
   border: solid 1px transparent;
 `
 
-const AllMap = ({ nftImg }) => {
-  
+const AllMap = ({ mapInfo }) => {
   return (
     <>
       <GridContainer>
         <StadeGrid>
-          {nftImg.map((cell, index, img) => <OneCell key={index} id={index} img={img} />)}
+          {mapInfo.map((cell, index) => <OneCell key={index} id={index} img={cell.img} />)}
         </StadeGrid>
       </GridContainer>
     </>

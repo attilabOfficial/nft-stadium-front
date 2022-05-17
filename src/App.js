@@ -6,12 +6,21 @@ import { Loading } from './components/Loading';
 import RightPanel from './components/RightPanel';
 import { DappContainer } from './container/DappContainer';
 import { StadiumContainer } from './container/StadiumContainer';
+import {isRightPanelOpenSelector} from './store/NFTDetailSlice'
 
 
 const App = () => {
-  const rightPanelIsOpen = useSelector((state) => state.rightPanel.isOpen);
   const leftPanelIsOpen = useSelector((state) => state.leftPanel.isOpen);
   const loading = useSelector((state) => state.map.loading);
+  const rightPanelIsOpen = useSelector((state) => isRightPanelOpenSelector(state));
+  
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   return (
     <>
