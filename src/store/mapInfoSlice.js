@@ -38,7 +38,6 @@ export const mapInfoSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getAllMapInfo.fulfilled, (state, action) => {
             let mapTupple = action.payload;
-            console.log(mapTupple)
             const ownerMap = mapTupple[0];
             const linkMap = mapTupple[1];
             const imgMap = mapTupple[2];

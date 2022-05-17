@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 const NFTDetail = styled.div`
@@ -7,16 +6,14 @@ const NFTDetail = styled.div`
   overflow: hidden;
 `
 
-export const NFTDetailComponent = ({ currentNFT, owner }) => {
-  const nftImg = useSelector((state) => state.map.imgMap[0][currentNFT]);
-  const nftOwner = useSelector((state) => state.map.imgMap[1][currentNFT]);
+export const NFTDetailComponent = ({ currentNFT }) => {
 
   return (
     <NFTDetail>
-      <h2>{currentNFT}</h2>
+      <h2>#{currentNFT.id}</h2>
       <h3>Owner :</h3>
-      <p>{nftOwner}</p>
-      <img src={nftImg} alt='NFT' />
+      <p>{currentNFT.owner}</p>
+      <img src={currentNFT.img} alt='NFT' />
     </NFTDetail>
   )
 }

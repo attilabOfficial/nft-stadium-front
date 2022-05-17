@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { NFTDetailContainer } from '../container/NFTDetailContainer';
 import close from '../images/x_icon.svg';
-import { closeRightPanel } from '../store/rightPannel.slice';
+import { closeRightPanel } from '../store/NFTDetailSlice';
 
 const Panel = styled.div`
   background-color: #ca180b;

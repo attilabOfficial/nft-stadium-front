@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-export const MOCK = true;
+export const MOCK = false;
 export const NBR_COL = 25;
 export const NBR_ROW = 17;
 export const TOTAL_CELLS = NBR_COL * NBR_ROW;
