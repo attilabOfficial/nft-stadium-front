@@ -67,6 +67,7 @@ export const DappContainer = ({children}) =>{
           />
         );
       }
+      
 
     return <Web3Context.Provider value={{selectedAddress, contract}}>
         {children}

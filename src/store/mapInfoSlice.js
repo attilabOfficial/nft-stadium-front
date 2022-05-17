@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import {utils} from "ethers"
 
 import {TOTAL_CELLS} from '../properties/gridProperties';
 
@@ -16,30 +15,7 @@ export const getAllMapInfo = createAsyncThunk(
     }
 )
 
-export const mint = createAsyncThunk(
-    'web3/mint',
-    async ({contract, to, id}, thunkAPI) => {
-        try{
-            await contract.mint(to,id, {value: utils.parseEther("0.01")} );
-        }catch(ex){
-            console.log("error")
-            console.log(ex)
-        }
-       
-    }
-)
-export const changeImg = createAsyncThunk(
-    'web3/changeImg',
-    async ({contract, url, id}, thunkAPI) => {
-        try{
-            await contract.changeImg(id, url );
-        }catch(ex){
-            console.log("error")
-            console.log(ex)
-        }
-       
-    }
-)
+
 
 export const mapInfoSlice = createSlice({
     name: 'mapInfoState',
