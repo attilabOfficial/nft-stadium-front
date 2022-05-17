@@ -1,14 +1,14 @@
 
 import React, { useRef } from 'react';
 
-import {useContext, useEffect} from 'react';
+import { useContext, useEffect } from 'react';
 import { Web3Context } from './DappContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllMapInfo, mockData, mapSelector } from '../store/mapInfoSlice';
 import { StadiumComponent } from '../components/StadiumComponent';
 import { MOCK } from '../index';
 
-export const StadiumContainer =()=>{
+export const StadiumContainer = () =>{
     const web3Context = useContext(Web3Context);
     const dispatch = useDispatch();
 
@@ -37,10 +37,10 @@ export const StadiumContainer =()=>{
 
     const nftImg = useSelector((state) => mapSelector(state));
 
-    useEffect(()=>{
-        if(MOCK){
+    useEffect(() => {
+        if (MOCK) {
             dispatch(mockData())
-        }else{
+        } else {
             if(web3Context.contract){
                 dispatch(getAllMapInfo(web3Context.contract));
             }

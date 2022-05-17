@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import {TOTAL_CELLS} from '../index'
+import {TOTAL_CELLS} from '../properties/gridProperties';
 
 const initialState = {
     loading: 'idle',
@@ -10,7 +10,6 @@ const initialState = {
 export const getAllMapInfo = createAsyncThunk(
     'web3/connect',
     async (contract, thunkAPI) => {
-        console.log('coucou');
         const stadium = await contract.getStadium();
         return stadium;
     }
@@ -35,7 +34,6 @@ export const mapInfoSlice = createSlice({
             .addCase(getAllMapInfo.pending, (state) => {
                 if (state.loading === 'idle') {
                     state.loading = 'loading';
-                    console.log('loading');
                 }
             })
             .addCase(getAllMapInfo.fulfilled, (state, action) => {
@@ -43,9 +41,8 @@ export const mapInfoSlice = createSlice({
                 let newImageArray = [];
                 // Complete the array with empty cells 
                 if(imageTable.length < TOTAL_CELLS){ 
-                    const emptyArray = Array.apply(null, Array(TOTAL_CELLS-imageTable[0].length)).map( ()=>({}) )
+                    const emptyArray = Array.apply(null, Array(TOTAL_CELLS - imageTable[0].length)).map( ()=>({}) )
                     newImageArray = [...imageTable[0], ...emptyArray];
-                    console.log('done');
                 }else{
                     newImageArray = imageTable[0];
                 }

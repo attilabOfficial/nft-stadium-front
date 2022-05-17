@@ -21,7 +21,7 @@ const ZoomButtonsContainer = styled.div`
   flex-wrap: nowrap;
 `
 
-export const StadiumComponent = ({containerRef, zoomIn, zoomOut, nftImg}) => {
+export const StadiumComponent = ({containerRef, zoomIn, zoomOut, nftImg }) => {
 
     if(nftImg && nftImg.length>0 && nftImg[0]){
         return (
