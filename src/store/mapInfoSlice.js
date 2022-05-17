@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import {TOTAL_CELLS} from '../properties/gridProperties';
+import { currentNftOwnerSlector } from './NFTByOwnerSlice';
 
 const initialState = {
     loading: "idle",
@@ -58,12 +59,10 @@ export const mapInfoSlice = createSlice({
             ))
             state.mapInfo = allData;
             state.loading = 'idle';
-
         })
     },
 });
 export const mapSelector = (state) => state.map.mapInfo;
-export const isMapLoading = (state) => state.map.loading;
-
+export const isMapLoadingSelector = (state) => state.map.loading;
 
 export const { mockData, nftImgMap } = mapInfoSlice.actions;

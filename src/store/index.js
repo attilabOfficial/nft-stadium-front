@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { leftPanelSlice } from './leftPanelSlice';
+import { NFTByOwnerSlice } from './NFTByOwnerSlice';
 import { mapInfoSlice } from './mapInfoSlice';
 import { NFTDetailSlice } from './NFTDetailSlice';
 
@@ -7,6 +7,6 @@ export const store = configureStore({
   reducer: {
     map : mapInfoSlice.reducer,
     nftDetail: NFTDetailSlice.reducer,
-    leftPanel: leftPanelSlice.reducer,
+    nftOwn: NFTByOwnerSlice.reducer,
   },
 });

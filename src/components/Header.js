@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { closeLeftPanel, openLeftPanel } from '../store/leftPanelSlice';
+import { closeLeftPanel, isLeftPanelOpenSelector, openLeftPanel } from '../store/NFTByOwnerSlice';
 
 const HeaderContainer = styled.div`
   background-color: #ca180b;
@@ -37,7 +37,7 @@ const Title = styled.h1`
 
 const Header = () => {
   const dispatch = useDispatch();
-  const leftPanelIsOpen = useSelector((state) => state.leftPanel.isOpen);
+  const leftPanelIsOpen = useSelector((state) => isLeftPanelOpenSelector(state));
 
   const clickOnMenu = () => {
     if (leftPanelIsOpen === false) {

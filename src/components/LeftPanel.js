@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { NFTByOwnerContainer } from '../container/NFTByOwnerContainer';
 import close from '../images/x_icon.svg';
-import { closeLeftPanel } from '../store/leftPanelSlice';
+import { closeLeftPanel } from '../store/NFTByOwnerSlice';
 
 const Panel = styled.div`
   background-color: #ca180b;
@@ -35,7 +36,7 @@ const LeftPanel = () => {
   return (
       <Panel>
         <ClosePanel src={close} alt='close' onClick={(clickOnClose)} />
-        <h1>Hello</h1>
+        <NFTByOwnerContainer />
       </Panel>
   )
 }
