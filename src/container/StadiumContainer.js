@@ -23,13 +23,15 @@ export const StadiumContainer =()=>{
             containerRef.current.style.position = `${mapSize > 1 ? "absolute" : undefined}`;
             containerRef.current.style.top = `${mapSize > 1 ? 0 : undefined}`;
             containerRef.current.style.left = `${mapSize > 1 ? 0 : undefined}`;
-        } // else ?
+        } 
     };
 
     const zoomOut = () => {
         if (mapSize > 1) {
-            containerRef.current.style.transform = `scale(${(mapSize -= 0.5)})`;
-            console.log('click -')
+            if (containerRef && containerRef.current && containerRef.current.style) {
+                containerRef.current.style.transform = `scale(${(mapSize -= 0.5)})`;
+                console.log('click -')
+            }
         }
     };
 
