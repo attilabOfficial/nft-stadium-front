@@ -21,7 +21,18 @@ export const mint = createAsyncThunk(
     async ({contract, to, id}, thunkAPI) => {
         try{
             await contract.mint(to,id, {value: utils.parseEther("0.01")} );
-            console.log("ok")
+        }catch(ex){
+            console.log("error")
+            console.log(ex)
+        }
+       
+    }
+)
+export const changeImg = createAsyncThunk(
+    'web3/changeImg',
+    async ({contract, url, id}, thunkAPI) => {
+        try{
+            await contract.changeImg(id, url );
         }catch(ex){
             console.log("error")
             console.log(ex)
@@ -61,8 +72,8 @@ export const mapInfoSlice = createSlice({
         builder.addCase(getAllMapInfo.fulfilled, (state, action) => {
             let mapTupple = action.payload;
             const ownerMap = mapTupple[0];
-            const linkMap = mapTupple[1];
-            const imgMap = mapTupple[2];
+            const imgMap = mapTupple[1];
+            const linkMap = mapTupple[2];
             const allData = ownerMap.map((owner, index)=>(
                 {
                     id : index,
