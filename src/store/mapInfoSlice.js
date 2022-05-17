@@ -18,6 +18,7 @@ export const mapInfoSlice = createSlice({
     initialState,
     reducers: {
         mockData: (state) => {
+            // sortir columnsNbr & rowsNbr & cellsTotal de là !!! 
             const columnsNbr = 25;
             const rowsNbr = 17;
             const cellsTotal = columnsNbr * rowsNbr;
@@ -33,10 +34,22 @@ export const mapInfoSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getAllMapInfo.fulfilled, (state, action) => {
-            state.imgMap = action.payload;
+            const columnsNbr = 25;
+            const rowsNbr = 17;
+            const cellsTotal = columnsNbr * rowsNbr;
+            let imageTable = action.payload;
+            let newImageArray = [];
+            if(imageTable.length < cellsTotal){ 
+                const emptyArray = Array.apply(null, Array(cellsTotal-imageTable[0].length)).map( ()=>({}) )
+                newImageArray = [...imageTable[0], ...emptyArray];
+            }else{
+                newImageArray = imageTable[0];
+            }
+            state.imgMap = [newImageArray,imageTable[1] ];
+
         })
-      },
+    },
 });
 export const mapSelector = (state) => state.web3Config.imgMap;
 
-export const { mockData } = mapInfoSlice.actions;
+export const { mockData, nftImgMap } = mapInfoSlice.actions;

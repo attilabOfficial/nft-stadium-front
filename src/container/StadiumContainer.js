@@ -17,12 +17,13 @@ export const StadiumContainer =()=>{
     const containerRef = useRef(null);
 
     const zoomIn = () => {
-        containerRef.current.style.transform = `scale(${(mapSize += 0.5)})`;
-        containerRef.current.style.transformOrigin = `top left`;
-        containerRef.current.style.position = `${mapSize > 1 ? "absolute" : undefined}`;
-        containerRef.current.style.top = `${mapSize > 1 ? 0 : undefined}`;
-        containerRef.current.style.left = `${mapSize > 1 ? 0 : undefined}`;
-        console.log('click +');
+        if (containerRef && containerRef.current && containerRef.current.style) {
+            containerRef.current.style.transform = `scale(${(mapSize += 0.5)})`;
+            containerRef.current.style.transformOrigin = `top left`;
+            containerRef.current.style.position = `${mapSize > 1 ? "absolute" : undefined}`;
+            containerRef.current.style.top = `${mapSize > 1 ? 0 : undefined}`;
+            containerRef.current.style.left = `${mapSize > 1 ? 0 : undefined}`;
+        } // else ?
     };
 
     const zoomOut = () => {
@@ -32,7 +33,7 @@ export const StadiumContainer =()=>{
         }
     };
 
-    const mockImg = useSelector((state) => mapSelector(state));
+    const nftImg = useSelector((state) => mapSelector(state));
 
     useEffect(()=>{
         if(MOCK){
@@ -48,7 +49,7 @@ export const StadiumContainer =()=>{
 
     return <StadiumComponent
         containerRef={containerRef}
-        mockImg={mockImg}
+        nftImg={nftImg}
         zoomIn={zoomIn}
         zoomOut={zoomOut}
     />

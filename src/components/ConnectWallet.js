@@ -4,7 +4,7 @@ import { NetworkErrorMessage } from "./NetworkErrorMessage";
 import  styled from 'styled-components';
 
 const ConnectWalletStyle = styled.div`
-  padding: 150px 0 2rem;
+  padding: 150px 0;
   background-color: black;
   font-family: "Open Sans",sans-serif;
   color: white;
