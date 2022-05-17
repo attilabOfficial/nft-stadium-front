@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import {utils} from "ethers"
 
 import {TOTAL_CELLS} from '../properties/gridProperties';
 
@@ -12,6 +13,20 @@ export const getAllMapInfo = createAsyncThunk(
     async (contract, thunkAPI) => {
         const stadium = await contract.getStadium();
         return stadium;
+    }
+)
+
+export const mint = createAsyncThunk(
+    'web3/mint',
+    async ({contract, to, id}, thunkAPI) => {
+        try{
+            await contract.mint(to,id, {value: utils.parseEther("0.01")} );
+            console.log("ok")
+        }catch(ex){
+            console.log("error")
+            console.log(ex)
+        }
+       
     }
 )
 

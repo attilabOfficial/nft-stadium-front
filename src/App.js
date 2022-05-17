@@ -21,9 +21,10 @@ const App = () => {
       <DappContainer>
         <StadiumContainer />
         {loading === 'loading' && <Loading />}
+        {rightPanelIsOpen === true ? (<RightPanel />) : ''}
+        {leftPanelIsOpen === true ? (<LeftPanel />) : ''}
       </DappContainer>
-      {rightPanelIsOpen === true ? (<RightPanel />) : ''}
-      {leftPanelIsOpen === true ? (<LeftPanel />) : ''}
+
     </>
     
   );
