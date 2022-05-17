@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { openLeftPanel } from '../store/leftPanelSlice';
+import { closeLeftPanel, openLeftPanel } from '../store/leftPanelSlice';
 
 const HeaderContainer = styled.div`
   background-color: #ca180b;
@@ -37,9 +37,14 @@ const Title = styled.h1`
 
 const Header = () => {
   const dispatch = useDispatch();
+  const leftPanelIsOpen = useSelector((state) => state.leftPanel.isOpen);
 
   const clickOnMenu = () => {
-    dispatch(openLeftPanel())
+    if (leftPanelIsOpen === false) {
+      dispatch(openLeftPanel())
+    } else {
+      dispatch(closeLeftPanel())
+    }
   }
 
   return (

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import GlobalStyleReset from './components/GlobalStyleReset';
 import Header from './components/Header';
@@ -11,21 +10,16 @@ import { StadiumContainer } from './container/StadiumContainer';
 
 const App = () => {
   const rightPanelIsOpen = useSelector((state) => state.rightPanel.isOpen);
-  const leftPanelIsOpen = useSelector((state) => state.leftPanel.isOpen)
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
+  const leftPanelIsOpen = useSelector((state) => state.leftPanel.isOpen);
+  const loading = useSelector((state) => state.map.loading);
 
   return (
     <>
       <GlobalStyleReset />
       <Header />
       <DappContainer>
-          <StadiumContainer/>
+        <StadiumContainer />
+        {loading === 'loading' && <Loading />}
       </DappContainer>
       {rightPanelIsOpen === true ? (<RightPanel />) : ''}
       {leftPanelIsOpen === true ? (<LeftPanel />) : ''}

@@ -3,13 +3,14 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import {TOTAL_CELLS} from '../index'
 
 const initialState = {
-    loading: false,
+    loading: 'idle',
     imgMap: [],
 };
 
 export const getAllMapInfo = createAsyncThunk(
     'web3/connect',
     async (contract, thunkAPI) => {
+        console.log('coucou');
         const stadium = await contract.getStadium();
         return stadium;
     }
@@ -30,23 +31,27 @@ export const mapInfoSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(getAllMapInfo.fulfilled, (state, action) => {
-            let imageTable = action.payload;
-            let newImageArray = [];
-            // Complete the array with empty cells 
-            if(imageTable.length < TOTAL_CELLS){ 
-                const emptyArray = Array.apply(null, Array(TOTAL_CELLS-imageTable[0].length)).map( ()=>({}) )
-                newImageArray = [...imageTable[0], ...emptyArray];
-            }else{
-                newImageArray = imageTable[0];
-            }
-            state.imgMap = [newImageArray,imageTable[1] ];
-            state.loading = false;
-
-        })
-        builder.addCase(getAllMapInfo.pending, (state, action) => {
-           state.loading = true;
-        })
+        builder
+            .addCase(getAllMapInfo.pending, (state) => {
+                if (state.loading === 'idle') {
+                    state.loading = 'loading';
+                    console.log('loading');
+                }
+            })
+            .addCase(getAllMapInfo.fulfilled, (state, action) => {
+                let imageTable = action.payload;
+                let newImageArray = [];
+                // Complete the array with empty cells 
+                if(imageTable.length < TOTAL_CELLS){ 
+                    const emptyArray = Array.apply(null, Array(TOTAL_CELLS-imageTable[0].length)).map( ()=>({}) )
+                    newImageArray = [...imageTable[0], ...emptyArray];
+                    console.log('done');
+                }else{
+                    newImageArray = imageTable[0];
+                }
+                state.imgMap = [newImageArray,imageTable[1] ];
+                state.loading = 'idle';
+            })
     },
 });
 export const mapSelector = (state) => state.map.imgMap;

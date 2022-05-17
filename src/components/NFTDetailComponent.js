@@ -13,7 +13,7 @@ export const NFTDetailComponent = ({ currentNFT, owner }) => {
 
   return (
     <NFTDetail>
-      <h2>{currentNFT}</h2>
+      <h2>{`# ${currentNFT}`}</h2>
       <h3>Owner :</h3>
       <p>{nftOwner}</p>
       <img src={nftImg} alt='NFT' />

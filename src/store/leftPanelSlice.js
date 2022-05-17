@@ -8,11 +8,9 @@ export const leftPanelSlice = createSlice({
   reducers: {
     openLeftPanel: (state) => {
       state.isOpen = true;
-      console.log('click open');
     },
     closeLeftPanel: (state) => {
       state.isOpen = false;
-      console.log('click close');
     },
   }
 });
