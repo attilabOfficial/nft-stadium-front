@@ -14,14 +14,6 @@ const App = () => {
   const loading = useSelector((state) => state.map.loading);
   const rightPanelIsOpen = useSelector((state) => isRightPanelOpenSelector(state));
   
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
-
   return (
     <>
       <GlobalStyleReset />
