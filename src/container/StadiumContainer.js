@@ -11,6 +11,7 @@ import { MOCK } from '../index';
 export const StadiumContainer =()=>{
     const web3Context = useContext(Web3Context);
     const dispatch = useDispatch();
+    const mapInfo = useSelector((state) => mapSelector(state));
 
     let mapSize = 1;
 
@@ -35,7 +36,6 @@ export const StadiumContainer =()=>{
         }
     };
 
-    const nftImg = useSelector((state) => mapSelector(state));
 
     useEffect(()=>{
         if(MOCK){
@@ -51,7 +51,7 @@ export const StadiumContainer =()=>{
 
     return <StadiumComponent
         containerRef={containerRef}
-        nftImg={nftImg}
+        mapInfo={mapInfo}
         zoomIn={zoomIn}
         zoomOut={zoomOut}
     />

@@ -21,13 +21,13 @@ const ZoomButtonsContainer = styled.div`
   flex-wrap: nowrap;
 `
 
-export const StadiumComponent = ({containerRef, zoomIn, zoomOut, nftImg}) => {
+export const StadiumComponent = ({containerRef, zoomIn, zoomOut, mapInfo}) => {
 
-    if(nftImg && nftImg.length>0 && nftImg[0]){
+    if(mapInfo && mapInfo.length>0){
         return (
             <div>
                 <Container ref={containerRef} >
-                    <AllMap nftImg={nftImg[0]} />
+                    <AllMap mapInfo={mapInfo} />
                 </Container>
                 <ZoomButtonsContainer>
                     <ZoomButton buttonLabel='zoom_in' fctOnClick={zoomIn} />

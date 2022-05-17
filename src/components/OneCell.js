@@ -30,10 +30,10 @@ const OneCell = ({ id, img }) => {
     dispatch(openRightPanel());
     dispatch(setCurrentNFT(id));
   }
-
+  console.log(img)
   return (
     <CellContainer onClick={(clickOnCell)} >
-      <Cell src={img[id]} alt="" />
+      {img !=='' && <Cell src={img} alt="" />}
     </CellContainer>
   )
 }
