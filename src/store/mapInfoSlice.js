@@ -65,4 +65,10 @@ export const mapInfoSlice = createSlice({
 export const mapSelector = (state) => state.map.mapInfo;
 export const isMapLoadingSelector = (state) => state.map.loading;
 
+export const nftsByOwner = (state, owner) => {
+    const allNft = mapSelector(state);
+    const curOwner = currentNftOwnerSlector(state);
+    return allNft && allNft.filter((nft) => nft.owner === curOwner);
+}
+
 export const { mockData, nftImgMap } = mapInfoSlice.actions;
