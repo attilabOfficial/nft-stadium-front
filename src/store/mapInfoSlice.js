@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+import {TOTAL_CELLS} from '../index'
 
 const initialState = {
     imgMap: [],
@@ -18,14 +19,9 @@ export const mapInfoSlice = createSlice({
     initialState,
     reducers: {
         mockData: (state) => {
-            // sortir columnsNbr & rowsNbr & cellsTotal de là !!! 
-            const columnsNbr = 25;
-            const rowsNbr = 17;
-            const cellsTotal = columnsNbr * rowsNbr;
-
             if (state.imgMap.length === 0) {
                 state.imgMap = [[], []]
-                for (let c = 0; c <= cellsTotal - 1; c++) {
+                for (let c = 0; c <= TOTAL_CELLS - 1; c++) {
                     const id = c;
                     state.imgMap[0].push(`https://picsum.photos/id/${id}/200`);
                 };
@@ -34,13 +30,10 @@ export const mapInfoSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getAllMapInfo.fulfilled, (state, action) => {
-            const columnsNbr = 25;
-            const rowsNbr = 17;
-            const cellsTotal = columnsNbr * rowsNbr;
             let imageTable = action.payload;
             let newImageArray = [];
-            if(imageTable.length < cellsTotal){ 
-                const emptyArray = Array.apply(null, Array(cellsTotal-imageTable[0].length)).map( ()=>({}) )
+            if(imageTable.length < TOTAL_CELLS){ 
+                const emptyArray = Array.apply(null, Array(TOTAL_CELLS-imageTable[0].length)).map( ()=>({}) )
                 newImageArray = [...imageTable[0], ...emptyArray];
             }else{
                 newImageArray = imageTable[0];
@@ -50,6 +43,6 @@ export const mapInfoSlice = createSlice({
         })
     },
 });
-export const mapSelector = (state) => state.web3Config.imgMap;
+export const mapSelector = (state) => state.map.imgMap;
 
 export const { mockData, nftImgMap } = mapInfoSlice.actions;

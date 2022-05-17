@@ -8,8 +8,8 @@ const NFTDetail = styled.div`
 `
 
 export const NFTDetailComponent = ({ currentNFT, owner }) => {
-  const nftImg = useSelector((state) => state.web3Config.imgMap[0][currentNFT]);
-  const nftOwner = useSelector((state) => state.web3Config.imgMap[1][currentNFT]);
+  const nftImg = useSelector((state) => state.map.imgMap[0][currentNFT]);
+  const nftOwner = useSelector((state) => state.map.imgMap[1][currentNFT]);
 
   return (
     <NFTDetail>

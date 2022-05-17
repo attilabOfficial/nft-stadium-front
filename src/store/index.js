@@ -5,7 +5,7 @@ import { rightPanelSlice } from './rightPannel.slice';
 
 export const store = configureStore({
   reducer: {
-    web3Config : mapInfoSlice.reducer,
+    map : mapInfoSlice.reducer,
     rightPanel: rightPanelSlice.reducer,
     nftDetail: NFTDetailSlice.reducer,
   },

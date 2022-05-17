@@ -6,6 +6,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 export const MOCK = false;
+export const NBR_COL = 25;
+export const NBR_ROW = 17;
+export const TOTAL_CELLS = NBR_COL * NBR_ROW;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
