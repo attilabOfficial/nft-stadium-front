@@ -22,7 +22,6 @@ const ZoomButtonsContainer = styled.div`
 `
 
 export const StadiumComponent = ({containerRef, zoomIn, zoomOut, mapInfo}) => {
-
     if(mapInfo && mapInfo.length>0){
         return (
             <div>

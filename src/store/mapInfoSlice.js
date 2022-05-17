@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import {TOTAL_CELLS} from '../index'
+import {TOTAL_CELLS} from '../properties/gridProperties';
 
 const initialState = {
-    loading: false,
+    loading: "idle",
     mapInfo: [],
 };
 
@@ -36,6 +36,13 @@ export const mapInfoSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
+        builder
+            .addCase(getAllMapInfo.pending, (state) => {
+                if (state.loading === 'idle') {
+                    state.loading = 'loading';
+                }
+            })
+
         builder.addCase(getAllMapInfo.fulfilled, (state, action) => {
             let mapTupple = action.payload;
             const ownerMap = mapTupple[0];
@@ -50,11 +57,8 @@ export const mapInfoSlice = createSlice({
                 }
             ))
             state.mapInfo = allData;
-            state.loading = false;
+            state.loading = 'idle';
 
-        })
-        builder.addCase(getAllMapInfo.pending, (state, action) => {
-           state.loading = true;
         })
     },
 });

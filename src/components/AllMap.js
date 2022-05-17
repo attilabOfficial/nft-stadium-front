@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 import stade from '../images/Stade.png';
-import OneCell from './OneCell'
-
-// Grid property
-const columnsNbr = 25;
-const rowsNbr = 17;
-const gridWidth = 30;
+import OneCell from './OneCell';
+import { NBR_COL, NBR_ROW } from '../properties/gridProperties';
 
 const GridContainer = styled.div`
   background: no-repeat center url(${stade});
@@ -19,12 +15,12 @@ const GridContainer = styled.div`
 const StadeGrid = styled.div`
   margin: 0 auto;
   padding-top: 3vh;
-  width: ${gridWidth}%;
+  width: 30%;
   heigth: 100%;
   display: grid;
   gap: 1px;
-  grid-template-columns: repeat(${columnsNbr}, 1fr);
-  grid-template-rows: repeat(${rowsNbr} ,1fr);
+  grid-template-columns: repeat(${NBR_COL}, 1fr);
+  grid-template-rows: repeat(${NBR_ROW} ,1fr);
   border: solid 1px transparent;
 `
 
