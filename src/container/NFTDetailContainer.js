@@ -4,7 +4,6 @@ import { NFTDetailComponent } from "../components/NFTDetailComponent";
 import { curNftSelector, isNFTDetailLoading } from '../store/NFTDetailSlice';
 import { Web3Context } from './DappContainer';
 import { mint,changeImg} from '../store/NFTDetailSlice';
-import { getAllMapInfo } from '../store/mapInfoSlice';
 
 
 export const NFTDetailContainer = () =>{
@@ -26,9 +25,7 @@ export const NFTDetailContainer = () =>{
     const changeNFTImg = (newImg)=> {
         dispatch(
             changeImg({contract:web3Context.contract, url:newImg, id: currentNFT.id, img:newImg})
-        ).then(() => {
-            dispatch(getAllMapInfo(web3Context.contract));
-          })
+        )
     }
 
     if(loading==='loading'){
@@ -40,7 +37,7 @@ export const NFTDetailContainer = () =>{
                 {(currentNFT && currentNFT.owner !== "0x0000000000000000000000000000000000000000") ?
                      <NFTDetailComponent currentNFT={currentNFT} changeImgFct={changeNFTImg}/>: 
                      <div>
-                        <h1>{currentNFT.id}</h1>
+                        <h1>#{currentNFT.id}</h1>
                         <button onClick={mintNFT}>Mint</button>
                      </div>}
                 

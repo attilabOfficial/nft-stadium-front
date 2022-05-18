@@ -40,6 +40,11 @@ export const mapInfoSlice = createSlice({
             const {id , address} = action.payload;
             const nftIndex = state.mapInfo.findIndex((elem)=>elem.id === id);
             state.mapInfo[nftIndex] = { id, owner: address, img:'', link:''}
+        },
+        updateAddressImg : (state, action)=>{
+            const {id , url} = action.payload;
+            const nftIndex = state.mapInfo.findIndex((elem)=>elem.id === id);
+            state.mapInfo[nftIndex].img = url
         }
     },
     extraReducers: (builder) => {
@@ -73,4 +78,4 @@ export const mapSelector = (state) => state.map.mapInfo;
 export const isMapLoading = (state) => state.map.loading;
 
 
-export const { mockData, nftImgMap, updateAddressNFT } = mapInfoSlice.actions;
+export const { mockData, nftImgMap, updateAddressNFT , updateAddressImg} = mapInfoSlice.actions;
