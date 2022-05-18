@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { closeLeftPanel, openLeftPanel } from '../store/leftPanelSlice';
+import { closeLeftPanel, isLeftPanelOpenSelector, openLeftPanel } from '../store/NFTByOwnerSlice';
+import wallet from '../images/wallet_icon.svg';
 
 const HeaderContainer = styled.div`
   background-color: #ca180b;
@@ -24,7 +25,13 @@ const Menu = styled.button`
   width: 4rem;
   height: 3rem;
   margin: 0 2rem;
-  vertical-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 35px;
+  }
 `
 
 const Title = styled.h1`
@@ -37,7 +44,7 @@ const Title = styled.h1`
 
 const Header = () => {
   const dispatch = useDispatch();
-  const leftPanelIsOpen = useSelector((state) => state.leftPanel.isOpen);
+  const leftPanelIsOpen = useSelector((state) => isLeftPanelOpenSelector(state));
 
   const clickOnMenu = () => {
     if (leftPanelIsOpen === false) {
@@ -49,7 +56,7 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <Menu onClick={(clickOnMenu)} >Menu</Menu>
+      <Menu onClick={(clickOnMenu)} ><img src={wallet} alt='wallet' /></Menu>
       <Title>NFT Stade Rennais</Title>
     </HeaderContainer>
   )

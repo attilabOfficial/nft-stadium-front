@@ -13,7 +13,6 @@ const Zoom = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  fill: white;
 `
 
 const ZoomIcon = styled.img`

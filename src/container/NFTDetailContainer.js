@@ -5,7 +5,6 @@ import { curNftSelector, isNFTDetailLoading } from '../store/NFTDetailSlice';
 import { Web3Context } from './DappContainer';
 import { mint,changeImg} from '../store/NFTDetailSlice';
 
-
 export const NFTDetailContainer = () =>{
 
     const web3Context = useContext(Web3Context);

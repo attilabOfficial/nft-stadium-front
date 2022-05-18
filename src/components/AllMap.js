@@ -29,7 +29,7 @@ const AllMap = ({ mapInfo }) => {
     <>
       <GridContainer>
         <StadeGrid>
-          {mapInfo.map((cell, index) => <OneCell key={index} id={index} img={cell.img} />)}
+          {mapInfo.map((cell, index) => <OneCell key={index} id={index} img={cell.img} owner={cell.owner} />)}
         </StadeGrid>
       </GridContainer>
     </>

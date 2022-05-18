@@ -78,17 +78,15 @@ export const NFTDetailSlice = createSlice({
   })
 },
 });
+
 export const curNftIdSelector = (state) => state.nftDetail.curNft;
 export const isRightPanelOpenSelector = (state) => state.nftDetail.isOpen;
 
 export const curNftSelector = (state) => {
     const allNft = mapSelector(state);
     const curNftId = curNftIdSelector(state);
-    return allNft && allNft.find((nft)=>nft.id ===curNftId)
+    return allNft && allNft.find((nft)=>nft.id === curNftId)
 }
 
-
 export const isNFTDetailLoading = (state) => state.nftDetail.loading;
-
-
 export const { openRightPanel, closeRightPanel, setCurrentNFT } = NFTDetailSlice.actions;

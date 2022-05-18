@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { setCurrentNFT, openRightPanel } from '../store/NFTDetailSlice'
 
 const CellContainer = styled.div`
-  background-color: rgba(202, 24, 11, 0.3);
+  background-color: rgba(255, 255, 0, 0.4)  ;
   aspect-ratio: 1;
   display: grid;
   place-items: center;
@@ -22,13 +22,14 @@ const Cell = styled.img`
   grid-area: 1 / 1 / 2 / 2;
 `
 
-const OneCell = ({ id, img }) => {
+const OneCell = ({ id, img, owner }) => {
   const dispatch = useDispatch();
 
   const clickOnCell = () => {
     dispatch(openRightPanel());
     dispatch(setCurrentNFT(id));
   }
+  
   return (
     <CellContainer onClick={(clickOnCell)} >
       {img !=='' && <Cell src={img} alt="" />}
