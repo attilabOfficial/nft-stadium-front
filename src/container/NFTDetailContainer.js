@@ -33,12 +33,8 @@ export const NFTDetailContainer = () =>{
     return (
         <>
             <div>
-                {(currentNFT && currentNFT.owner !== "0x0000000000000000000000000000000000000000") ?
-                     <NFTDetailComponent currentNFT={currentNFT} changeImgFct={changeNFTImg}/>: 
-                     <div>
-                        <h1>#{currentNFT.id}</h1>
-                        <button onClick={mintNFT}>Mint</button>
-                     </div>}
+                <NFTDetailComponent currentNFT={currentNFT} changeImgFct={changeNFTImg} mintFct={mintNFT}/>: 
+                    
                 
             </div>
         </>
