@@ -1,9 +1,9 @@
 import { useSelector,useDispatch } from "react-redux";
 import {useContext} from "react"
 import { NFTDetailComponent } from "./NFTDetailComponent";
-import { curNftSelector, isNFTDetailLoading } from '../store/NFTDetailSlice';
+import { curNftSelector, isNFTDetailLoading } from "../../../common/store/nftSlice";
 import { Web3Context } from '../../../common/components/web3/DappContainer';
-import { mint,changeImg} from '../store/NFTDetailSlice';
+import { mint,changeImg} from "../../../common/store/nftSlice";
 
 export const NFTDetailContainer = () =>{
 

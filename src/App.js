@@ -6,7 +6,7 @@ import { Loading } from './common/components/templates/Loading';
 import RightPanel from './common/components/templates/RightPanel';
 import { DappContainer } from './common/components/web3/DappContainer';
 import { StadiumContainer } from './feature/map/components/StadiumContainer';
-import { isMapLoadingSelector } from './common/store/mapInfoSlice';
+import { isMapLoadingSelector } from './common/store/nftSlice';
 import { NFTDetailContainer } from './feature/NFTDetail/components/NFTDetailContainer';
 import { NFTByOwnerContainer } from './feature/NFTByOwner/components/NFTByOwnerContainer';
 

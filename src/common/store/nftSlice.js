@@ -2,10 +2,13 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import { TOTAL_CELLS } from '../../properties/gridProperties';
 import { currentNftOwnerSlector } from '../../feature/NFTByOwner/store/NFTByOwnerSlice';
+import {utils} from "ethers"
 
 const initialState = {
-    loading: "idle",
+    transactionLoadingloading: "idle",
     mapInfo: [],
+    curNft : 0,
+    transactionLoading:'idle'
 };
 
 export const getAllMapInfo = createAsyncThunk(
@@ -16,9 +19,39 @@ export const getAllMapInfo = createAsyncThunk(
     }
 )
 
+export const mint = createAsyncThunk(
+    'web3/mint',
+    async ({contract, to, id}, { rejectWithValue }) => {
+        try{
+            const response =await contract.mint(to,id, {value: utils.parseEther("0.01")} );
+            const receipt = await response.wait()
+            console.log(receipt)
+            return "receipt.events";
+  
+        }catch(ex){
+          return rejectWithValue(ex)
+        }
+       
+    }
+  )
+  export const changeImg = createAsyncThunk(
+    'web3/changeImg',
+    async ({contract, url, id}, { rejectWithValue }) => {
+        try{
+          const response =await contract.changeImg(id, url );
+          const receipt = await response.wait()
+          console.log(receipt)
+          return "ok";
+        }catch(ex){
+            return rejectWithValue(ex)
+        }
+       
+    }
+  )
 
 
-export const mapInfoSlice = createSlice({
+
+export const nftSlice = createSlice({
     name: 'mapInfoState',
     initialState,
     reducers: {
@@ -46,7 +79,10 @@ export const mapInfoSlice = createSlice({
             const {id , url} = action.payload;
             const nftIndex = state.mapInfo.findIndex((elem)=>elem.id === id);
             state.mapInfo[nftIndex].img = url
-        }
+        },
+        setCurrentNFT: (state, action) => {
+            state.curNft = action.payload; 
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -72,6 +108,31 @@ export const mapInfoSlice = createSlice({
             state.mapInfo = allData;
             state.loading = 'idle';
         })
+        builder
+            .addCase(mint.pending, (state) => {
+                if (state.transactionLoading === 'idle') {
+                    state.transactionLoading = 'loading';
+                }
+            })
+
+        builder.addCase(mint.fulfilled, (state, action) => {
+            state.transactionLoading = 'idle';
+        })
+        builder.addCase(mint.rejected, (state) => {
+            state.transactionLoading = 'idle';
+        })
+        builder
+        .addCase(changeImg.pending, (state) => {
+            if (state.transactionLoading === 'idle') {
+                state.transactionLoading = 'loading';
+            }
+        })
+        builder.addCase(changeImg.fulfilled, (state, action) => {
+            state.transactionLoading = 'idle';
+        })
+        builder.addCase(changeImg.rejected, (state) => {
+            state.transactionLoading = 'idle';
+        })
     },
 });
 export const mapSelector = (state) => state.map.mapInfo;
@@ -83,4 +144,14 @@ export const nftsByOwner = (state) => {
     return allNft && allNft.filter((nft) => nft.owner === curOwner);
 }
 
-export const { mockData, nftImgMap, updateAddressNFT , updateAddressImg} = mapInfoSlice.actions;
+export const curNftIdSelector = (state) => state.map.curNft;
+
+export const curNftSelector = (state) => {
+    const allNft = mapSelector(state);
+    const curNftId = curNftIdSelector(state);
+    return allNft && allNft.find((nft)=>nft.id === curNftId)
+}
+
+export const isNFTDetailLoading = (state) => state.map.loading;
+
+export const { mockData, nftImgMap, updateAddressNFT , updateAddressImg, setCurrentNFT} = nftSlice.actions;

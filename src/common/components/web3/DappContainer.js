@@ -6,7 +6,7 @@ import contractAddress from "../../../contracts/contract-address.json";
 import { createContext, useState } from "react";
 import { MOCK } from '../../../index';
 import { useDispatch } from 'react-redux';
-import { updateAddressNFT, updateAddressImg } from "../../store/mapInfoSlice"
+import { updateAddressNFT, updateAddressImg } from "../../store/nftSlice"
 import { useEffect } from "react"
 
 

@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import { useContext, useEffect } from 'react';
 import { Web3Context } from '../../../common/components/web3/DappContainer';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllMapInfo, mockData, mapSelector } from '../../../common/store/mapInfoSlice';
+import { getAllMapInfo, mockData, mapSelector } from '../../../common/store/nftSlice';
 import { StadiumComponent } from '../components/StadiumComponent';
 import { MOCK } from '../../../index';
 
