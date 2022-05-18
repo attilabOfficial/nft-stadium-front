@@ -4,13 +4,12 @@ import { ethers, utils } from 'ethers';
 import TokenArtifact from "../../../contracts/Token.json";
 import contractAddress from "../../../contracts/contract-address.json";
 import { createContext, useState } from "react";
-import { MOCK } from '../../../index';
 import { useDispatch } from 'react-redux';
 import { updateAddressNFT, updateAddressImg } from "../../store/nftSlice"
 import { useEffect } from "react"
+import { HARDHAT_NETWORK_ID, MOCK } from '../../../const';
 
 
-const HARDHAT_NETWORK_ID = '80001';
 
 export const Web3Context = createContext({});
 

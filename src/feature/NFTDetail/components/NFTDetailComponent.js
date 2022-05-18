@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {useState} from "react"
+import { ZERO_ADDRESS } from '../../../const';
 
 
 const NFTDetail = styled.div`
@@ -21,7 +22,7 @@ export const NFTDetailComponent = ({ currentNFT, changeImgFct , mintFct}) => {
   return (
     <NFTDetail>
        <h2>#{currentNFT.id}</h2>
-       {(currentNFT && currentNFT.owner !== "0x0000000000000000000000000000000000000000") ? 
+       {(currentNFT && currentNFT.owner !== ZERO_ADDRESS ) ? 
         <> 
             <h3>Owner :</h3>
             <p>{currentNFT.owner}</p>

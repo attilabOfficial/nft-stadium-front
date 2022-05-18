@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import { TOTAL_CELLS } from '../../properties/gridProperties';
+import { TOTAL_CELLS } from '../../const';
 import { currentNftOwnerSlector } from '../../feature/NFTByOwner/store/NFTByOwnerSlice';
 import {utils} from "ethers"
 

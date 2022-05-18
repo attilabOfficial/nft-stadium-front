@@ -6,7 +6,7 @@ import { Web3Context } from '../../../common/components/web3/DappContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllMapInfo, mockData, mapSelector } from '../../../common/store/nftSlice';
 import { StadiumComponent } from '../components/StadiumComponent';
-import { MOCK } from '../../../index';
+import {MOCK} from '../../../const'
 
 export const StadiumContainer = () =>{
     const web3Context = useContext(Web3Context);
