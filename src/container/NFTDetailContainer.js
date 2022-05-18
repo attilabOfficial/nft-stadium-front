@@ -8,7 +8,6 @@ export const NFTDetailContainer = () =>{
         currentNFT : curNftSelector(state),
     }));
 
-    console.log('**** cNFT', currentNFT);
     return (
         <>
             <div>

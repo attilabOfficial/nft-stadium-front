@@ -18,7 +18,7 @@ export const NFTByOwnerContainer = () => {
 
     useEffect(() => {
         const setCurOwner = () => {
-            dispatch(setCurrentOwner("0xEe03231d68Fadbc25298CFcf9f93EC8146456700"))
+            dispatch(setCurrentOwner(currentOwner))
           }
         setCurOwner()
     }, [currentOwner, dispatch]);
