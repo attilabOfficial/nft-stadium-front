@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import { TOTAL_CELLS } from '../properties/gridProperties';
-import { currentNftOwnerSlector } from './NFTByOwnerSlice';
+import { TOTAL_CELLS } from '../../properties/gridProperties';
+import { currentNftOwnerSlector } from '../../feature/NFTByOwner/store/NFTByOwnerSlice';
 
 const initialState = {
     loading: "idle",

@@ -2,11 +2,11 @@
 import React, { useRef } from 'react';
 
 import { useContext, useEffect } from 'react';
-import { Web3Context } from './DappContainer';
+import { Web3Context } from '../../../common/components/web3/DappContainer';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllMapInfo, mockData, mapSelector } from '../store/mapInfoSlice';
+import { getAllMapInfo, mockData, mapSelector } from '../../../common/store/mapInfoSlice';
 import { StadiumComponent } from '../components/StadiumComponent';
-import { MOCK } from '../index';
+import { MOCK } from '../../../index';
 
 export const StadiumContainer = () =>{
     const web3Context = useContext(Web3Context);

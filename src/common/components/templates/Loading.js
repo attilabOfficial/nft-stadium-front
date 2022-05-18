@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components'
-import logo from '../images/Logo_Stade_Rennais.png';
+import logo from '../../images/Logo_Stade_Rennais.png';
 
 const Loader = styled.div`
   background-color: #ca180b;

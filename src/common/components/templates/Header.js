@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { closeLeftPanel, isLeftPanelOpenSelector, openLeftPanel } from '../store/NFTByOwnerSlice';
-import wallet from '../images/wallet_icon.svg';
+import { closeLeftPanel, isLeftPanelOpenSelector, openLeftPanel } from '../../../feature/NFTByOwner/store/NFTByOwnerSlice';
+import wallet from '../../images/wallet_icon.svg';
 
 const HeaderContainer = styled.div`
   background-color: #ca180b;

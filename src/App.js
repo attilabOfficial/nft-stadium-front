@@ -1,20 +1,18 @@
 import { useSelector } from 'react-redux';
-import GlobalStyleReset from './components/GlobalStyleReset';
-import Header from './components/Header';
-import LeftPanel from './components/LeftPanel';
-import { Loading } from './components/Loading';
-import RightPanel from './components/RightPanel';
-import { DappContainer } from './container/DappContainer';
-import { StadiumContainer } from './container/StadiumContainer';
-import { isMapLoadingSelector } from './store/mapInfoSlice';
-import { isLeftPanelOpenSelector } from './store/NFTByOwnerSlice';
-import { isRightPanelOpenSelector } from './store/NFTDetailSlice';
+import GlobalStyleReset from './common/components/templates/GlobalStyleReset';
+import Header from './common/components/templates/Header';
+import LeftPanel from './common/components/templates/LeftPanel';
+import { Loading } from './common/components/templates/Loading';
+import RightPanel from './common/components/templates/RightPanel';
+import { DappContainer } from './common/components/web3/DappContainer';
+import { StadiumContainer } from './feature/map/components/StadiumContainer';
+import { isMapLoadingSelector } from './common/store/mapInfoSlice';
+import { NFTDetailContainer } from './feature/NFTDetail/components/NFTDetailContainer';
+import { NFTByOwnerContainer } from './feature/NFTByOwner/components/NFTByOwnerContainer';
 
 
 const App = () => {
-  const leftPanelIsOpen = useSelector((state) => isLeftPanelOpenSelector(state));
   const loading = useSelector((state) => isMapLoadingSelector(state));
-  const rightPanelIsOpen = useSelector((state) => isRightPanelOpenSelector(state));
   
   return (
     <>
@@ -23,8 +21,8 @@ const App = () => {
         <Header />
         <StadiumContainer />
         {loading === 'loading' && <Loading />}
-        {rightPanelIsOpen === true ? (<RightPanel />) : ''}
-        {leftPanelIsOpen === true ? (<LeftPanel />) : ''}
+        <RightPanel><NFTDetailContainer/></RightPanel>
+        <LeftPanel> <NFTByOwnerContainer /></LeftPanel>
       </DappContainer>
     </>
     

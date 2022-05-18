@@ -1,8 +1,8 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { NFTByOwnerContainer } from '../container/NFTByOwnerContainer';
-import close from '../images/x_icon.svg';
-import { closeLeftPanel } from '../store/NFTByOwnerSlice';
+import close from '../../images/x_icon.svg';
+import { isLeftPanelOpenSelector ,closeLeftPanel} from '../../../feature/NFTByOwner/store/NFTByOwnerSlice';
+
 
 const Panel = styled.div`
   background-color: #ca180b;
@@ -26,18 +26,23 @@ const ClosePanel = styled.img`
   width: 30px;
 `
 
-const LeftPanel = () => {
+const LeftPanel = ({children}) => {
   const dispatch = useDispatch();
+  const leftPanelIsOpen = useSelector((state) => isLeftPanelOpenSelector(state));
+
 
   const clickOnClose = () => {
     dispatch(closeLeftPanel())
   }
 
   return (
-      <Panel>
-        <ClosePanel src={close} alt='close' onClick={(clickOnClose)} />
-        <NFTByOwnerContainer />
-      </Panel>
+      <>
+        {leftPanelIsOpen && <Panel>
+            <ClosePanel src={close} alt='close' onClick={(clickOnClose)} />
+            {children}
+          </Panel>
+        }
+      </>
   )
 }
 

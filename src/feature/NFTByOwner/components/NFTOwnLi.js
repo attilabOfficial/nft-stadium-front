@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import styled from 'styled-components';
-import { openRightPanel, setCurrentNFT } from "../store/NFTDetailSlice";
+import { openRightPanel, setCurrentNFT } from "../../../feature/NFTDetail/store/NFTDetailSlice";
 
 const LiElement = styled.li`
   cursor: pointer;

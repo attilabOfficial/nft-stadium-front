@@ -1,9 +1,9 @@
 import { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NFTByOwnerComponent } from "../components/NFTByOwnerComponent";
-import { nftsByOwner } from "../store/mapInfoSlice";
+import { nftsByOwner } from "../../../common/store/mapInfoSlice";
 import { setCurrentOwner } from "../store/NFTByOwnerSlice";
-import { Web3Context } from './DappContainer';
+import { Web3Context } from '../../../common/components/web3/DappContainer';
 
 export const NFTByOwnerContainer = () => {
     const dispatch = useDispatch();

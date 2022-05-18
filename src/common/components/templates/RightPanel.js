@@ -1,8 +1,7 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { NFTDetailContainer } from '../container/NFTDetailContainer';
-import close from '../images/x_icon.svg';
-import { closeRightPanel } from '../store/NFTDetailSlice';
+import close from '../../images/x_icon.svg';
+import { isRightPanelOpenSelector,closeRightPanel } from '../../../feature/NFTDetail/store/NFTDetailSlice';
 
 const Panel = styled.div`
   background-color: #ca180b;
@@ -24,18 +23,22 @@ const ClosePanel = styled.img`
   width: 30px;
 `
 
-const RightPanel = () => {
+const RightPanel = ({children}) => {
   const dispatch = useDispatch();
+  const rightPanelIsOpen = useSelector((state) => isRightPanelOpenSelector(state));
+
 
   const clickOnClose = () => {
     dispatch(closeRightPanel());
   }
 
   return (
-      <Panel>
-        <ClosePanel src={close} alt='close' onClick={(clickOnClose)} />
-        <NFTDetailContainer/>
-      </Panel>
+      <>
+        { rightPanelIsOpen && <Panel>
+          <ClosePanel src={close} alt='close' onClick={(clickOnClose)} />
+          {children}
+        </Panel>}
+      </>
   )
 }
 

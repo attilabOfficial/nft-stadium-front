@@ -1,12 +1,12 @@
-import { NoWalletDetected } from "../components/NoWalletDetected"
-import { ConnectWallet } from '../components/ConnectWallet';
+import { NoWalletDetected } from "./NoWalletDetected"
+import { ConnectWallet } from './ConnectWallet';
 import { ethers, utils } from 'ethers';
-import TokenArtifact from "../contracts/Token.json";
-import contractAddress from "../contracts/contract-address.json";
+import TokenArtifact from "../../../contracts/Token.json";
+import contractAddress from "../../../contracts/contract-address.json";
 import { createContext, useState } from "react";
-import { MOCK } from '../index';
+import { MOCK } from '../../../index';
 import { useDispatch } from 'react-redux';
-import { updateAddressNFT, updateAddressImg } from "../store/mapInfoSlice"
+import { updateAddressNFT, updateAddressImg } from "../../store/mapInfoSlice"
 import { useEffect } from "react"
 
 

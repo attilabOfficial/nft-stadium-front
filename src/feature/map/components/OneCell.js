@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { setCurrentNFT, openRightPanel } from '../store/NFTDetailSlice'
+import { setCurrentNFT, openRightPanel } from '../../../feature/NFTDetail/store/NFTDetailSlice'
 
 const CellContainer = styled.div`
   background-color: rgba(255, 255, 0, 0.4)  ;

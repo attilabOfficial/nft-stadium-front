@@ -1,8 +1,8 @@
 import { useSelector,useDispatch } from "react-redux";
 import {useContext} from "react"
-import { NFTDetailComponent } from "../components/NFTDetailComponent";
+import { NFTDetailComponent } from "./NFTDetailComponent";
 import { curNftSelector, isNFTDetailLoading } from '../store/NFTDetailSlice';
-import { Web3Context } from './DappContainer';
+import { Web3Context } from '../../../common/components/web3/DappContainer';
 import { mint,changeImg} from '../store/NFTDetailSlice';
 
 export const NFTDetailContainer = () =>{
@@ -33,9 +33,7 @@ export const NFTDetailContainer = () =>{
     return (
         <>
             <div>
-                <NFTDetailComponent currentNFT={currentNFT} changeImgFct={changeNFTImg} mintFct={mintNFT}/>: 
-                    
-                
+                <NFTDetailComponent currentNFT={currentNFT} changeImgFct={changeNFTImg} mintFct={mintNFT}/>:  
             </div>
         </>
     )

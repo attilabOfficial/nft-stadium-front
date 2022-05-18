@@ -1,5 +1,5 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
-import { mapSelector } from './mapInfoSlice';
+import { mapSelector } from '../../../common/store/mapInfoSlice';
 import {utils} from "ethers"
 
 
