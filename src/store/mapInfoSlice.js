@@ -16,6 +16,8 @@ export const getAllMapInfo = createAsyncThunk(
     }
 )
 
+
+
 export const mapInfoSlice = createSlice({
     name: 'mapInfoState',
     initialState,
@@ -35,6 +37,16 @@ export const mapInfoSlice = createSlice({
                 };
             };
         },
+        updateAddressNFT : (state, action)=>{
+            const {id , address} = action.payload;
+            const nftIndex = state.mapInfo.findIndex((elem)=>elem.id === id);
+            state.mapInfo[nftIndex] = { id, owner: address, img:'', link:''}
+        },
+        updateAddressImg : (state, action)=>{
+            const {id , url} = action.payload;
+            const nftIndex = state.mapInfo.findIndex((elem)=>elem.id === id);
+            state.mapInfo[nftIndex].img = url
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -47,8 +59,8 @@ export const mapInfoSlice = createSlice({
         builder.addCase(getAllMapInfo.fulfilled, (state, action) => {
             let mapTupple = action.payload;
             const ownerMap = mapTupple[0];
-            const linkMap = mapTupple[1];
-            const imgMap = mapTupple[2];
+            const imgMap = mapTupple[1];
+            const linkMap = mapTupple[2];
             const allData = ownerMap.map((owner, index)=>(
                 {
                     id : index,
@@ -71,4 +83,4 @@ export const nftsByOwner = (state) => {
     return allNft && allNft.filter((nft) => nft.owner === curOwner);
 }
 
-export const { mockData, nftImgMap } = mapInfoSlice.actions;
+export const { mockData, nftImgMap, updateAddressNFT , updateAddressImg} = mapInfoSlice.actions;

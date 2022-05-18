@@ -1,20 +1,45 @@
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import {useContext} from "react"
 import { NFTDetailComponent } from "../components/NFTDetailComponent";
-import { curNftSelector } from '../store/NFTDetailSlice';
+import { curNftSelector, isNFTDetailLoading } from '../store/NFTDetailSlice';
+import { Web3Context } from './DappContainer';
+import { mint,changeImg} from '../store/NFTDetailSlice';
 
 export const NFTDetailContainer = () =>{
 
-    const { currentNFT } = useSelector((state) =>({
+    const web3Context = useContext(Web3Context);
+    const dispatch = useDispatch();
+
+    const { currentNFT,loading } = useSelector((state) =>({
         currentNFT : curNftSelector(state),
+        loading : isNFTDetailLoading(state),
     }));
 
+    const mintNFT = ()=> {
+        // A transfert event will be fired after the transaction. DappContainer listen to this event
+        dispatch(
+            mint({contract:web3Context.contract, to:web3Context.selectedAddress, id: currentNFT.id})
+        )
+    }
+    const changeNFTImg = (newImg)=> {
+        dispatch(
+            changeImg({contract:web3Context.contract, url:newImg, id: currentNFT.id, img:newImg})
+        )
+    }
+
+    if(loading==='loading'){
+        return <h1>Transaction en cours</h1>
+    }
     return (
         <>
             <div>
-                <NFTDetailComponent currentNFT={currentNFT}/>
-                <form>
-                    <input></input>
-                </form>
+                {(currentNFT && currentNFT.owner !== "0x0000000000000000000000000000000000000000") ?
+                     <NFTDetailComponent currentNFT={currentNFT} changeImgFct={changeNFTImg}/>: 
+                     <div>
+                        <h1>#{currentNFT.id}</h1>
+                        <button onClick={mintNFT}>Mint</button>
+                     </div>}
+                
             </div>
         </>
     )
