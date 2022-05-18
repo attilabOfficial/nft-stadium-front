@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import close from '../../images/x_icon.svg';
-import { isRightPanelOpenSelector,closeRightPanel } from '../../../feature/NFTDetail/store/NFTDetailSlice';
+import { isRightPanelOpenSelector,closeRightPanel } from '../../store/appStateSlice';
 
 const Panel = styled.div`
   background-color: #ca180b;

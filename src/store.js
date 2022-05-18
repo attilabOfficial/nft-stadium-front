@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { NFTByOwnerSlice } from './feature/NFTByOwner/store/NFTByOwnerSlice';
 import { nftSlice } from './common/store/nftSlice';
-import { NFTDetailSlice } from './feature/NFTDetail/store/NFTDetailSlice';
+import { appStateSlice } from './common/store/appStateSlice';
 
 export const store = configureStore({
   reducer: {
-    map : nftSlice.reducer,
-    nftDetail: NFTDetailSlice.reducer,
-    nftOwn: NFTByOwnerSlice.reducer,
+    appState: appStateSlice.reducer,
+    map: nftSlice.reducer,
   },
 });

@@ -9,20 +9,24 @@ import { StadiumContainer } from './feature/map/components/StadiumContainer';
 import { isMapLoadingSelector } from './common/store/nftSlice';
 import { NFTDetailContainer } from './feature/NFTDetail/components/NFTDetailContainer';
 import { NFTByOwnerContainer } from './feature/NFTByOwner/components/NFTByOwnerContainer';
+import { isRightPanelOpenSelector } from './common/store/appStateSlice';
+import { isLeftPanelOpenSelector } from './common/store/appStateSlice';
 
 
 const App = () => {
   const loading = useSelector((state) => isMapLoadingSelector(state));
+  const rightPanel = useSelector((state) => isRightPanelOpenSelector(state));
+  const leftPanel = useSelector((state) => isLeftPanelOpenSelector(state));
   
   return (
     <>
       <GlobalStyleReset />
       <DappContainer>
         <Header />
-        <StadiumContainer />
         {loading === 'loading' && <Loading />}
-        <RightPanel><NFTDetailContainer/></RightPanel>
-        <LeftPanel> <NFTByOwnerContainer /></LeftPanel>
+        <StadiumContainer />
+        {rightPanel ? (<RightPanel><NFTDetailContainer/></RightPanel>) : ''}
+        {leftPanel ? (<LeftPanel><NFTByOwnerContainer/></LeftPanel>) : ''}
       </DappContainer>
     </>
     

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import stade from '../images/Stade.png';
 import OneCell from './OneCell';
-import { NBR_COL, NBR_ROW } from '../../../properties/gridProperties';
+import { NBR_COL, NBR_ROW } from '../../../properties/globalProperties';
 
 const GridContainer = styled.div`
   background: no-repeat center url(${stade});

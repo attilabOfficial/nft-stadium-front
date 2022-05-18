@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import close from '../../images/x_icon.svg';
-import { isLeftPanelOpenSelector ,closeLeftPanel} from '../../../feature/NFTByOwner/store/NFTByOwnerSlice';
+import { isLeftPanelOpenSelector ,closeLeftPanel} from '../../store/appStateSlice';
 
 
 const Panel = styled.div`
@@ -29,7 +29,6 @@ const ClosePanel = styled.img`
 const LeftPanel = ({children}) => {
   const dispatch = useDispatch();
   const leftPanelIsOpen = useSelector((state) => isLeftPanelOpenSelector(state));
-
 
   const clickOnClose = () => {
     dispatch(closeLeftPanel())
