@@ -61,6 +61,9 @@ export const NFTDetailSlice = createSlice({
     builder.addCase(mint.fulfilled, (state, action) => {
         state.loading = 'idle';
     })
+    builder.addCase(mint.rejected, (state) => {
+        state.loading = 'idle';
+    })
     builder
     .addCase(changeImg.pending, (state) => {
         if (state.loading === 'idle') {
@@ -70,6 +73,9 @@ export const NFTDetailSlice = createSlice({
     builder.addCase(changeImg.fulfilled, (state, action) => {
         state.loading = 'idle';
     })
+    builder.addCase(changeImg.rejected, (state) => {
+      state.loading = 'idle';
+  })
 },
 });
 export const curNftIdSelector = (state) => state.nftDetail.curNft;
