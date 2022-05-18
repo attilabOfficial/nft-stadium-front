@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import {TOTAL_CELLS} from '../properties/gridProperties';
+import { TOTAL_CELLS } from '../properties/gridProperties';
 import { currentNftOwnerSlector } from './NFTByOwnerSlice';
 
 const initialState = {
@@ -65,7 +65,7 @@ export const mapInfoSlice = createSlice({
 export const mapSelector = (state) => state.map.mapInfo;
 export const isMapLoadingSelector = (state) => state.map.loading;
 
-export const nftsByOwner = (state, owner) => {
+export const nftsByOwner = (state) => {
     const allNft = mapSelector(state);
     const curOwner = currentNftOwnerSlector(state);
     return allNft && allNft.filter((nft) => nft.owner === curOwner);

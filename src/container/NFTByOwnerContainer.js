@@ -11,16 +11,17 @@ export const NFTByOwnerContainer = () => {
     const web3Context = useContext(Web3Context);
     const currentOwner = web3Context.selectedAddress;
 
+    // All NFTs one owner
     const { NFTsOwn } = useSelector((state) =>({
         NFTsOwn: nftsByOwner(state),
     }));
 
     useEffect(() => {
         const setCurOwner = () => {
-            dispatch(setCurrentOwner(currentOwner))
+            dispatch(setCurrentOwner("0xEe03231d68Fadbc25298CFcf9f93EC8146456700"))
           }
         setCurOwner()
-      }, [currentOwner, dispatch]);
+    }, [currentOwner, dispatch]);
 
     return (
         <>

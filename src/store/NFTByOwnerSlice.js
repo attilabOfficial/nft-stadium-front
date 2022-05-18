@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { mapSelector } from "./mapInfoSlice";
 
 export const NFTByOwnerSlice = createSlice({
   name: 'nftOwn',

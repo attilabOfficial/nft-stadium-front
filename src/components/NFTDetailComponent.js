@@ -4,6 +4,10 @@ const NFTDetail = styled.div`
   text-align: center;
   width: 100%;
   overflow: hidden;
+
+  img {
+    max-width: 15rem;
+  }
 `
 
 export const NFTDetailComponent = ({ currentNFT }) => {

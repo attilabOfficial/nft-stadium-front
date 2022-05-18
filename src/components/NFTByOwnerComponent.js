@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NFTOwnLi } from './NFTOwnLi';
 
 const NFTList = styled.div`
   margin-top 1rem;
@@ -14,7 +15,6 @@ const NFTList = styled.div`
 `
 
 export const NFTByOwnerComponent = ({ currentOwner, NFTsOwn }) => {
-
   return (
     <NFTList>
       <h2>Current owner :</h2>
@@ -22,9 +22,7 @@ export const NFTByOwnerComponent = ({ currentOwner, NFTsOwn }) => {
       <h3>Your NFTs :</h3>
       <ul>
         {NFTsOwn.map((nft) =>
-          <li key={nft.id}>
-            {nft.id}
-          </li>
+          <NFTOwnLi key={nft.id} nft={nft} />
         )}
       </ul>
     </NFTList>
