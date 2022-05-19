@@ -2,7 +2,7 @@ import React from "react";
 
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { closeLeftPanel, isLeftPanelOpenSelector, openLeftPanel } from '../../../feature/NFTByOwner/store/NFTByOwnerSlice';
+import { closeLeftPanel, isLeftPanelOpenSelector, openLeftPanel }from '../../../common/store/appStateSlice';
 import { RootState } from "../../../store";
 import wallet from '../../images/wallet_icon.svg';
 

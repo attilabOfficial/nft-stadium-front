@@ -3,7 +3,8 @@ import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import close from '../../images/x_icon.svg';
-import { isRightPanelOpenSelector,closeRightPanel } from '../../../feature/NFTDetail/store/NFTDetailSlice';
+import { isRightPanelOpenSelector,closeRightPanel }from '../../../common/store/appStateSlice';
+
 import { RootState } from "../../../store";
 
 const Panel = styled.div`

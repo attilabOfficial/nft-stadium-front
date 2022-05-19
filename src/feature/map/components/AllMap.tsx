@@ -32,7 +32,7 @@ const AllMap = ({ mapInfo }: {mapInfo: INFT[]}) => {
     <>
       <GridContainer>
         <StadeGrid>
-          {mapInfo.map((cell, index) => <OneCell key={index} id={index.toString()} img={cell.img} />)}
+          {mapInfo.map((cell, index) => <OneCell key={index} id={cell.id} img={cell.img} />)}
         </StadeGrid>
       </GridContainer>
     </>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from "react-redux";
 import styled from 'styled-components';
-import { openRightPanel } from "../../NFTDetail/store/NFTDetailSlice";
+import { openRightPanel } from '../../../common/store/appStateSlice';
 import {INFT, setCurrentNFT} from "../../../common/store/nftSlice"
 
 const LiElement = styled.li`

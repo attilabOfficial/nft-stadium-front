@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import { TOTAL_CELLS } from '../../const';
-import { currentNftOwnerSlector } from '../../feature/NFTByOwner/store/NFTByOwnerSlice';
 import {Contract, utils} from "ethers"
 import { RootState } from '../../store';
 
@@ -158,12 +157,6 @@ export const nftSlice = createSlice({
 export const mapSelector = (state: RootState) => state.map.mapInfo;
 export const isMapLoadingSelector = (state: RootState) => state.map.loading;
 
-export const nftsByOwner = (state: RootState) => {
-    const allNft = mapSelector(state);
-    const curOwner = currentNftOwnerSlector(state);
-    return allNft && allNft.filter((nft) => nft.owner === curOwner);
-}
-
 export const curNftIdSelector = (state: RootState) => state.map.curNft;
 
 export const curNftSelector = (state: RootState) => {
@@ -172,6 +165,11 @@ export const curNftSelector = (state: RootState) => {
     return allNft && allNft.find((nft)=>nft.id === curNftId)
 }
 
-export const isNFTDetailLoading = (state: RootState) => state.map.loading;
+export const nftsByOwnerSelector = (state: RootState, curOwner: string ) => {
+    const allNft = mapSelector(state);
+    return allNft && allNft.filter((nft) => nft.owner.toLowerCase() === curOwner);
+}
+
+export const isNFTDetailLoading = (state: RootState) => state.map.transactionLoading;
 
 export const { mockData, updateAddressNFT , updateAddressImg, setCurrentNFT} = nftSlice.actions;

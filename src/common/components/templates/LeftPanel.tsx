@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import close from '../../images/x_icon.svg';
-import { isLeftPanelOpenSelector ,closeLeftPanel} from '../../../feature/NFTByOwner/store/NFTByOwnerSlice';
+import { isLeftPanelOpenSelector ,closeLeftPanel} from '../../../common/store/appStateSlice';
 import { RootState } from "../../../store";
 
 

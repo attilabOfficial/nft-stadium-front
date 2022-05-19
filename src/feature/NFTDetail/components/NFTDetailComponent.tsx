@@ -29,18 +29,16 @@ export const NFTDetailComponent = ({ currentNFT, changeImgFct , mintFct} : {curr
         <> 
             <h3>Owner :</h3>
             <p>{currentNFT.owner}</p>
-            {currentNFT.img !== "" &&  <img src={currentNFT.img} alt='NFT' />}
-      
+            {currentNFT.img !== "" ?  <img src={currentNFT.img} alt='NFT' /> : <p>No picture yet</p>}      
             <h5>Change Image</h5>
             <input type="url" value={imgUrl} onChange={changeImg}/>
             <button onClick={()=>{
                 changeImgFct(imgUrl)}}>Go! 
             </button>
         
-        </>:<>
-                <h1>#{currentNFT.id}</h1>
-                <button onClick={mintFct}>Mint</button>
-        
+        </>:
+        <>
+            <button onClick={mintFct}>Mint</button>
         </>}
      
     </NFTDetail>
