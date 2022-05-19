@@ -1,28 +1,24 @@
 import React from 'react'
-import { useDispatch } from "react-redux";
-import styled from 'styled-components';
-import { openRightPanel } from '../../../common/store/appStateSlice';
-import {INFT, setCurrentNFT} from "../../../common/store/nftSlice"
+import { useDispatch } from 'react-redux'
+import styled from 'styled-components'
+import { openRightPanel } from '../../../common/store/appStateSlice'
+import { INFT, setCurrentNFT } from '../../../common/store/nftSlice'
 
 const LiElement = styled.li`
-  cursor: pointer;
+    cursor: pointer;
 
-  :hover {
-    background-color: black;
-  }
+    :hover {
+        background-color: black;
+    }
 `
 
-export const NFTOwnLi = ({ nft }: {nft: INFT}) => {
-  const dispatch = useDispatch();
+export const NFTOwnLi = ({ nft }: { nft: INFT }) => {
+    const dispatch = useDispatch()
 
-  const clickOnNft = () => {
-    dispatch(openRightPanel());
-    dispatch(setCurrentNFT(nft.id));
-  }
+    const clickOnNft = () => {
+        dispatch(openRightPanel())
+        dispatch(setCurrentNFT(nft.id))
+    }
 
-  return (
-    <LiElement onClick={clickOnNft}>
-      {nft.id}
-    </LiElement>
-  )
+    return <LiElement onClick={clickOnNft}>{nft.id}</LiElement>
 }
