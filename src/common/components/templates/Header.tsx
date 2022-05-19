@@ -1,6 +1,9 @@
+import React from "react";
+
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { closeLeftPanel, isLeftPanelOpenSelector, openLeftPanel } from '../../../feature/NFTByOwner/store/NFTByOwnerSlice';
+import { RootState } from "../../../store";
 import wallet from '../../images/wallet_icon.svg';
 
 const HeaderContainer = styled.div`
@@ -44,7 +47,7 @@ const Title = styled.h1`
 
 const Header = () => {
   const dispatch = useDispatch();
-  const leftPanelIsOpen = useSelector((state) => isLeftPanelOpenSelector(state));
+  const leftPanelIsOpen = useSelector((state: RootState) => isLeftPanelOpenSelector(state));
 
   const clickOnMenu = () => {
     if (leftPanelIsOpen === false) {

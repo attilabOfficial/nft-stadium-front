@@ -1,7 +1,8 @@
+import React from 'react'
 import { useDispatch } from "react-redux";
 import styled from 'styled-components';
-import { openRightPanel } from "../../../feature/NFTDetail/store/NFTDetailSlice";
-import {setCurrentNFT} from "../../../common/store/nftSlice"
+import { openRightPanel } from "../../NFTDetail/store/NFTDetailSlice";
+import {INFT, setCurrentNFT} from "../../../common/store/nftSlice"
 
 const LiElement = styled.li`
   cursor: pointer;
@@ -11,7 +12,7 @@ const LiElement = styled.li`
   }
 `
 
-export const NFTOwnLi = ({ nft }) => {
+export const NFTOwnLi = ({ nft }: {nft: INFT}) => {
   const dispatch = useDispatch();
 
   const clickOnNft = () => {

@@ -1,6 +1,9 @@
+import React from 'react'
+
 import styled from 'styled-components';
 import {useState} from "react"
 import { ZERO_ADDRESS } from '../../../const';
+import { INFT } from '../../../common/store/nftSlice';
 
 
 const NFTDetail = styled.div`
@@ -13,10 +16,10 @@ const NFTDetail = styled.div`
   }
 `
 
-export const NFTDetailComponent = ({ currentNFT, changeImgFct , mintFct}) => {
+export const NFTDetailComponent = ({ currentNFT, changeImgFct , mintFct} : {currentNFT : INFT, changeImgFct : (newImg: string)=>void, mintFct: ()=>void }) => {
   const [imgUrl, setImgUrl] = useState("");
 
-  const changeImg = (event)=>{
+  const changeImg = (event: React.ChangeEvent<HTMLInputElement>)=>{
     setImgUrl(event.target.value)
   }
   return (
@@ -36,7 +39,7 @@ export const NFTDetailComponent = ({ currentNFT, changeImgFct , mintFct}) => {
         
         </>:<>
                 <h1>#{currentNFT.id}</h1>
-                <button variant="primary" onClick={mintFct}>Mint</button>
+                <button onClick={mintFct}>Mint</button>
         
         </>}
      

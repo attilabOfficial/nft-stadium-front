@@ -1,7 +1,10 @@
+import React from "react";
+
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import close from '../../images/x_icon.svg';
 import { isRightPanelOpenSelector,closeRightPanel } from '../../../feature/NFTDetail/store/NFTDetailSlice';
+import { RootState } from "../../../store";
 
 const Panel = styled.div`
   background-color: #ca180b;
@@ -23,9 +26,9 @@ const ClosePanel = styled.img`
   width: 30px;
 `
 
-const RightPanel = ({children}) => {
+const RightPanel = ({children} : {children: React.ReactNode}) => {
   const dispatch = useDispatch();
-  const rightPanelIsOpen = useSelector((state) => isRightPanelOpenSelector(state));
+  const rightPanelIsOpen = useSelector((state: RootState) => isRightPanelOpenSelector(state));
 
 
   const clickOnClose = () => {

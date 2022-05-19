@@ -2,10 +2,27 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import { TOTAL_CELLS } from '../../const';
 import { currentNftOwnerSlector } from '../../feature/NFTByOwner/store/NFTByOwnerSlice';
-import {utils} from "ethers"
+import {Contract, utils} from "ethers"
+import { RootState } from '../../store';
 
-const initialState = {
-    transactionLoadingloading: "idle",
+
+
+export interface INFT { 
+    id: number,
+    owner : string,
+    img: string,
+    link : string
+}
+
+interface INFTSlice {
+    transactionLoading : "idle" | "loading",
+    loading: "idle" | "loading",
+    curNft : number,
+    mapInfo : Array<INFT>
+}
+
+const initialState:INFTSlice = {
+    loading: "idle",
     mapInfo: [],
     curNft : 0,
     transactionLoading:'idle'
@@ -13,7 +30,7 @@ const initialState = {
 
 export const getAllMapInfo = createAsyncThunk(
     'web3/connect',
-    async (contract, thunkAPI) => {
+    async (contract: Contract) => {
         const stadium = await contract.getStadium();
         return stadium;
     }
@@ -21,9 +38,9 @@ export const getAllMapInfo = createAsyncThunk(
 
 export const mint = createAsyncThunk(
     'web3/mint',
-    async ({contract, to, id}, { rejectWithValue }) => {
+    async ({contract, to, id} :{ contract : Contract, to : string, id : number}, { rejectWithValue }) => {
         try{
-            const response =await contract.mint(to,id, {value: utils.parseEther("0.01")} );
+            const response  = await contract.mint(to, id, {value: utils.parseEther("0.01")} );
             const receipt = await response.wait()
             console.log(receipt)
             return "receipt.events";
@@ -36,7 +53,7 @@ export const mint = createAsyncThunk(
   )
   export const changeImg = createAsyncThunk(
     'web3/changeImg',
-    async ({contract, url, id}, { rejectWithValue }) => {
+    async ({contract, url, id} : { contract : Contract, url : string, id : number}, { rejectWithValue }) => {
         try{
           const response =await contract.changeImg(id, url );
           const receipt = await response.wait()
@@ -94,17 +111,20 @@ export const nftSlice = createSlice({
 
         builder.addCase(getAllMapInfo.fulfilled, (state, action) => {
             let mapTupple = action.payload;
-            const ownerMap = mapTupple[0];
-            const imgMap = mapTupple[1];
-            const linkMap = mapTupple[2];
-            const allData = ownerMap.map((owner, index)=>(
-                {
-                    id : index,
-                    owner,
-                    img: imgMap[index],
-                    link: linkMap[index]
-                }
-            ))
+            const ownerMap: Array<string> = mapTupple[0];
+            const imgMap :Array<string> = mapTupple[1];
+            const linkMap:Array<string> = mapTupple[2];
+            const allData = ownerMap.map((owner, index)=>{
+                const NFT : INFT = 
+                    {
+                        id : index,
+                        owner,
+                        img: imgMap[index],
+                        link: linkMap[index]
+                    }
+                return NFT;
+            }   
+            )
             state.mapInfo = allData;
             state.loading = 'idle';
         })
@@ -135,23 +155,23 @@ export const nftSlice = createSlice({
         })
     },
 });
-export const mapSelector = (state) => state.map.mapInfo;
-export const isMapLoadingSelector = (state) => state.map.loading;
+export const mapSelector = (state: RootState) => state.map.mapInfo;
+export const isMapLoadingSelector = (state: RootState) => state.map.loading;
 
-export const nftsByOwner = (state) => {
+export const nftsByOwner = (state: RootState) => {
     const allNft = mapSelector(state);
     const curOwner = currentNftOwnerSlector(state);
     return allNft && allNft.filter((nft) => nft.owner === curOwner);
 }
 
-export const curNftIdSelector = (state) => state.map.curNft;
+export const curNftIdSelector = (state: RootState) => state.map.curNft;
 
-export const curNftSelector = (state) => {
+export const curNftSelector = (state: RootState) => {
     const allNft = mapSelector(state);
     const curNftId = curNftIdSelector(state);
     return allNft && allNft.find((nft)=>nft.id === curNftId)
 }
 
-export const isNFTDetailLoading = (state) => state.map.loading;
+export const isNFTDetailLoading = (state: RootState) => state.map.loading;
 
-export const { mockData, nftImgMap, updateAddressNFT , updateAddressImg, setCurrentNFT} = nftSlice.actions;
+export const { mockData, updateAddressNFT , updateAddressImg, setCurrentNFT} = nftSlice.actions;

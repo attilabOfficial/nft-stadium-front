@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../../../store";
 
 export const NFTByOwnerSlice = createSlice({
   name: 'nftOwn',
@@ -19,7 +20,7 @@ export const NFTByOwnerSlice = createSlice({
   }
 });
 
-export const isLeftPanelOpenSelector = (state) => state.nftOwn.isOpen;
-export const currentNftOwnerSlector = (state) => state.nftOwn.curOwner;
+export const isLeftPanelOpenSelector = (state: RootState) => state.nftOwn.isOpen;
+export const currentNftOwnerSlector = (state: RootState) => state.nftOwn.curOwner;
 
 export const { openLeftPanel, closeLeftPanel, setCurrentOwner } = NFTByOwnerSlice.actions;

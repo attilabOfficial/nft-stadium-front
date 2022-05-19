@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import AllMap from './AllMap';
 import ZoomButton from './ZoomButton';
+import { INFT } from '../../../common/store/nftSlice';
 
 const Container = styled.div`
   width: 100vw;
@@ -21,7 +22,9 @@ const ZoomButtonsContainer = styled.div`
   flex-wrap: nowrap;
 `
 
-export const StadiumComponent = ({containerRef, zoomIn, zoomOut, mapInfo}) => {
+export const StadiumComponent = (
+        {containerRef, zoomIn, zoomOut, mapInfo}:
+            {containerRef : React.RefObject<HTMLInputElement>,zoomIn: ()=>void, zoomOut : ()=>void , mapInfo : INFT[]}) => {
     if(mapInfo && mapInfo.length>0){
         return (
             <div>

@@ -1,7 +1,10 @@
+import React from 'react'
+
 import styled from 'styled-components';
 import stade from '../images/Stade.png';
 import OneCell from './OneCell';
 import { NBR_COL, NBR_ROW } from '../../../const';
+import { INFT } from '../../../common/store/nftSlice';
 
 const GridContainer = styled.div`
   background: no-repeat center url(${stade});
@@ -24,12 +27,12 @@ const StadeGrid = styled.div`
   border: solid 1px transparent;
 `
 
-const AllMap = ({ mapInfo }) => {
+const AllMap = ({ mapInfo }: {mapInfo: INFT[]}) => {
   return (
     <>
       <GridContainer>
         <StadeGrid>
-          {mapInfo.map((cell, index) => <OneCell key={index} id={index} img={cell.img} owner={cell.owner} />)}
+          {mapInfo.map((cell, index) => <OneCell key={index} id={index.toString()} img={cell.img} />)}
         </StadeGrid>
       </GridContainer>
     </>

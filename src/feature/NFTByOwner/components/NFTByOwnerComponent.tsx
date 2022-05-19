@@ -1,5 +1,8 @@
+import React from 'react'
+
 import styled from 'styled-components';
 import { NFTOwnLi } from './NFTOwnLi';
+import { INFT } from '../../../common/store/nftSlice';
 
 const NFTList = styled.div`
   margin-top 1rem;
@@ -14,14 +17,14 @@ const NFTList = styled.div`
   }
 `
 
-export const NFTByOwnerComponent = ({ currentOwner, NFTsOwn }) => {
+export const NFTByOwnerComponent = ({ currentOwner, NFTsOwn } : { currentOwner : string, NFTsOwn: INFT[] }) => {
   return (
     <NFTList>
       <h2>Current owner :</h2>
       <p>{currentOwner}</p>
       <h3>Your NFTs :</h3>
       <ul>
-        {NFTsOwn.map((nft) =>
+        {NFTsOwn.map((nft : INFT) =>
           <NFTOwnLi key={nft.id} nft={nft} />
         )}
       </ul>

@@ -1,6 +1,8 @@
+import React from "react";
+
 import { NoWalletDetected } from "./NoWalletDetected"
 import { ConnectWallet } from './ConnectWallet';
-import { ethers, utils } from 'ethers';
+import { Contract, ethers, utils } from 'ethers';
 import TokenArtifact from "../../../contracts/Token.json";
 import contractAddress from "../../../contracts/contract-address.json";
 import { createContext, useState } from "react";
@@ -10,13 +12,11 @@ import { useEffect } from "react"
 import { HARDHAT_NETWORK_ID, MOCK } from '../../../const';
 
 
+export const Web3Context = createContext<{selectedAddress: string ,contract?:Contract }>({selectedAddress : "", contract: undefined});
 
-export const Web3Context = createContext({});
-
-
-export const DappContainer = ({ children }) => {
-  const [selectedAddress, setSelectedAddress] = useState("");
-  const [contract, setContract] = useState(null);
+export const DappContainer : React.FC<{children:React.ReactNode}>= ({ children }: {children:React.ReactNode}) => {
+  const [selectedAddress, setSelectedAddress] = useState<string>("");
+  const [contract, setContract] = useState<Contract|undefined>(undefined);
   const dispatch = useDispatch();
 
 
@@ -56,17 +56,17 @@ export const DappContainer = ({ children }) => {
       return;
     }
     _initialize(_selectedAddress);
-    window.ethereum.on("accountsChanged", ([newAddress]) => {
+    window.ethereum.on("accountsChanged", ([newAddress]: any) => {
       _initialize(newAddress);
     });
   }
-  const _initialize = (_userAddress) => {
+  const _initialize = (_userAddress: string) => {
     setSelectedAddress(_userAddress);
     _initializeEthers();
 
   }
   const _initializeEthers = () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const provider = new ethers.providers.Web3Provider(window.ethereum );
     setContract(new ethers.Contract(
       contractAddress.Token,
       TokenArtifact.abi,

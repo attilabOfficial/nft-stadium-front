@@ -1,6 +1,8 @@
+import React from 'react'
+
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { openRightPanel } from '../../../feature/NFTDetail/store/NFTDetailSlice'
+import { openRightPanel } from '../../NFTDetail/store/NFTDetailSlice'
 import { setCurrentNFT } from '../../../common/store/nftSlice'
 
 const CellContainer = styled.div`
@@ -23,7 +25,7 @@ const Cell = styled.img`
   grid-area: 1 / 1 / 2 / 2;
 `
 
-const OneCell = ({ id, img, owner }) => {
+const OneCell = ({ id, img } : {id: string, img: string}) => {
   const dispatch = useDispatch();
 
   const clickOnCell = () => {

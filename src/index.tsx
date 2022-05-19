@@ -6,14 +6,25 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
-);
+
+declare global {
+  interface Window{
+    ethereum?:any // @todo fix this
+  }
+}
+
+const rootNode: HTMLElement | null = document.getElementById('root');
+if(rootNode){
+  const root = ReactDOM.createRoot(rootNode);
+  root.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>
+  );
+}
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

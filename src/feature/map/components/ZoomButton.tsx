@@ -1,5 +1,7 @@
+import React from 'react'
+
 import styled from 'styled-components';
-import zoom_in from '../images/glass_plus_icon.svg'
+import zoom_in  from '../images/glass_plus_icon.svg';
 import zoom_out from '../images/glass_minus_icon.svg';
 
 const Zoom = styled.button`
@@ -19,7 +21,7 @@ const ZoomIcon = styled.img`
   width: 35px;
 `
 
-const ZoomButton = ({ buttonLabel, fctOnClick }) => {
+const ZoomButton = ({ buttonLabel, fctOnClick } : { buttonLabel : string, fctOnClick : ()=>void }) => {
   return (
       <Zoom onClick={fctOnClick} >
         {buttonLabel === 'zoom_in' ? <ZoomIcon src={zoom_in} alt={`${buttonLabel}`} /> : <ZoomIcon src={zoom_out} alt={`${buttonLabel}`} />}

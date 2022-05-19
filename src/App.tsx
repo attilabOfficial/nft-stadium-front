@@ -1,3 +1,4 @@
+import React from 'react'
 import { useSelector } from 'react-redux';
 import GlobalStyleReset from './common/components/templates/GlobalStyleReset';
 import Header from './common/components/templates/Header';
@@ -9,10 +10,11 @@ import { StadiumContainer } from './feature/map/components/StadiumContainer';
 import { isMapLoadingSelector } from './common/store/nftSlice';
 import { NFTDetailContainer } from './feature/NFTDetail/components/NFTDetailContainer';
 import { NFTByOwnerContainer } from './feature/NFTByOwner/components/NFTByOwnerContainer';
+import { RootState } from './store';
 
 
 const App = () => {
-  const loading = useSelector((state) => isMapLoadingSelector(state));
+  const loading = useSelector((state: RootState) => isMapLoadingSelector(state));
   
   return (
     <>

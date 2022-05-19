@@ -22,7 +22,7 @@ const ConnectWalletStyle = styled.div`
   }
 `;
 
-export const ConnectWallet = ({ connectWallet, networkError, dismiss }) =>{
+export const ConnectWallet = ({ connectWallet, networkError, dismiss }: { connectWallet: () =>void , networkError: string, dismiss : () =>void }) =>{
   return (
     <ConnectWalletStyle>
       <div className="row justify-content-md-center">

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../../../store";
 
 
 export const NFTDetailSlice = createSlice({
@@ -16,6 +17,6 @@ export const NFTDetailSlice = createSlice({
   },
 });
 
-export const isRightPanelOpenSelector = (state) => state.nftDetail.isOpen;
+export const isRightPanelOpenSelector = (state: RootState) => state.nftDetail.isOpen;
 
 export const { openRightPanel, closeRightPanel } = NFTDetailSlice.actions;

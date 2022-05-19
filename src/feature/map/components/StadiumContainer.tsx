@@ -5,17 +5,20 @@ import { useContext, useEffect } from 'react';
 import { Web3Context } from '../../../common/components/web3/DappContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllMapInfo, mockData, mapSelector } from '../../../common/store/nftSlice';
-import { StadiumComponent } from '../components/StadiumComponent';
+import { StadiumComponent } from './StadiumComponent';
 import {MOCK} from '../../../const'
+import { AppDispatch, RootState } from '../../../store';
+
+
 
 export const StadiumContainer = () =>{
     const web3Context = useContext(Web3Context);
-    const dispatch = useDispatch();
-    const mapInfo = useSelector((state) => mapSelector(state));
+    const dispatch : AppDispatch= useDispatch();
+    const mapInfo = useSelector((state: RootState) => mapSelector(state));
 
     let mapSize = 1;
 
-    const containerRef = useRef(null);
+    const containerRef : React.RefObject<HTMLInputElement>= useRef(null);
 
     const zoomIn = () => {
         if (containerRef && containerRef.current && containerRef.current.style) {
