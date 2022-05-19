@@ -5,11 +5,7 @@ import { Provider } from 'react-redux'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
-declare global {
-    interface Window {
-        ethereum?: any // @todo fix this
-    }
-}
+
 
 const rootNode: HTMLElement | null = document.getElementById('root')
 if (rootNode) {

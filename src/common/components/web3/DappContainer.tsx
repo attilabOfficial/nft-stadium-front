@@ -10,6 +10,13 @@ import { useDispatch } from 'react-redux'
 import { updateAddressNFT, updateAddressImg } from '../../store/nftSlice'
 import { useEffect } from 'react'
 import { HARDHAT_NETWORK_ID, MOCK } from '../../../const'
+import { providers } from 'ethers'
+
+declare global {
+    interface Window {
+        ethereum?: providers.ExternalProvider
+    }
+}
 
 export const Web3Context = createContext<{
     selectedAddress: string
@@ -58,34 +65,44 @@ export const DappContainer: React.FC<{ children: React.ReactNode }> = ({
     }, [contract, dispatch])
 
     const _connectWallet = async () => {
-        const [_selectedAddress] = await window.ethereum.request({
-            method: 'eth_requestAccounts',
-        })
-        if (!_checkNetwork()) {
-            return
+        if (window.ethereum && window.ethereum.request) {
+            const [_selectedAddress] = await window.ethereum.request({
+                method: 'eth_requestAccounts',
+            })
+            if (!_checkNetwork()) {
+                return
+            }
+            _initialize(_selectedAddress)
+            //@ts-ignore
+            window.ethereum.on('accountsChanged', ([newAddress]: any) => {
+                _initialize(newAddress)
+            })
         }
-        _initialize(_selectedAddress)
-        window.ethereum.on('accountsChanged', ([newAddress]: any) => {
-            _initialize(newAddress)
-        })
     }
     const _initialize = (_userAddress: string) => {
         setSelectedAddress(_userAddress)
         _initializeEthers()
     }
     const _initializeEthers = () => {
-        const provider = new ethers.providers.Web3Provider(window.ethereum)
-        setContract(
-            new ethers.Contract(
-                contractAddress.Token,
-                TokenArtifact.abi,
-                provider.getSigner(0)
+        if (window.ethereum) {
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            setContract(
+                new ethers.Contract(
+                    contractAddress.Token,
+                    TokenArtifact.abi,
+                    provider.getSigner(0)
+                )
             )
-        )
+        }
     }
     // This method checks if Metamask selected network is Localhost:8545
     const _checkNetwork = () => {
-        if (window.ethereum.networkVersion === HARDHAT_NETWORK_ID) {
+        
+        if (
+            window.ethereum &&
+            //@ts-ignore
+            window.ethereum.networkVersion === HARDHAT_NETWORK_ID
+        ) {
             return true
         }
         return false
