@@ -162,7 +162,7 @@ export const curNftSelector = (state: RootState) => {
 export const nftsByOwnerSelector = (state: RootState, curOwner: string) => {
     const allNft = mapSelector(state)
     return (
-        allNft && allNft.filter((nft) => nft.owner.toLowerCase() === curOwner)
+allNft && allNft.filter((nft) => nft.owner.toLowerCase() === curOwner)
     )
 }
 
