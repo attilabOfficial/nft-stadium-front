@@ -1,8 +1,9 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import styled from 'styled-components'
-import { openRightPanel } from '../../../common/store/appStateSlice'
-import { INFT, setCurrentNFT } from '../../../common/store/nftSlice'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import { openRightPanel } from '../../../common/store/appStateSlice';
+import { INFT } from '../../../common/store/nftSlice';
+import { setCurrentNFT } from '../../../common/store/appStateSlice';
 
 const LiElement = styled.li`
     cursor: pointer;

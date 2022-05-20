@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components'
-import { openRightPanel } from '../../../common/store/appStateSlice'
+import { openRightPanel } from '../../../common/store/appStateSlice';
 
-import { setCurrentNFT } from '../../../common/store/nftSlice'
+import { setCurrentNFT } from '../../../common/store/appStateSlice'
 import { ZERO_ADDRESS } from '../../../const';
 
 const CellContainer = styled.div`
@@ -48,7 +48,7 @@ const OneCell = ({ id, img, owner }: {id:number, img:string, owner:string}) => {
     }
 
     return (
-        <CellContainer onClick={clickOnCell}>
+        <CellContainer onClick={clickOnCell} >
             {owner === ZERO_ADDRESS ? '' :
             img !== '' ? <CellImg src={img} alt="" /> : <CellMint /> }
         </CellContainer>

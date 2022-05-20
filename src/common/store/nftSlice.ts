@@ -14,14 +14,12 @@ export interface INFT {
 interface INFTSlice {
     transactionLoading: 'idle' | 'loading'
     loading: 'idle' | 'loading'
-    curNft: number
     nftList: Array<INFT>
 }
 
 const initialState: INFTSlice = {
     loading: 'idle',
     nftList: [],
-    curNft: 0,
     transactionLoading: 'idle',
 }
 
@@ -114,9 +112,6 @@ export const nftSlice = createSlice({
             const nftIndex = state.nftList.findIndex((elem) => elem.id === id)
             state.nftList[nftIndex].img = url
         },
-        setCurrentNFT: (state, action) => {
-            state.curNft = action.payload
-        },
     },
     extraReducers: (builder) => {
         builder.addCase(getAllMapInfo.pending, (state) => {
@@ -172,14 +167,6 @@ export const nftSlice = createSlice({
 export const mapSelector = (state: RootState) => state.nfts.nftList
 export const isMapLoadingSelector = (state: RootState) => state.nfts.loading
 
-export const curNftIdSelector = (state: RootState) => state.nfts.curNft
-
-export const curNftSelector = (state: RootState) => {
-    const allNft = mapSelector(state)
-    const curNftId = curNftIdSelector(state)
-    return allNft && allNft.find((nft) => nft.id === curNftId)
-}
-
 export const nftsByOwnerSelector = (state: RootState, curOwner: string) => {
     const allNft = mapSelector(state)
     return (
@@ -190,5 +177,4 @@ export const nftsByOwnerSelector = (state: RootState, curOwner: string) => {
 export const isNFTDetailLoading = (state: RootState) =>
     state.nfts.transactionLoading
 
-export const { updateAddressNFT, updateAddressImg, setCurrentNFT } =
-    nftSlice.actions
+export const { updateAddressNFT, updateAddressImg } = nftSlice.actions
