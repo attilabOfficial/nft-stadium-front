@@ -5,9 +5,10 @@ import styled from 'styled-components'
 import { openRightPanel } from '../../../common/store/appStateSlice'
 
 import { setCurrentNFT } from '../../../common/store/nftSlice'
+import { ZERO_ADDRESS } from '../../../const';
 
 const CellContainer = styled.div`
-    background-color: rgba(255, 255, 0, 0.4);
+    background-color: rgba(255, 255, 0, 0.1);
     aspect-ratio: 1;
     display: grid;
     place-items: center;
@@ -18,15 +19,26 @@ const CellContainer = styled.div`
         display: block;
         grid-area: 1 / 1 / 2 / 2;
     }
+
+    :hover {
+        border: solid black 1px;
+    }
 `
 
-const Cell = styled.img`
+const CellMint = styled.div`
+    background-color: rgba(255, 255, 0, 0.4);
+    min-width: 100%;
+    min-height: 100%;
+    grid-area: 1 / 1 / 2 / 2;
+`
+
+const CellImg = styled.img`
     max-width: 100%;
     max-heigth: 100%;
     grid-area: 1 / 1 / 2 / 2;
 `
 
-const OneCell = ({ id, img }: {id:number, img:string}) => {
+const OneCell = ({ id, img, owner }: {id:number, img:string, owner:string}) => {
     const dispatch = useDispatch()
 
     const clickOnCell = () => {
@@ -37,7 +49,8 @@ const OneCell = ({ id, img }: {id:number, img:string}) => {
 
     return (
         <CellContainer onClick={clickOnCell}>
-            {img !== '' && <Cell src={img} alt="" />}
+            {owner === ZERO_ADDRESS ? '' :
+            img !== '' ? <CellImg src={img} alt="" /> : <CellMint /> }
         </CellContainer>
     )
 }

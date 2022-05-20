@@ -25,6 +25,10 @@ const StadeGrid = styled.div`
     grid-template-columns: repeat(${NBR_COL}, 1fr);
     grid-template-rows: repeat(${NBR_ROW}, 1fr);
     border: solid 1px transparent;
+
+    :hover {
+        cursor: pointer;
+    }
 `
 
 const AllMap = ({ mapInfo }: { mapInfo: INFT[] }) => {
@@ -33,7 +37,7 @@ const AllMap = ({ mapInfo }: { mapInfo: INFT[] }) => {
             <GridContainer>
                 <StadeGrid>
                     {mapInfo.map((cell, index) => (
-                        <OneCell key={index} id={cell.id} img={cell.img} />
+                        <OneCell key={index} id={cell.id} img={cell.img} owner={cell.owner} />
                     ))}
                 </StadeGrid>
             </GridContainer>
