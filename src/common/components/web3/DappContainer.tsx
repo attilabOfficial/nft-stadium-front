@@ -48,6 +48,7 @@ export const DappContainer: React.FC<{ children: React.ReactNode }> = ({
                     dispatch(
                         updateAddressImg({ id: _imgId.toNumber(), url: _url })
                     )
+                    // @todo ajouter un toast
                 }
             )
         contract &&
@@ -60,6 +61,7 @@ export const DappContainer: React.FC<{ children: React.ReactNode }> = ({
                     dispatch(
                         updateAddressNFT({ id: id.toNumber(), address: to })
                     )
+                    // @todo ajouter un toast
                 }
             )
     }, [contract, dispatch])
@@ -73,8 +75,8 @@ export const DappContainer: React.FC<{ children: React.ReactNode }> = ({
                 return
             }
             _initialize(_selectedAddress)
-            //@ts-ignore
-            window.ethereum.on('accountsChanged', ([newAddress]: any) => {
+            //@ts-ignore // window.ethermun type to fix
+            window.ethereum.on('accountsChanged', ([newAddress]: [string]) => {
                 _initialize(newAddress)
             })
         }
@@ -96,8 +98,7 @@ export const DappContainer: React.FC<{ children: React.ReactNode }> = ({
         }
     }
     // This method checks if Metamask selected network is Localhost:8545
-    const _checkNetwork = () => {
-        
+    const _checkNetwork = () => { 
         if (
             window.ethereum &&
             //@ts-ignore

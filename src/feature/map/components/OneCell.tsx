@@ -26,7 +26,7 @@ const Cell = styled.img`
     grid-area: 1 / 1 / 2 / 2;
 `
 
-const OneCell = ({ id, img }: { id: number; img: string }) => {
+const OneCell = ({ id, img }: {id:number, img:string}) => {
     const dispatch = useDispatch()
 
     const clickOnCell = () => {

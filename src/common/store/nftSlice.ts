@@ -15,12 +15,12 @@ interface INFTSlice {
     transactionLoading: 'idle' | 'loading'
     loading: 'idle' | 'loading'
     curNft: number
-    mapInfo: Array<INFT>
+    nftList: Array<INFT>
 }
 
 const initialState: INFTSlice = {
     loading: 'idle',
-    mapInfo: [],
+    nftList: [],
     curNft: 0,
     transactionLoading: 'idle',
 }
@@ -101,18 +101,18 @@ export const changeImg = createAsyncThunk(
 )
 
 export const nftSlice = createSlice({
-    name: 'mapInfoState',
+    name: 'nftState',
     initialState,
     reducers: {
         updateAddressNFT: (state, action) => {
             const { id, address } = action.payload
-            const nftIndex = state.mapInfo.findIndex((elem) => elem.id === id)
-            state.mapInfo[nftIndex] = { id, owner: address, img: '', link: '' }
+            const nftIndex = state.nftList.findIndex((elem) => elem.id === id)
+            state.nftList[nftIndex] = { id, owner: address, img: '', link: '' }
         },
         updateAddressImg: (state, action) => {
             const { id, url } = action.payload
-            const nftIndex = state.mapInfo.findIndex((elem) => elem.id === id)
-            state.mapInfo[nftIndex].img = url
+            const nftIndex = state.nftList.findIndex((elem) => elem.id === id)
+            state.nftList[nftIndex].img = url
         },
         setCurrentNFT: (state, action) => {
             state.curNft = action.payload
@@ -139,7 +139,7 @@ export const nftSlice = createSlice({
                 }
                 return NFT
             })
-            state.mapInfo = allData
+            state.nftList = allData
             state.loading = 'idle'
         })
         builder.addCase(mint.pending, (state) => {
@@ -152,6 +152,7 @@ export const nftSlice = createSlice({
             state.transactionLoading = 'idle'
         })
         builder.addCase(mint.rejected, (state) => {
+            // @todo ajouter un toast
             state.transactionLoading = 'idle'
         })
         builder.addCase(changeImg.pending, (state) => {
@@ -163,14 +164,15 @@ export const nftSlice = createSlice({
             state.transactionLoading = 'idle'
         })
         builder.addCase(changeImg.rejected, (state) => {
+            // @todo ajouter un toast
             state.transactionLoading = 'idle'
         })
     },
 })
-export const mapSelector = (state: RootState) => state.map.mapInfo
-export const isMapLoadingSelector = (state: RootState) => state.map.loading
+export const mapSelector = (state: RootState) => state.nfts.nftList
+export const isMapLoadingSelector = (state: RootState) => state.nfts.loading
 
-export const curNftIdSelector = (state: RootState) => state.map.curNft
+export const curNftIdSelector = (state: RootState) => state.nfts.curNft
 
 export const curNftSelector = (state: RootState) => {
     const allNft = mapSelector(state)
@@ -186,7 +188,7 @@ export const nftsByOwnerSelector = (state: RootState, curOwner: string) => {
 }
 
 export const isNFTDetailLoading = (state: RootState) =>
-    state.map.transactionLoading
+    state.nfts.transactionLoading
 
 export const { updateAddressNFT, updateAddressImg, setCurrentNFT } =
     nftSlice.actions

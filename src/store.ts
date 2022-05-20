@@ -4,7 +4,7 @@ import { appStateSlice } from './common/store/appStateSlice'
 
 export const store = configureStore({
     reducer: {
-        map: nftSlice.reducer,
+        nfts: nftSlice.reducer,
         appState: appStateSlice.reducer,
     },
 })
