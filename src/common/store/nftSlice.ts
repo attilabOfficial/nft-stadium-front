@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { TOTAL_CELLS } from '../../const'
+import { MOCK, TOTAL_CELLS } from '../../const'
 import { Contract, utils } from 'ethers'
 import { RootState } from '../../store'
 
@@ -25,11 +25,25 @@ const initialState: INFTSlice = {
     transactionLoading: 'idle',
 }
 
+const generateMockMap = () => {
+    const data: Array<Array<string>> = [[], [], []]
+    for (let c = 0; c <= TOTAL_CELLS - 1; c++) {
+        data[0][c] = `owner_${c}`
+        data[1][c] = `https://picsum.photos/id/${c}/200`
+        data[2][c] = `link${c}`
+    }
+    return data
+}
+
 export const getAllMapInfo = createAsyncThunk(
     'web3/connect',
-    async (contract: Contract) => {
-        const stadium = await contract.getStadium()
-        return stadium
+    async (contract?: Contract) => {
+        if (MOCK) {
+            return generateMockMap()
+        } else if (contract) {
+            const stadium = await contract.getStadium()
+            return stadium
+        }
     }
 )
 

@@ -5,7 +5,6 @@ import { Web3Context } from '../../../common/components/web3/DappContainer'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     getAllMapInfo,
-    mockData,
     mapSelector,
 } from '../../../common/store/nftSlice'
 import { StadiumComponent } from './StadiumComponent'
@@ -51,12 +50,8 @@ export const StadiumContainer = () => {
     }
 
     useEffect(() => {
-        if (MOCK) {
-            dispatch(mockData())
-        } else {
-            if (web3Context.contract) {
-                dispatch(getAllMapInfo(web3Context.contract))
-            }
+        if (web3Context.contract || MOCK) {
+            dispatch(getAllMapInfo(web3Context.contract))
         }
     }, [web3Context.contract, dispatch])
 
