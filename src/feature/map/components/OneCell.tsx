@@ -1,17 +1,24 @@
 import React from 'react'
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components'
-import { openRightPanel } from '../../../common/store/appStateSlice';
+import { openRightPanel, curNftSelector } from '../../../common/store/appStateSlice';
 
 import { setCurrentNFT } from '../../../common/store/appStateSlice'
 import { ZERO_ADDRESS } from '../../../const';
+import { RootState } from '../../../store';
 
-const CellContainer = styled.div`
+interface CellProps {
+    border?: string;
+}
+
+const CellContainer = styled.div<CellProps>`
     background-color: rgba(255, 255, 0, 0.1);
     aspect-ratio: 1;
     display: grid;
     place-items: center;
+
+    border: ${props => props.border || "none"};
 
     ::before {
         content: '';
@@ -47,8 +54,12 @@ const OneCell = ({ id, img, owner }: {id:number, img:string, owner:string}) => {
         dispatch(setCurrentNFT(id))
     }
 
+    const { currentNFT } = useSelector((state: RootState) => ({
+        currentNFT: curNftSelector(state),
+    }))
+
     return (
-        <CellContainer onClick={clickOnCell} >
+        <CellContainer onClick={clickOnCell} border={currentNFT?.id === id ? "solid black 1px" : "none"} >
             {owner === ZERO_ADDRESS ? '' :
             img !== '' ? <CellImg src={img} alt="" /> : <CellMint /> }
         </CellContainer>

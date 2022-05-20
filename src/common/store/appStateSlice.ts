@@ -5,7 +5,7 @@ import { mapSelector } from './nftSlice'
 const initialState = {
     leftPanelIsOpen: false,
     rightPanelIsOepn: false,
-    curNft: 0,
+    curNft: undefined,
 }
 
 export const appStateSlice = createSlice({
