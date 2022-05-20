@@ -9,7 +9,7 @@ import { ZERO_ADDRESS } from '../../../const';
 import { RootState } from '../../../store';
 
 interface CellProps {
-    border?: string;
+    border: string;
 }
 
 const CellContainer = styled.div<CellProps>`
@@ -18,7 +18,7 @@ const CellContainer = styled.div<CellProps>`
     display: grid;
     place-items: center;
 
-    border: ${props => props.border || "none"};
+    border: ${props => props.border};
 
     ::before {
         content: '';

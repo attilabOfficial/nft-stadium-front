@@ -79,8 +79,6 @@ export const NFTDetailContainer = () => {
         )
     }
 
-    console.log('container', currentNFT)
-
     return (
         <>
             <div>

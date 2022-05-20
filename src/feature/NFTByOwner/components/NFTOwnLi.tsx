@@ -21,5 +21,9 @@ export const NFTOwnLi = ({ nft }: { nft: INFT }) => {
         dispatch(setCurrentNFT(nft.id))
     }
 
-    return <LiElement onClick={clickOnNft}>{nft.id}</LiElement>
+    const liHover = () => {
+        dispatch(setCurrentNFT(nft.id))
+    }
+
+    return <LiElement onMouseEnter={liHover} onClick={clickOnNft} >{nft.id}</LiElement>
 }
