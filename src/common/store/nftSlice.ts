@@ -104,19 +104,6 @@ export const nftSlice = createSlice({
     name: 'mapInfoState',
     initialState,
     reducers: {
-        mockData: (state) => {
-            if (state.mapInfo.length === 0) {
-                state.mapInfo = []
-                for (let c = 0; c <= TOTAL_CELLS - 1; c++) {
-                    state.mapInfo.push({
-                        id: c,
-                        owner: 'mock_id',
-                        img: `https://picsum.photos/id/${c}/200`,
-                        link: 'test',
-                    })
-                }
-            }
-        },
         updateAddressNFT: (state, action) => {
             const { id, address } = action.payload
             const nftIndex = state.mapInfo.findIndex((elem) => elem.id === id)
@@ -201,5 +188,5 @@ export const nftsByOwnerSelector = (state: RootState, curOwner: string) => {
 export const isNFTDetailLoading = (state: RootState) =>
     state.map.transactionLoading
 
-export const { mockData, updateAddressNFT, updateAddressImg, setCurrentNFT } =
+export const { updateAddressNFT, updateAddressImg, setCurrentNFT } =
     nftSlice.actions
