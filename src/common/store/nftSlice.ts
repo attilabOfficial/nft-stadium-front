@@ -33,6 +33,24 @@ export const getAllMapInfo = createAsyncThunk(
     }
 )
 
+export const transformToNFT = (data: Array<Array<string>>) => {
+    const ownerMap: Array<string> = data[0]
+    const imgMap: Array<string> = data[1]
+    const linkMap: Array<string> = data[2]
+    const transformed =
+        ownerMap &&
+        ownerMap.map((owner, index) => {
+            const NFT: INFT = {
+                id: index,
+                owner,
+                img: imgMap[index],
+                link: linkMap[index],
+            }
+            return NFT
+        })
+    return transformed || []
+}
+
 export const mint = createAsyncThunk(
     'web3/mint',
     async (
@@ -162,7 +180,7 @@ export const curNftSelector = (state: RootState) => {
 export const nftsByOwnerSelector = (state: RootState, curOwner: string) => {
     const allNft = mapSelector(state)
     return (
-allNft && allNft.filter((nft) => nft.owner.toLowerCase() === curOwner)
+        allNft && allNft.filter((nft) => nft.owner.toLowerCase() === curOwner)
     )
 }
 
