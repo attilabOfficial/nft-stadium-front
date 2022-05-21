@@ -1,4 +1,4 @@
-import { nftSlice, setCurrentNFT, transformToNFT } from './nftSlice'
+import { nftSlice, transformToNFT } from './nftSlice'
 
 import { AnyAction } from 'redux'
 
@@ -13,14 +13,15 @@ test('should return the initial state', () => {
     })
 })
 
-test('should set the current nft', () => {
-    expect(reducer(undefined, setCurrentNFT(12))).toEqual({
-        loading: 'idle',
-        mapInfo: [],
-        curNft: 12,
-        transactionLoading: 'idle',
-    })
-})
+//***** */ Now into appStateSlice *****
+// test('should set the current nft', () => {
+//     expect(reducer(undefined, setCurrentNFT(12))).toEqual({
+//         loading: 'idle',
+//         mapInfo: [],
+//         curNft: 12,
+//         transactionLoading: 'idle',
+//     })
+// })
 
 test('transform to NFT', () => {
     expect(

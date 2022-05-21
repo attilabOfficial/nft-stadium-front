@@ -2,14 +2,12 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useContext } from 'react'
 import { NFTDetailComponent } from './NFTDetailComponent'
-import {
-    curNftSelector,
-    isNFTDetailLoading,
-} from '../../../common/store/nftSlice'
+import { isNFTDetailLoading } from '../../../common/store/nftSlice'
 import { Web3Context } from '../../../common/components/web3/DappContainer'
 import { mint, changeImg } from '../../../common/store/nftSlice'
 import { AppDispatch, RootState } from '../../../store'
 import styled from 'styled-components'
+import { curNftSelector } from '../../../common/store/appStateSlice';
 
 const TransLoading = styled.div`
     background-color: black;
@@ -80,8 +78,6 @@ export const NFTDetailContainer = () => {
             </TransLoading>
         )
     }
-
-    console.log('container', currentNFT)
 
     return (
         <>
