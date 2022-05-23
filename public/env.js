@@ -10,7 +10,7 @@ window.env = {
   "TERM_PROGRAM_VERSION": "1.67.2",
   "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
   "COLOR": "1",
-  "TERM_SESSION_ID": "06A0D5AE-608B-4324-9613-D5AF5592A0AB",
+  "TERM_SESSION_ID": "1A1E4B06-CB64-42F2-B31C-6059C17A6B87",
   "npm_config_noproxy": "",
   "npm_config_local_prefix": "/Users/attilab/Desktop/stage/nft-stadium-front",
   "ZSH": "/Users/attilab/.oh-my-zsh",

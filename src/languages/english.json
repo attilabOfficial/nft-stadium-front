@@ -1,0 +1,13 @@
+{
+  "app.header": "NFT Roazhon Park",
+  "app.NFTByOwner.owner": "Current Owner :",
+  "app.NFTByOwner.NFT": "Your NFTs :",
+  "app.NFTDetail.owner": "Owner :",
+  "app.NFTDetail.imageChange": "Change Image",
+  "app.NFTDetail.transaction": "Current Transaction",
+  "app.NFTDetail.noImage": "No picture yet",
+  "app.toaster.NFTAdress": "NFT's adress updated",
+  "app.toaster.imageAdress": "Image's adress updated",
+  "app.toaster.mintFailed": "Mint Failed",
+  "app.toaster.changeImageFailed": "Change Image Failed"
+}

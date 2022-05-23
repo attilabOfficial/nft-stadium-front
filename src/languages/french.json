@@ -1,0 +1,13 @@
+{
+  "app.header": "NFT Stade Rennais F. C.",
+  "app.NFTByOwner.owner": "Propriétaire actuel :",
+  "app.NFTByOwner.NFT": "Vos NFTs :",
+  "app.NFTDetail.owner": "Propriétaire :",
+  "app.NFTDetail.imageChange": "Changer l'image",
+  "app.NFTDetail.transaction": "Transaction en cours",
+  "app.NFTDetail.noImage": "Pas encore d'image",
+  "app.toaster.NFTAdress": "Changement d'adresse du NFT réussi",
+  "app.toaster.imageAdress": "Changement d'adresse de l'image réussi",
+  "app.toaster.mintFailed": "Mint Failed",
+  "app.toaster.changeImageFailed": "Change Image Failed"
+}
