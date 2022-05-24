@@ -11,6 +11,7 @@ import { isMapLoadingSelector } from './common/store/nftSlice'
 import { NFTDetailContainer } from './feature/NFTDetail/components/NFTDetailContainer'
 import { NFTByOwnerContainer } from './feature/NFTByOwner/components/NFTByOwnerContainer'
 import { RootState } from './store'
+import { Toaster } from 'react-hot-toast'
 
 const App = () => {
     const loading = useSelector((state: RootState) =>
@@ -32,6 +33,10 @@ const App = () => {
                     <NFTByOwnerContainer />
                 </LeftPanel>
             </DappContainer>
+            <Toaster
+                position="top-right"
+                reverseOrder={false}
+            />
         </>
     )
 }

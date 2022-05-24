@@ -4,6 +4,8 @@ import { MOCK, TOTAL_CELLS } from '../../const'
 import { Contract, utils } from 'ethers'
 import { RootState } from '../../store'
 
+import toast from 'react-hot-toast'
+
 export interface INFT {
     id: number
     owner: string
@@ -147,7 +149,7 @@ export const nftSlice = createSlice({
             state.transactionLoading = 'idle'
         })
         builder.addCase(mint.rejected, (state) => {
-            // @todo ajouter un toast
+            toast.error('Mint Failed')
             state.transactionLoading = 'idle'
         })
         builder.addCase(changeImg.pending, (state) => {
@@ -159,7 +161,7 @@ export const nftSlice = createSlice({
             state.transactionLoading = 'idle'
         })
         builder.addCase(changeImg.rejected, (state) => {
-            // @todo ajouter un toast
+            toast.error('Change Image Failed')
             state.transactionLoading = 'idle'
         })
     },

@@ -11,6 +11,7 @@ import { updateAddressNFT, updateAddressImg } from '../../store/nftSlice'
 import { useEffect } from 'react'
 import { HARDHAT_NETWORK_ID, MOCK } from '../../../const'
 import { providers } from 'ethers'
+import toast from 'react-hot-toast'
 
 declare global {
     interface Window {
@@ -48,7 +49,7 @@ export const DappContainer: React.FC<{ children: React.ReactNode }> = ({
                     dispatch(
                         updateAddressImg({ id: _imgId.toNumber(), url: _url })
                     )
-                    // @todo ajouter un toast
+                    toast.success('Image Adress Updated')
                 }
             )
         contract &&
@@ -61,7 +62,7 @@ export const DappContainer: React.FC<{ children: React.ReactNode }> = ({
                     dispatch(
                         updateAddressNFT({ id: id.toNumber(), address: to })
                     )
-                    // @todo ajouter un toast
+                    toast.success('NFT\'s Adress Updated')
                 }
             )
     }, [contract, dispatch])
