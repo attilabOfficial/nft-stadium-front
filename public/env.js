@@ -10,7 +10,7 @@ window.env = {
   "TERM_PROGRAM_VERSION": "1.67.2",
   "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
   "COLOR": "1",
-  "TERM_SESSION_ID": "1A1E4B06-CB64-42F2-B31C-6059C17A6B87",
+  "TERM_SESSION_ID": "B3E753C3-3078-4483-8B87-C8D3C1CABA8E",
   "npm_config_noproxy": "",
   "npm_config_local_prefix": "/Users/attilab/Desktop/stage/nft-stadium-front",
   "ZSH": "/Users/attilab/.oh-my-zsh",
@@ -53,9 +53,5 @@ window.env = {
   "VSCODE_GIT_ASKPASS_NODE": "/Applications/Visual Studio Code.app/Contents/MacOS/Electron",
   "npm_node_execpath": "/usr/local/bin/node",
   "npm_config_prefix": "/usr/local",
-  "COLORTERM": "truecolor",
-  "MOCK": "false",
-  "NBR_COL": "25",
-  "NBR_ROW": "15",
-  "HARDHAT_NETWORK_ID": "80001"
+  "COLORTERM": "truecolor"
 };

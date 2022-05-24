@@ -20,6 +20,14 @@ declare global {
     }
 }
 
+export const ErrorComponent = ({message}: {message: string}) => {
+    return (
+      <span >
+        <FormattedMessage id={message} />
+      </span>
+    )
+}
+
 export const Web3Context = createContext<{
     selectedAddress: string
     contract?: Contract
