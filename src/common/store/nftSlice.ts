@@ -155,7 +155,7 @@ export const nftSlice = createSlice({
             state.transactionLoading = 'idle'
         })
         builder.addCase(mint.rejected, (state) => {
-            toast.error(mintError) //********* */
+            toast.error(mintError)
             state.transactionLoading = 'idle'
         })
         builder.addCase(changeImg.pending, (state) => {
@@ -167,7 +167,7 @@ export const nftSlice = createSlice({
             state.transactionLoading = 'idle'
         })
         builder.addCase(changeImg.rejected, (state) => {
-            toast.error(changeImageError) //*********** */
+            toast.error(changeImageError)
             state.transactionLoading = 'idle'
         })
     },
