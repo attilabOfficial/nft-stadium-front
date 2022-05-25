@@ -15,6 +15,11 @@ const NFTDetail = styled.div`
     img {
         max-width: 15rem;
     }
+
+    a {
+        color: white;
+
+    }
 `
 
 export const NFTDetailComponent = ({
@@ -42,6 +47,11 @@ export const NFTDetailComponent = ({
                     />
                     </h3>
                     <p>{currentNFT.owner}</p>
+                    <h4>
+                        <a href={`https://testnets.opensea.io/assets/mumbai/0xB11F884C188D2d142c11797B2f855F0f1Af97FA0/${currentNFT.id}`} target='_blank' rel="noreferrer">
+                            link
+                        </a>
+                    </h4>
                     {currentNFT.img !== '' ? (
                         <img src={currentNFT.img} alt="NFT" />
                     ) : (
@@ -51,11 +61,11 @@ export const NFTDetailComponent = ({
                             />
                         </p>
                     )}
-                    <h5>
+                    <h3>
                         <FormattedMessage 
                             id='app.NFTDetail.imageChange'
                         />
-                    </h5>
+                    </h3>
                     <input type="url" value={imgUrl} onChange={changeImg} />
                     <button
                         onClick={() => {
