@@ -29,7 +29,6 @@ const App = () => {
                     <Route path="/" element={<StadiumContainer />} />
                     <Route path="/about" element={<About />} />
                 </Routes>
-                {/* <StadiumContainer /> */}
                 {loading === 'loading' && <Loading />}
                 <RightPanel>
                     <NFTDetailContainer />
