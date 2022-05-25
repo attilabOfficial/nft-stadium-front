@@ -9,6 +9,7 @@ const GlobalStyleReset = createGlobalStyle`
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    font-family: 'Open Sans', sans-serif;
   }
 `
 

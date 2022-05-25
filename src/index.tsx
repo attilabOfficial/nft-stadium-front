@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals'
 import { IntlProvider } from 'react-intl'
 import english from './languages/english.json'
 import french from './languages/french.json'
+import { BrowserRouter } from 'react-router-dom'
 
 const local = navigator.language;
 let lang;
@@ -24,7 +25,9 @@ if (rootNode) {
         <React.StrictMode>
             <Provider store={store}>
                 <IntlProvider locale={local} messages={lang} >
-                    <App />
+                    <BrowserRouter>
+                        <App />
+                    </BrowserRouter>
                 </IntlProvider>
             </Provider>
         </React.StrictMode>
