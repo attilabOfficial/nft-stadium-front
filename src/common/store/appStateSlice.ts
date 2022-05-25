@@ -1,7 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../../store'
 import { mapSelector } from './nftSlice'
 
+interface IAppState {
+    leftPanelIsOpen: boolean
+    rightPanelIsOepn: boolean
+    curNft: number | undefined
+}
 const initialState = {
     leftPanelIsOpen: false,
     rightPanelIsOepn: false,
@@ -12,19 +17,19 @@ export const appStateSlice = createSlice({
     name: 'appState',
     initialState,
     reducers: {
-        openLeftPanel: (state) => {
+        openLeftPanel: (state: IAppState) => {
             state.leftPanelIsOpen = true
         },
-        closeLeftPanel: (state) => {
+        closeLeftPanel: (state: IAppState) => {
             state.leftPanelIsOpen = false
         },
-        openRightPanel: (state) => {
+        openRightPanel: (state: IAppState) => {
             state.rightPanelIsOepn = true
         },
-        closeRightPanel: (state) => {
+        closeRightPanel: (state: IAppState) => {
             state.rightPanelIsOepn = false
         },
-        setCurrentNFT: (state, action) => {
+        setCurrentNFT: (state: IAppState, action: PayloadAction<number>) => {
             state.curNft = action.payload
         },
     },
