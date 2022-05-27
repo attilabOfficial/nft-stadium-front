@@ -8,7 +8,9 @@ import {
     openLeftPanel,
 } from '../../../common/store/appStateSlice'
 import { RootState } from '../../../store'
-import wallet from '../../images/wallet_icon.svg'
+import menu from '../../images/list_icon.svg'
+
+import { FormattedMessage } from 'react-intl'
 
 const HeaderContainer = styled.div`
     background-color: #ca180b;
@@ -66,9 +68,14 @@ const Header = () => {
     return (
         <HeaderContainer>
             <Menu onClick={clickOnMenu}>
-                <img src={wallet} alt="wallet" />
+                <img src={menu} alt="wallet" />
             </Menu>
-            <Title>NFT Stade Rennais</Title>
+            <Title>
+                <FormattedMessage 
+                    id='app.header'
+                />
+                
+            </Title>
         </HeaderContainer>
     )
 }

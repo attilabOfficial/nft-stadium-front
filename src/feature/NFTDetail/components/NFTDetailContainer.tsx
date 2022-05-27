@@ -9,6 +9,8 @@ import { AppDispatch, RootState } from '../../../store'
 import styled from 'styled-components'
 import { curNftSelector } from '../../../common/store/appStateSlice';
 
+import { FormattedMessage } from 'react-intl'
+
 const TransLoading = styled.div`
     background-color: black;
     border-radius: 5px;
@@ -73,7 +75,11 @@ export const NFTDetailContainer = () => {
     if (loading === 'loading') {
         return (
             <TransLoading>
-                <h2>Transaction en cours</h2>
+                <h2>
+                    <FormattedMessage 
+                        id='app.NFTDetail.transaction'
+                    />
+                </h2>
                 <div></div>
             </TransLoading>
         )

@@ -12,6 +12,8 @@ import { NFTDetailContainer } from './feature/NFTDetail/components/NFTDetailCont
 import { NFTByOwnerContainer } from './feature/NFTByOwner/components/NFTByOwnerContainer'
 import { RootState } from './store'
 import { Toaster } from 'react-hot-toast'
+import { Routes, Route } from 'react-router-dom';
+import { About } from './common/components/templates/About';
 
 const App = () => {
     const loading = useSelector((state: RootState) =>
@@ -23,7 +25,10 @@ const App = () => {
             <GlobalStyleReset />
             <DappContainer>
                 <Header />
-                <StadiumContainer />
+                <Routes>
+                    <Route path="/" element={<StadiumContainer />} />
+                    <Route path="/about" element={<About />} />
+                </Routes>
                 {loading === 'loading' && <Loading />}
                 <RightPanel>
                     <NFTDetailContainer />
