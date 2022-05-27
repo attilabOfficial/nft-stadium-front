@@ -12,11 +12,20 @@ import { useEffect } from 'react'
 import { HARDHAT_NETWORK_ID, MOCK } from '../../../const'
 import { providers } from 'ethers'
 import toast from 'react-hot-toast'
+import { FormattedMessage } from 'react-intl';
 
 declare global {
     interface Window {
         ethereum?: providers.ExternalProvider
     }
+}
+
+export const ErrorComponent = ({message}: {message: string}) => {
+    return (
+      <span >
+        <FormattedMessage id={message} />
+      </span>
+    )
 }
 
 export const Web3Context = createContext<{
@@ -49,7 +58,11 @@ export const DappContainer: React.FC<{ children: React.ReactNode }> = ({
                     dispatch(
                         updateAddressImg({ id: _imgId.toNumber(), url: _url })
                     )
-                    toast.success('Image Adress Updated')
+                    toast.success(
+                        <FormattedMessage 
+                            id='app.toaster.imageAdress'
+                        />
+                    )
                 }
             )
         contract &&
@@ -62,7 +75,11 @@ export const DappContainer: React.FC<{ children: React.ReactNode }> = ({
                     dispatch(
                         updateAddressNFT({ id: id.toNumber(), address: to })
                     )
-                    toast.success('NFT\'s Adress Updated')
+                    toast.success(
+                        <FormattedMessage 
+                            id='app.toaster.NFTAdress'
+                        />
+                    )
                 }
             )
     }, [contract, dispatch])

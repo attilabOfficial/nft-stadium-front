@@ -10,6 +10,8 @@ import {
 import { RootState } from '../../../store'
 import wallet from '../../images/wallet_icon.svg'
 
+import { FormattedMessage } from 'react-intl'
+
 const HeaderContainer = styled.div`
     background-color: #ca180b;
     font-family: 'Open Sans', sans-serif;
@@ -68,7 +70,12 @@ const Header = () => {
             <Menu onClick={clickOnMenu}>
                 <img src={wallet} alt="wallet" />
             </Menu>
-            <Title>NFT Stade Rennais</Title>
+            <Title>
+                <FormattedMessage 
+                    id='app.header'
+                />
+                
+            </Title>
         </HeaderContainer>
     )
 }

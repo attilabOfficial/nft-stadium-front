@@ -5,6 +5,8 @@ import { useState } from 'react'
 import { ZERO_ADDRESS } from '../../../const'
 import { INFT } from '../../../common/store/nftSlice'
 
+import { FormattedMessage } from 'react-intl'
+
 const NFTDetail = styled.div`
     text-align: center;
     width: 100%;
@@ -34,14 +36,26 @@ export const NFTDetailComponent = ({
             <h2>#{currentNFT.id}</h2>
             {currentNFT && currentNFT.owner !== ZERO_ADDRESS ? (
                 <>
-                    <h3>Owner :</h3>
+                    <h3>
+                    <FormattedMessage 
+                        id='app.NFTDetail.owner'
+                    />
+                    </h3>
                     <p>{currentNFT.owner}</p>
                     {currentNFT.img !== '' ? (
                         <img src={currentNFT.img} alt="NFT" />
                     ) : (
-                        <p>No picture yet</p>
+                        <p>
+                            <FormattedMessage 
+                                id='app.NFTDetail.noImage'
+                            />
+                        </p>
                     )}
-                    <h5>Change Image</h5>
+                    <h5>
+                        <FormattedMessage 
+                            id='app.NFTDetail.imageChange'
+                        />
+                    </h5>
                     <input type="url" value={imgUrl} onChange={changeImg} />
                     <button
                         onClick={() => {

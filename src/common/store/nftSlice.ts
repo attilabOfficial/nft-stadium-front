@@ -5,6 +5,7 @@ import { Contract, utils } from 'ethers'
 import { RootState } from '../../store'
 
 import toast from 'react-hot-toast'
+import { ErrorComponent } from '../components/web3/DappContainer'
 
 export interface INFT {
     id: number
@@ -24,6 +25,11 @@ const initialState: INFTSlice = {
     nftList: [],
     transactionLoading: 'idle',
 }
+
+const mintError = ErrorComponent({ message: 'app.toaster.mintFailed' })
+const changeImageError = ErrorComponent({
+    message: 'app.toaster.changeImageFailed',
+})
 
 const generateMockMap = () => {
     const data: Array<Array<string>> = [[], [], []]
@@ -155,7 +161,7 @@ export const nftSlice = createSlice({
             state.transactionLoading = 'idle'
         })
         builder.addCase(mint.rejected, (state) => {
-            toast.error('Mint Failed')
+            toast.error(mintError)
             state.transactionLoading = 'idle'
         })
         builder.addCase(changeImg.pending, (state) => {
@@ -167,7 +173,7 @@ export const nftSlice = createSlice({
             state.transactionLoading = 'idle'
         })
         builder.addCase(changeImg.rejected, (state) => {
-            toast.error('Change Image Failed')
+            toast.error(changeImageError)
             state.transactionLoading = 'idle'
         })
     },

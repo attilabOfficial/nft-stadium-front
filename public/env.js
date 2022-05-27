@@ -54,9 +54,5 @@ window.env = {
   "SECURITYSESSIONID": "186b2",
   "npm_node_execpath": "/usr/local/bin/node",
   "npm_config_prefix": "/usr/local",
-  "COLORTERM": "truecolor",
-  "MOCK": "false",
-  "NBR_COL": "25",
-  "NBR_ROW": "15",
-  "HARDHAT_NETWORK_ID": "80001"
+  "COLORTERM": "truecolor"
 };
