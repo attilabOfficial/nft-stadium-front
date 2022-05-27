@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 
 import { MOCK, TOTAL_CELLS } from '../../const'
 import { Contract, utils } from 'ethers'
@@ -110,12 +110,18 @@ export const nftSlice = createSlice({
     name: 'nftState',
     initialState,
     reducers: {
-        updateAddressNFT: (state, action) => {
+        updateAddressNFT: (
+            state: INFTSlice,
+            action: PayloadAction<{ id: number; address: string }>
+        ) => {
             const { id, address } = action.payload
             const nftIndex = state.nftList.findIndex((elem) => elem.id === id)
             state.nftList[nftIndex] = { id, owner: address, img: '', link: '' }
         },
-        updateAddressImg: (state, action) => {
+        updateAddressImg: (
+            state: INFTSlice,
+            action: PayloadAction<{ id: number; url: string }>
+        ) => {
             const { id, url } = action.payload
             const nftIndex = state.nftList.findIndex((elem) => elem.id === id)
             state.nftList[nftIndex].img = url
