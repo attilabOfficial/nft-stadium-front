@@ -5,12 +5,15 @@ import { NFTOwnLi } from './NFTOwnLi'
 import { INFT } from '../../../common/store/nftSlice'
 
 import { FormattedMessage } from 'react-intl'
+import { Link } from 'react-router-dom'
 
 const NFTList = styled.div`
   margin-top 1rem;
   text-align: center;
   width: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
   ul {
     list-style-type: none;
@@ -44,6 +47,8 @@ export const NFTByOwnerComponent = ({
                     <NFTOwnLi key={nft.id} nft={nft} />
                 ))}
             </ul>
+            <Link to='/about'>About</Link>
+            <Link to='/'>Stadium</Link>
         </NFTList>
     )
 }
