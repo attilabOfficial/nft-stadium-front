@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { nftSlice } from './common/store/nftSlice'
 import { appStateSlice } from './common/store/appStateSlice'
+import { cmsSlice } from './common/store/cmsSlice'
 
 export const store = configureStore({
     reducer: {
         nfts: nftSlice.reducer,
         appState: appStateSlice.reducer,
+        cmsState: cmsSlice.reducer,
     },
 })
 
