@@ -13,7 +13,7 @@ import { NFTByOwnerContainer } from './feature/NFTByOwner/components/NFTByOwnerC
 import { RootState } from './store'
 import { Toaster } from 'react-hot-toast'
 import { Routes, Route } from 'react-router-dom';
-import { AboutContainer } from './common/components/templates/AboutContainer';
+import { CMSContainer } from './feature/cms/components/CMSContainer';
 
 const App = () => {
     const loading = useSelector((state: RootState) =>
@@ -27,7 +27,7 @@ const App = () => {
                 <Header />
                 <Routes>
                     <Route path="/" element={<StadiumContainer />} />
-                    <Route path="/about" element={<AboutContainer />} />
+                    <Route path="/about" element={<CMSContainer contentId='about-us'/>} />
                 </Routes>
                 {loading === 'loading' && <Loading />}
                 <RightPanel>
