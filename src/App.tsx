@@ -13,7 +13,7 @@ import { NFTByOwnerContainer } from './feature/NFTByOwner/components/NFTByOwnerC
 import { RootState } from './store'
 import { Toaster } from 'react-hot-toast'
 import { Routes, Route } from 'react-router-dom';
-import { About } from './common/components/templates/About';
+import { AboutContainer } from './common/components/templates/AboutContainer';
 
 const App = () => {
     const loading = useSelector((state: RootState) =>
@@ -27,7 +27,7 @@ const App = () => {
                 <Header />
                 <Routes>
                     <Route path="/" element={<StadiumContainer />} />
-                    <Route path="/about" element={<About />} />
+                    <Route path="/about" element={<AboutContainer />} />
                 </Routes>
                 {loading === 'loading' && <Loading />}
                 <RightPanel>
