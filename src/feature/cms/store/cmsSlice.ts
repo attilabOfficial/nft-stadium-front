@@ -15,13 +15,13 @@ export interface IContent {
     meta: object
 }
 interface ICmsState {
-    content?: {
+    content: {
         [id: string]: IContent
     }
 }
 
 const initialState: ICmsState = {
-    content: undefined,
+    content: {},
 }
 
 export const getContent = createAsyncThunk(
@@ -29,7 +29,7 @@ export const getContent = createAsyncThunk(
     async (articleId: string) => {
         try {
             const response = await axios.get(
-                `http://localhost:1337/api/${articleId}`
+                `https://agile-bayou-23095.herokuapp.com/api/${articleId}`
             )
             const data = response.data
             return { articleId, data }
@@ -48,7 +48,7 @@ export const cmsSlice = createSlice({
             console.log('loading')
         })
         builder.addCase(getContent.fulfilled, (state, action) => {
-            if (action.payload && state.content) {
+            if (action.payload) {
                 const { articleId, data } = action.payload
                 state.content[articleId] = data
             }
