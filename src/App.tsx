@@ -14,11 +14,17 @@ import { RootState } from './store'
 import { Toaster } from 'react-hot-toast'
 import { Routes, Route } from 'react-router-dom';
 import { CMSContainer } from './feature/cms/components/CMSContainer';
+import Page404 from './common/components/templates/Page404'
+import { isContentLoadingSelector } from './feature/cms/store/cmsSlice';
 
 const App = () => {
-    const loading = useSelector((state: RootState) =>
-        isMapLoadingSelector(state)
-    )
+    const loading = useSelector((state: RootState) => {
+        if (isMapLoadingSelector(state) === 'loading' || isContentLoadingSelector(state) === 'loading') {
+            return 'loading'
+        } else {
+            return 'idle'
+        }
+    })
 
     return (
         <>
@@ -28,6 +34,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<StadiumContainer />} />
                     <Route path="/about" element={<CMSContainer contentId='about-us'/>} />
+                    <Route path="*" element={<Page404 />} />
                 </Routes>
                 {loading === 'loading' && <Loading />}
                 <RightPanel>
