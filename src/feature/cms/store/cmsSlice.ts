@@ -18,10 +18,12 @@ interface ICmsState {
     content: {
         [id: string]: IContent
     }
+    loading: string
 }
 
 const initialState: ICmsState = {
     content: {},
+    loading: 'idle',
 }
 
 export const getContent = createAsyncThunk(
@@ -45,19 +47,26 @@ export const cmsSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getContent.pending, (state) => {
-            console.log('loading')
+            if (state.loading === 'idle') {
+                state.loading = 'loading'
+            }
         })
         builder.addCase(getContent.fulfilled, (state, action) => {
             if (action.payload) {
                 const { articleId, data } = action.payload
                 state.content[articleId] = data
             }
+            state.loading = 'idle'
         })
         builder.addCase(getContent.rejected, (state) => {
+            state.loading = 'idle'
             console.log('rejected')
         })
     },
 })
+
+export const isContentLoadingSelector = (state: RootState) =>
+    state.cmsState.loading
 
 export const cmsSelector = (state: RootState, articleId: string) =>
     state.cmsState &&

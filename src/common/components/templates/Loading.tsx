@@ -6,6 +6,10 @@ const Loader = styled.div`
     background-color: #ca180b;
     width: 100vw;
     height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 5555;
 
     img {
         display: block;
