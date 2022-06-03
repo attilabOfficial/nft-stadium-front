@@ -8,47 +8,72 @@ import {
     openLeftPanel,
 } from '../../../common/store/appStateSlice'
 import { RootState } from '../../../store'
-import menu from '../../images/list_icon.svg'
-
-import { FormattedMessage } from 'react-intl'
+import about from '../../images/about.svg'
+import wallet from '../../images/wallet.svg'
 
 const HeaderContainer = styled.div`
-    background-color: #ca180b;
+    background-color: #FFFFFF;
     font-family: 'Open Sans', sans-serif;
+    box-shadow: 0px 12px 48px -4px rgba(0, 0, 0, 0.06);
+    border-radius: 0px 0px 24px 24px;
     position: fixed;
-    left: 0;
     top: 0;
+    left: 50;
+    margin: 0 2.5vw;
     z-index: 9999;
-    width: 100vw;
-    max-width: 100vw;
+    width: 95vw;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: space-between;
 `
 
-const Menu = styled.button`
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    width: 4rem;
-    height: 3rem;
-    margin: 0 2rem;
+const Wallet = styled.div`
+    text-transform: uppercase;
+    font-size: 16px;
+    margin-left: 48px;
+    color: #212936;
     display: flex;
-    justify-content: center;
-    align-items: center;
 
     img {
-        width: 35px;
+        margin-right: 8px;
+    }
+
+    :hover {
+        cursor: default;
     }
 `
 
-const Title = styled.h1`
-    font-size: 4rem;
-    color: white;
+const Title = styled.div`
     text-align: center;
-    padding: 1rem 0;
-    margin: 0;
+
+    h1 {
+        color: #212936;
+        font-size: 24px;
+        margin: 20px 0 8px 0;
+    }
+
+    h2 {
+        text-transform: uppercase;
+        color: #6C727F;
+        font-size: 16px;
+        margin: 8px 0 20px 0;
+    }
+`
+
+const About = styled.a`
+    text-transform: uppercase;
+    font-size: 16px;
+    margin-right: 48px;
+    color: #212936;
+    display: flex;
+
+    img {
+        margin-right: 8px;
+    }
+
+    :hover {
+        cursor: default;
+    }
 `
 
 const Header = () => {
@@ -67,15 +92,18 @@ const Header = () => {
 
     return (
         <HeaderContainer>
-            <Menu onClick={clickOnMenu}>
-                <img src={menu} alt="wallet" />
-            </Menu>
+            <Wallet onClick={clickOnMenu}>
+                <img src={wallet} alt="" />
+                <p>My Wallet</p>
+            </Wallet>
             <Title>
-                <FormattedMessage 
-                    id='app.header'
-                />
-                
+                <h1>NFT Stadium</h1>
+                <h2>Roazhon Park - Rennes (FR)</h2>
             </Title>
+            <About>
+                <img src={about} alt="" />
+                <p>About</p>
+            </About>
         </HeaderContainer>
     )
 }

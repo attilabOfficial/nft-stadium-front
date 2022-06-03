@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
-import close from '../../images/x_icon.svg'
+import close from '../../images/close.svg'
 import {
     isRightPanelOpenSelector,
     closeRightPanel,
@@ -11,23 +11,34 @@ import {
 import { RootState } from '../../../store'
 
 const Panel = styled.div`
-    background-color: #ca180b;
+    background-color: #FFFFFF;
     font-family: 'Open Sans', sans-serif;
-    color: white;
+    color: #212936;
     position: fixed;
-    right: 0;
-    bottom: 0;
+    right: 2.5vw;
+    top: 151px;
     z-index: 9999;
-    min-width: 20vw;
-    min-height: calc(100vh - 150px);
-    max-width: 20vw;
-    max-height: calc(100vh - 150px);
-    padding: 1rem;
-    border-radius: 5px 0 0 0;
+    min-width: 396px;
+    min-height: 536px;
+    max-width: 396px;
+    max-height: 536px;
+    padding: 48px;
+    border-radius: 12px;
 `
 
-const ClosePanel = styled.img`
-    width: 30px;
+const ClosePanel = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 48px;
+
+    p {
+        margin-right: 10px;
+    }
+
+    :hover {
+        cursor: default;
+    }
 `
 
 const RightPanel = ({ children }: { children: React.ReactNode }) => {
@@ -44,11 +55,12 @@ const RightPanel = ({ children }: { children: React.ReactNode }) => {
         <>
             {rightPanelIsOpen && (
                 <Panel>
-                    <ClosePanel
-                        src={close}
-                        alt="close"
-                        onClick={clickOnClose}
-                    />
+                    <div>
+                        <ClosePanel onClick={clickOnClose}>
+                            <p>CLOSE</p>
+                            <img src={close} alt="" />
+                        </ClosePanel>
+                    </div>
                     {children}
                 </Panel>
             )}

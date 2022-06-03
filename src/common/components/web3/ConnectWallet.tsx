@@ -2,23 +2,60 @@ import React from 'react'
 
 import { NetworkErrorMessage } from './NetworkErrorMessage'
 import styled from 'styled-components'
+import connect from '../../images/connect.svg'
 
 const ConnectWalletStyle = styled.div`
-    padding: 150px 0;
-    background-color: black;
+    padding: 122px 0;
+    background-color: #F3F4F6;
     font-family: 'Open Sans', sans-serif;
-    color: white;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
+const Welcome = styled.div`
+    p {
+        text-transform: uppercase;
+        color: #212936;
+        font-size: 16px;
+        margin-bottom: 48px;
+    }
+
+    h1 {
+        color: #212936;
+        font-size: 24px;
+        margin: 8px;
+    }
+
+    h2 {
+        text-transform: uppercase;
+        color: #6C727F;
+        font-size: 16px;
+        margin: 8px 0 48px 0;
+    }
+`
+
+const Connection = styled.div`
+    background-color: #FFFFFF;
+    width: 454px;
+    height: auto;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 48px;
+
+    p {
+        font-size: 16px;
+    }
 
     button {
-        background-color: #ca180b;
+        background-color: #212936;
         color: white;
+        font-size: 14px;
         border: none;
-        border-radius: 5px;
-        margin: 1rem;
-        padding: 0.5rem;
-        width: 7rem;
-        height: 4rem;
+        border-radius: 4px;
+        padding: 9px 16px;
+        margin: 48px;
     }
 `
 
@@ -33,8 +70,8 @@ export const ConnectWallet = ({
 }) => {
     return (
         <ConnectWalletStyle>
-            <div className="row justify-content-md-center">
-                <div className="col-12 text-center">
+            <div>
+                <div>
                     {networkError && (
                         <NetworkErrorMessage
                             message={networkError}
@@ -42,16 +79,22 @@ export const ConnectWallet = ({
                         />
                     )}
                 </div>
-                <div className="col-6 p-4 text-center">
-                    <p>Please connect to your wallet.</p>
+                <Welcome>
+                    <p>Welcome to</p>
+                    <h1>NFT Stadium</h1>
+                    <h2>Roazhon Park - Rennes (FR)</h2>
+                </Welcome>
+                <Connection>
+                    <img src={connect} alt="" />
+                    <p>Before accessing, please <b>connect your wallet</b></p>
                     <button
-                        className="btn btn-warning"
                         type="button"
                         onClick={connectWallet}
                     >
-                        Connect Wallet
+                        Connect my wallet
                     </button>
-                </div>
+                </Connection>
+                
             </div>
         </ConnectWalletStyle>
     )

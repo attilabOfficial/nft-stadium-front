@@ -1,25 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
 import AllMap from './AllMap'
-import ZoomButton from './ZoomButton'
+import ZoomInButton from './ZoomInButton'
+import ZoomOutButton from './ZoomOutButton'
 import { INFT } from '../../../common/store/nftSlice'
 
 const Container = styled.div`
+    margin-top: 102px;
     width: 100vw;
     text-align: center;
-    background-color: black;
-    margin-top: 119.5px;
+    background-color: #F3F4F6;
 `
 
 const ZoomButtonsContainer = styled.div`
     position: fixed;
-    bottom: 3rem;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 2.5vw;
+    right: 2.5vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
 `
 
 export const StadiumComponent = ({
@@ -40,8 +40,8 @@ export const StadiumComponent = ({
                     <AllMap mapInfo={mapInfo} />
                 </Container>
                 <ZoomButtonsContainer>
-                    <ZoomButton buttonLabel="zoom_in" fctOnClick={zoomIn} />
-                    <ZoomButton buttonLabel="zoom_out" fctOnClick={zoomOut} />
+                    <ZoomInButton buttonLabel="zoom_in" fctOnClick={zoomIn} />
+                    <ZoomOutButton buttonLabel="zoom_out" fctOnClick={zoomOut} />
                 </ZoomButtonsContainer>
             </div>
         )

@@ -13,7 +13,7 @@ interface CellProps {
 }
 
 const CellContainer = styled.div<CellProps>`
-    background-color: rgba(255, 255, 0, 0.1);
+    background-color: rgba(171, 226, 186, 0.3);
     aspect-ratio: 1;
     display: grid;
     place-items: center;
@@ -33,7 +33,7 @@ const CellContainer = styled.div<CellProps>`
 `
 
 const CellMint = styled.div`
-    background-color: rgba(255, 255, 0, 0.4);
+    background-color: rgba(171, 226, 186, 0.6);
     min-width: 100%;
     min-height: 100%;
     grid-area: 1 / 1 / 2 / 2;

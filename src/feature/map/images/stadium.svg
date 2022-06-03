@@ -1,0 +1,19 @@
+<svg width="693" height="494" viewBox="0 0 693 494" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M534.5 23.5H600C632.861 23.5 659.5 50.1391 659.5 83V138.5H534.5V23.5Z" fill="#F9FAFB" stroke="#D2D5DA"/>
+<path d="M158.5 470.5L93 470.5C60.1391 470.5 33.5 443.861 33.5 411L33.5 355.5L158.5 355.5L158.5 470.5Z" fill="#F9FAFB" stroke="#D2D5DA"/>
+<path d="M649.5 355.5L649.5 421C649.5 453.861 622.861 480.5 590 480.5L534.5 480.5L534.5 355.5L649.5 355.5Z" fill="#F9FAFB" stroke="#D2D5DA"/>
+<path d="M43.5 138.5L43.5 73C43.5 40.1391 70.1391 13.5 103 13.5L158.5 13.5L158.5 138.5L43.5 138.5Z" fill="#F9FAFB" stroke="#D2D5DA"/>
+<path d="M534.5 64.5H575C596.815 64.5 614.5 82.1848 614.5 104V138.5H534.5V64.5Z" fill="white" stroke="#D2D5DA"/>
+<path d="M158.5 429.5L118 429.5C96.1848 429.5 78.5 411.815 78.5 390L78.5 355.5L158.5 355.5L158.5 429.5Z" fill="white" stroke="#D2D5DA"/>
+<path d="M608.5 355.5L608.5 396C608.5 417.815 590.815 435.5 569 435.5L534.5 435.5L534.5 355.5L608.5 355.5Z" fill="white" stroke="#D2D5DA"/>
+<path d="M84.5 138.5L84.5 98C84.5 76.1848 102.185 58.5 124 58.5L158.5 58.5L158.5 138.5L84.5 138.5Z" fill="white" stroke="#D2D5DA"/>
+<rect x="118.5" y="98.5" width="456" height="297" rx="19.5" fill="white" stroke="#D2D5DA"/>
+<rect x="564.5" y="138.5" width="39" height="217" fill="#F9FAFB" stroke="#D2D5DA"/>
+<path d="M603.5 138.5H683C688.247 138.5 692.5 142.753 692.5 148V346C692.5 351.247 688.247 355.5 683 355.5H603.5V138.5Z" fill="white" stroke="#D2D5DA"/>
+<rect x="158.5" y="69.5" width="376" height="39" fill="#F9FAFB" stroke="#D2D5DA"/>
+<rect x="534.5" y="424.5" width="376" height="39" transform="rotate(-180 534.5 424.5)" fill="#F9FAFB" stroke="#D2D5DA"/>
+<path d="M158.5 10C158.5 4.75329 162.753 0.5 168 0.5H525C530.247 0.5 534.5 4.7533 534.5 10V69.5H158.5V10Z" fill="white" stroke="#D2D5DA"/>
+<path d="M534.5 484C534.5 489.247 530.247 493.5 525 493.5L168 493.5C162.753 493.5 158.5 489.247 158.5 484L158.5 424.5L534.5 424.5L534.5 484Z" fill="white" stroke="#D2D5DA"/>
+<rect x="128.5" y="355.5" width="39" height="217" transform="rotate(-180 128.5 355.5)" fill="#F9FAFB" stroke="#D2D5DA"/>
+<path d="M89.5 355.5L10 355.5C4.7533 355.5 0.5 351.247 0.500001 346L0.500018 148C0.500019 142.753 4.75331 138.5 10 138.5L89.5 138.5L89.5 355.5Z" fill="white" stroke="#D2D5DA"/>
+</svg>
