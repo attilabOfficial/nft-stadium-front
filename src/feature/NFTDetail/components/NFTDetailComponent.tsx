@@ -1,11 +1,13 @@
 import React from 'react'
 
 import styled from 'styled-components'
-import { useState } from 'react'
 import { ZERO_ADDRESS } from '../../../const'
 import { INFT } from '../../../common/store/nftSlice'
-
 import { FormattedMessage } from 'react-intl'
+
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const NFTDetail = styled.div`
     text-align: center;
@@ -22,6 +24,14 @@ const NFTDetail = styled.div`
     }
 `
 
+interface IFormInput {
+    uploadImg: string
+}
+
+const uploadImgSchema = yup.object().shape({
+    uploadImg: yup.string().url().required(),
+})
+
 export const NFTDetailComponent = ({
     currentNFT,
     changeImgFct,
@@ -31,11 +41,15 @@ export const NFTDetailComponent = ({
     changeImgFct: (newImg: string) => void
     mintFct: () => void
 }) => {
-    const [imgUrl, setImgUrl] = useState('')
+    const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>({
+        resolver: yupResolver(uploadImgSchema),
+      });
 
-    const changeImg = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setImgUrl(event.target.value)
+    const onSubmit = (data: IFormInput) => {
+        console.log(data);
+        changeImgFct(data.uploadImg)
     }
+
     return (
         <NFTDetail>
             <h2>#{currentNFT.id}</h2>
@@ -66,14 +80,11 @@ export const NFTDetailComponent = ({
                             id='app.NFTDetail.imageChange'
                         />
                     </h3>
-                    <input type="url" value={imgUrl} onChange={changeImg} />
-                    <button
-                        onClick={() => {
-                            changeImgFct(imgUrl)
-                        }}
-                    >
-                        Go!
-                    </button>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <input {...register("uploadImg")} type="string" name='uploadImg' />
+                        <p> {errors.uploadImg?.message} </p>
+                        <input type="submit" id="submit" />
+                    </form>
                 </>
             ) : (
                 <>
