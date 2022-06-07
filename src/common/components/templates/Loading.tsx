@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import logo from '../../images/Logo_Stade_Rennais.png'
+import ball from '../../images/ballon.svg'
 
 const Loader = styled.div`
-    background-color: #ca180b;
+    background-color: #F3F4F6;
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -24,10 +24,10 @@ const Loader = styled.div`
 
     @keyframes spin {
         0% {
-            transform: rotateY(0deg);
+            transform: rotateZ(0deg);
         }
         100% {
-            transform: rotateY(360deg);
+            transform: rotateZ(360deg);
         }
     }
 `
@@ -35,7 +35,7 @@ const Loader = styled.div`
 export const Loading = () => {
     return (
         <Loader>
-            <img src={logo} alt="logo" />
+            <img src={ball} alt="logo" />
         </Loader>
     )
 }

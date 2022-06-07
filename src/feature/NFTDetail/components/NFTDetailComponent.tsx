@@ -49,7 +49,7 @@ const NFTCard = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 12px;
+    padding: 24px 12px 12px 12px;
     text-align: center;
     margin-bottom: 24px;
 

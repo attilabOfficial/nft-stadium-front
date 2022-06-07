@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import GlobalStyleReset from './common/components/templates/GlobalStyleReset'
 import Header from './common/components/templates/Header'
-import LeftPanel from './common/components/templates/LeftPanel'
+import LeftPanel from './common/components/templates/HeaderPanel'
 import { Loading } from './common/components/templates/Loading'
 import RightPanel from './common/components/templates/RightPanel'
 import { DappContainer } from './common/components/web3/DappContainer'
@@ -40,10 +40,6 @@ const App = () => {
                 <RightPanel>
                     <NFTDetailContainer />
                 </RightPanel>
-                <LeftPanel>
-                    {' '}
-                    <NFTByOwnerContainer />
-                </LeftPanel>
             </DappContainer>
             <Toaster
                 position="top-right"

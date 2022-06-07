@@ -1,15 +1,17 @@
 import React from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import {
-    closeLeftPanel,
-    isLeftPanelOpenSelector,
-    openLeftPanel,
+    closeHeaderPanel,
+    isHeaderPanelOpenSelector,
+    openHeaderPanel,
 } from '../../../common/store/appStateSlice'
 import { RootState } from '../../../store'
-import about from '../../images/about.svg'
-import wallet from '../../images/wallet.svg'
+import aboutIcon from '../../images/about.svg'
+import walletIcon from '../../images/wallet.svg'
+import HeaderPanel from './HeaderPanel';
 
 const HeaderContainer = styled.div`
     background-color: #FFFFFF;
@@ -22,6 +24,9 @@ const HeaderContainer = styled.div`
     margin: 0 2.5vw;
     z-index: 9999;
     width: 95vw;
+`
+
+const HeaderSection = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -60,12 +65,13 @@ const Title = styled.div`
     }
 `
 
-const About = styled.a`
+const About = styled(Link)`
     text-transform: uppercase;
     font-size: 16px;
     margin-right: 48px;
     color: #212936;
     display: flex;
+    text-decoration: none;
 
     img {
         margin-right: 8px;
@@ -78,32 +84,37 @@ const About = styled.a`
 
 const Header = () => {
     const dispatch = useDispatch()
-    const leftPanelIsOpen = useSelector((state: RootState) =>
-        isLeftPanelOpenSelector(state)
-    )
+    // *********
+    // *********
+    const { headerPanelOpen } = useSelector((state: RootState) => ({
+        headerPanelOpen: isHeaderPanelOpenSelector(state),
+    }))
 
-    const clickOnMenu = () => {
-        if (leftPanelIsOpen === false) {
-            dispatch(openLeftPanel())
+    const clickOnWallet = () => {
+        if (headerPanelOpen === false) {
+            dispatch(openHeaderPanel())
         } else {
-            dispatch(closeLeftPanel())
-        }
+            dispatch(closeHeaderPanel())
+        }    
     }
 
     return (
         <HeaderContainer>
-            <Wallet onClick={clickOnMenu}>
-                <img src={wallet} alt="" />
-                <p>My Wallet</p>
-            </Wallet>
-            <Title>
-                <h1>NFT Stadium</h1>
-                <h2>Roazhon Park - Rennes (FR)</h2>
-            </Title>
-            <About>
-                <img src={about} alt="" />
-                <p>About</p>
-            </About>
+            <HeaderSection>
+                <Wallet onClick={clickOnWallet}>
+                    <img src={walletIcon} alt="" />
+                    <p>My Wallet</p>
+                </Wallet>
+                <Title>
+                    <h1>NFT Stadium</h1>
+                    <h2>Roazhon Park - Rennes (FR)</h2>
+                </Title>
+                <About to='/about'>
+                    <img src={aboutIcon} alt="" />
+                    <p>About</p>
+                </About>
+            </HeaderSection>
+            <HeaderPanel />
         </HeaderContainer>
     )
 }

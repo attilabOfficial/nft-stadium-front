@@ -1,54 +1,34 @@
 import React from 'react'
 
 import styled from 'styled-components'
-import { NFTOwnLi } from './NFTOwnLi'
+import { NFTCard } from './NFTCard'
 import { INFT } from '../../../common/store/nftSlice'
 
-import { FormattedMessage } from 'react-intl'
-import { Link } from 'react-router-dom'
-
-const NFTList = styled.div`
-  margin-top 1rem;
-  text-align: center;
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
+const NFTSection = styled.div`
+    ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 40%;
+    }
 `
 
 export const NFTByOwnerComponent = ({
-    currentOwner,
     NFTsOwn,
+    curOwner,
 }: {
-    currentOwner: string
     NFTsOwn: INFT[]
+    curOwner: string
 }) => {
     return (
-        <NFTList>
-            <h2>
-                <FormattedMessage 
-                    id='app.NFTByOwner.owner'
-                />
-            </h2>
-            <p>{currentOwner}</p>
-            <h3>
-                <FormattedMessage 
-                    id='app.NFTByOwner.NFT'
-                />
-            </h3>
+        
+        <NFTSection>
             <ul>
                 {NFTsOwn.map((nft: INFT) => (
-                    <NFTOwnLi key={nft.id} nft={nft} />
+                    <NFTCard key={nft.id} nft={nft} curOwner={curOwner} />
                 ))}
             </ul>
-            <Link to='/about'>About</Link>
-            <Link to='/'>Stadium</Link>
-        </NFTList>
+        </NFTSection>
+        
     )
 }

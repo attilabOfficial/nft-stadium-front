@@ -9,7 +9,7 @@ import { AppDispatch } from '../../../store';
 
 const CMSStyle = styled.div`
   margin-top: 125px;
-  color: white;
+  color: #212936;
   text-align: center;
   margin-left: 25%;
   margin-right: 2rem;
