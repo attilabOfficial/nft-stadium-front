@@ -19,11 +19,13 @@ interface ICmsState {
         [id: string]: IContent
     }
     loading: string
+    aboutOpen: boolean
 }
 
 const initialState: ICmsState = {
     content: {},
     loading: 'idle',
+    aboutOpen: false,
 }
 
 export const getContent = createAsyncThunk(
@@ -44,7 +46,14 @@ export const getContent = createAsyncThunk(
 export const cmsSlice = createSlice({
     name: 'cmsState',
     initialState,
-    reducers: {},
+    reducers: {
+        openAbout: (state: ICmsState) => {
+            state.aboutOpen = true
+        },
+        closeAbout: (state: ICmsState) => {
+            state.aboutOpen = false
+        },
+    },
     extraReducers: (builder) => {
         builder.addCase(getContent.pending, (state) => {
             if (state.loading === 'idle') {
@@ -68,7 +77,12 @@ export const cmsSlice = createSlice({
 export const isContentLoadingSelector = (state: RootState) =>
     state.cmsState.loading
 
+export const isAboutOpenSelector = (state: RootState) =>
+    state.cmsState.aboutOpen
+
 export const cmsSelector = (state: RootState, articleId: string) =>
     state.cmsState &&
     state.cmsState.content &&
     state.cmsState.content[articleId]
+
+export const { openAbout, closeAbout } = cmsSlice.actions

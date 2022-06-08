@@ -4,6 +4,8 @@ import { NetworkErrorMessage } from './NetworkErrorMessage'
 import styled from 'styled-components'
 import connect from '../../images/connect.svg'
 
+import arrow from '../../images/arrow_w.svg'
+
 const ConnectWalletStyle = styled.div`
     padding: 122px 0;
     background-color: #F3F4F6;
@@ -43,6 +45,10 @@ const Connection = styled.div`
     border: 1px solid #E5E7EB;
     border-radius: 12px;
     padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     p {
         font-size: 16px;
@@ -56,6 +62,18 @@ const Connection = styled.div`
         border-radius: 4px;
         padding: 9px 16px;
         margin: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        img {
+            margin-right: 8px;
+        }
+
+        p {
+            margin: 0;
+        }
     }
 `
 
@@ -91,7 +109,8 @@ export const ConnectWallet = ({
                         type="button"
                         onClick={connectWallet}
                     >
-                        Connect my wallet
+                        <img src={arrow} alt="" />
+                        <p>Connect my wallet</p>
                     </button>
                 </Connection>
                 

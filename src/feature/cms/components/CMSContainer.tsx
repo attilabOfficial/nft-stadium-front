@@ -8,11 +8,6 @@ import { useEffect } from 'react';
 import { AppDispatch } from '../../../store';
 
 const CMSStyle = styled.div`
-  margin-top: 125px;
-  color: #212936;
-  text-align: center;
-  margin-left: 25%;
-  margin-right: 2rem;
 `
 
 export const CMSContainer = ({contentId} : {contentId : string}) => {

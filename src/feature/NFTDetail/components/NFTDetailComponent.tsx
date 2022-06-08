@@ -3,7 +3,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { ZERO_ADDRESS } from '../../../const'
 import { INFT } from '../../../common/store/nftSlice'
-import { FormattedMessage } from 'react-intl'
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -11,6 +10,7 @@ import * as yup from "yup";
 
 import NFTMint from '../../../common/images/NFTMint.svg'
 import NFTToMint from '../../../common/images/NFTToMint.svg'
+import credit from '../../../common/images/credit.svg'
 
 const NFTDetail = styled.div`
     width: 100%;
@@ -38,6 +38,17 @@ const NFTDetail = styled.div`
         border: none;
         border-radius: 4px;
         padding: 9px 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            margin-right: 8px;
+        }
+
+        p {
+            margin: 0;
+        }
     }
 `
 
@@ -148,7 +159,10 @@ export const NFTDetailComponent = ({
                         <p><b>#{currentNFT.id}</b></p>
                     </NFTCard>
                     <p><b>Owner : </b>Nobody yet ! Maybe you ?</p>
-                    <button onClick={mintFct}>Buy it now !</button>
+                    <button onClick={mintFct}>
+                        <img src={credit} alt="" />
+                        <p>Buy it now !</p>
+                    </button>
                 </>
             )}
         </NFTDetail>

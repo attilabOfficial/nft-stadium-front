@@ -17,7 +17,7 @@ const Panel = styled.div`
     position: fixed;
     right: 2.5vw;
     top: 151px;
-    z-index: 8888;
+    z-index: 7777;
     min-width: 396px;
     min-height: 536px;
     max-width: 396px;

@@ -8,6 +8,7 @@ import {
     isHeaderPanelOpenSelector,
     openHeaderPanel,
 } from '../../../common/store/appStateSlice'
+import { openAbout } from '../../../feature/cms/store/cmsSlice'
 import { RootState } from '../../../store'
 import aboutIcon from '../../images/about.svg'
 import walletIcon from '../../images/wallet.svg'
@@ -22,7 +23,7 @@ const HeaderContainer = styled.div`
     top: 0;
     left: 50;
     margin: 0 2.5vw;
-    z-index: 9999;
+    z-index: 8888;
     width: 95vw;
 `
 
@@ -84,8 +85,6 @@ const About = styled(Link)`
 
 const Header = () => {
     const dispatch = useDispatch()
-    // *********
-    // *********
     const { headerPanelOpen } = useSelector((state: RootState) => ({
         headerPanelOpen: isHeaderPanelOpenSelector(state),
     }))
@@ -96,6 +95,10 @@ const Header = () => {
         } else {
             dispatch(closeHeaderPanel())
         }    
+    }
+
+    const clickOnAbout = () => {
+        dispatch(openAbout())
     }
 
     return (
@@ -109,7 +112,7 @@ const Header = () => {
                     <h1>NFT Stadium</h1>
                     <h2>Roazhon Park - Rennes (FR)</h2>
                 </Title>
-                <About to='/about'>
+                <About to='/about' onClick={clickOnAbout}>
                     <img src={aboutIcon} alt="" />
                     <p>About</p>
                 </About>

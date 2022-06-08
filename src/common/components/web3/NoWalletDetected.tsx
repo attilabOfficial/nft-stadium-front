@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import error from '../../images/error.svg'
+import arrow from '../../images/arrow_g.svg'
 
 const NoWalletDetectedStyle = styled.div`
     padding: 122px 0;
@@ -9,6 +10,7 @@ const NoWalletDetectedStyle = styled.div`
     text-align: center;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 `
 
@@ -41,6 +43,10 @@ const Error = styled.div`
     border: 1px solid #E5E7EB;
     border-radius: 12px;
     padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     p {
         font-size: 16px;
@@ -49,9 +55,20 @@ const Error = styled.div`
 `
 
 const Link = styled.a`
-    color: white;
-    padding: 9px 16px;
     margin: 48px;
+    display: flex;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        margin-right: 8px;
+    }
+
+    p {
+        margin: 0;
+    }
 
     :link,
     :visited,
@@ -64,27 +81,26 @@ const Link = styled.a`
 export function NoWalletDetected() {
     return (
         <NoWalletDetectedStyle className="container">
-            <div>
-                <Welcome>
-                    <p>Welcome to</p>
-                    <h1>NFT Stadium</h1>
-                    <h2>Roazhon Park - Rennes (FR)</h2>
-                </Welcome>
-                <Error>
-                    <img src={error} alt="" />
-                    <p>
-                        No Ethereum wallet was detected. <br />
-                        <b>Please install MetaMask</b>.
-                    </p>
-                    <Link
-                        href="http://metamask.io"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Install MetaMask
-                    </Link>
-                </Error>
-            </div>
+            <Welcome>
+                <p>Welcome to</p>
+                <h1>NFT Stadium</h1>
+                <h2>Roazhon Park - Rennes (FR)</h2>
+            </Welcome>
+            <Error>
+                <img src={error} alt="" />
+                <p>
+                    No Ethereum wallet was detected. <br />
+                    <b>Please install MetaMask</b>.
+                </p>
+                <Link
+                    href="http://metamask.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <img src={arrow} alt="" />
+                    <p>Install MetaMask</p>
+                </Link>
+            </Error>
         </NoWalletDetectedStyle>
     )
 }
