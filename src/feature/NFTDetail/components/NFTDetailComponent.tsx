@@ -109,10 +109,12 @@ const uploadImgSchema = yup.object().shape({
 })
 
 export const NFTDetailComponent = ({
+    currentOwner,
     currentNFT,
     changeImgFct,
     mintFct,
 }: {
+    currentOwner: string
     currentNFT: INFT
     changeImgFct: (newImg: string) => void
     mintFct: () => void
@@ -140,7 +142,7 @@ export const NFTDetailComponent = ({
                         </div>
                         <p><b>#{currentNFT.id}</b></p>
                     </NFTCard>
-                    <p><b>Owner : </b>{currentNFT.owner.slice(0, 10)}...</p>
+                    <p><b>Owner : </b>{currentNFT.owner.slice(0, 10)}...{currentNFT.owner.toLowerCase() === currentOwner && ' (You)'}</p>
                     <div>
                         <label><b>Change image</b></label>
                         <form onSubmit={handleSubmit(onSubmit)}>

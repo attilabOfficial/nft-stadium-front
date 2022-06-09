@@ -21,7 +21,6 @@ export const NFTByOwnerComponent = ({
     curOwner: string
 }) => {
     return (
-        
         <NFTSection>
             <ul>
                 {NFTsOwn.map((nft: INFT) => (
@@ -29,6 +28,5 @@ export const NFTByOwnerComponent = ({
                 ))}
             </ul>
         </NFTSection>
-        
     )
 }

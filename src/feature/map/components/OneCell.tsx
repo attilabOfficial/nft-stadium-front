@@ -8,6 +8,8 @@ import { setCurrentNFT } from '../../../common/store/appStateSlice'
 import { ZERO_ADDRESS } from '../../../const';
 import { RootState } from '../../../store';
 
+import NFTMint from '../../../common/images/NFTMint.svg'
+
 interface CellProps {
     border: string;
 }
@@ -32,10 +34,10 @@ const CellContainer = styled.div<CellProps>`
     }
 `
 
-const CellMint = styled.div`
-    background-color: rgba(171, 226, 186, 0.6);
-    min-width: 100%;
-    min-height: 100%;
+const CellMint = styled.img`
+    background-color: black;
+    max-width: 100%;
+    max-heigth: 100%;
     grid-area: 1 / 1 / 2 / 2;
 `
 
@@ -61,7 +63,7 @@ const OneCell = ({ id, img, owner }: {id:number, img:string, owner:string}) => {
     return (
         <CellContainer onClick={clickOnCell} border={currentNFT?.id === id ? "solid black 1px" : "none"} >
             {owner === ZERO_ADDRESS ? '' :
-            img !== '' ? <CellImg src={img} alt="" /> : <CellMint /> }
+            img !== '' ? <CellImg src={img} alt="" /> : <CellMint src={NFTMint} alt='' /> }
         </CellContainer>
     )
 }

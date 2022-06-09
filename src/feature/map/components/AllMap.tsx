@@ -1,13 +1,13 @@
 import React from 'react'
 
 import styled from 'styled-components'
-import stadium from '../images/stadium.svg'
 import OneCell from './OneCell'
 import { NBR_COL, NBR_ROW } from '../../../const'
 import { INFT } from '../../../common/store/nftSlice'
+import stadiumWithLines from '../images/stadium-with-lines.svg'
 
 const GridContainer = styled.div`
-    background: no-repeat center url(${stadium});
+    background: no-repeat center url(${stadiumWithLines});
     background-size: contain;
     margin: 0 auto;
     width: 650px;

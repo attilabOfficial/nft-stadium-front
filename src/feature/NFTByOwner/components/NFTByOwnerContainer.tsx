@@ -10,6 +10,8 @@ import styled from 'styled-components'
 const Container = styled.div`
     overflow: scroll;
     height: 60%;
+    width: 100%;
+    mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
 `
 
 export const NFTByOwnerContainer = () => {
@@ -25,9 +27,9 @@ export const NFTByOwnerContainer = () => {
         <>
             <Container>
                 <NFTByOwnerComponent
-                    NFTsOwn={NFTsOwn}
-                    curOwner={currentOwner}
-                />
+                        NFTsOwn={NFTsOwn}
+                        curOwner={currentOwner}
+                    />
             </Container>
         </>
     )
