@@ -81,6 +81,7 @@ const NFTCard = styled.div`
 
     p {
         font-size: 24px;
+        font-weight: 500;
         margin-bottom: 0px;
     }
 `
@@ -140,7 +141,7 @@ export const NFTDetailComponent = ({
                             <img src={NFTMint} alt="NFT" /> 
                         )}
                         </div>
-                        <p><b>#{currentNFT.id}</b></p>
+                        <p>#{currentNFT.id}</p>
                     </NFTCard>
                     <p><b>Owner : </b>{currentNFT.owner.slice(0, 10)}...{currentNFT.owner.toLowerCase() === currentOwner && ' (You)'}</p>
                     <div>
@@ -158,7 +159,7 @@ export const NFTDetailComponent = ({
                         <div>
                             <img src={NFTToMint} alt="NFT" />
                         </div>
-                        <p><b>#{currentNFT.id}</b></p>
+                        <p>#{currentNFT.id}</p>
                     </NFTCard>
                     <p><b>Owner : </b>Nobody yet ! Maybe you ?</p>
                     <button onClick={mintFct}>

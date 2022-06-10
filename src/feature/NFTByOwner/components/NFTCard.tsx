@@ -34,6 +34,7 @@ const CardElement = styled.li`
     p {
         font-size: 24px;
         margin-bottom: 0px;
+        font-weight: 500;
     }
 `
 
@@ -51,7 +52,7 @@ export const NFTCard = ({ nft, curOwner }: { nft: INFT, curOwner: string }) => {
             <div>
                 {(nft.img === '') ? (<img src={NFTMint} alt='' />) : (<img src={nft.img} alt='' />)}
             </div>
-            <p><b>#{nft.id}</b></p>
+            <p>#{nft.id}</p>
         </CardElement>
     )
 }

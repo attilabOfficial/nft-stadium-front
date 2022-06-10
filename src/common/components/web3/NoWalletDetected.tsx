@@ -6,7 +6,7 @@ import arrow from '../../images/arrow_g.svg'
 const NoWalletDetectedStyle = styled.div`
     padding: 122px 0;
     background-color: #F3F4F6;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Clash Grotesk', sans-serif;
     text-align: center;
     display: flex;
     flex-direction: column;

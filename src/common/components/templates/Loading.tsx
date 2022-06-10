@@ -9,7 +9,7 @@ const Loader = styled.div`
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 5555;
+    z-index: 9999;
 
     img {
         display: block;

@@ -16,7 +16,6 @@ import HeaderPanel from './HeaderPanel';
 
 const HeaderContainer = styled.div`
     background-color: #FFFFFF;
-    font-family: 'Open Sans', sans-serif;
     box-shadow: 0px 12px 48px -4px rgba(0, 0, 0, 0.06);
     border-radius: 0px 0px 24px 24px;
     position: fixed;
@@ -34,8 +33,11 @@ const HeaderSection = styled.div`
 `
 
 const Wallet = styled.div`
+    font-family: 'Clash Display', sans-serif;
     text-transform: uppercase;
+    font-weight: 600;
     font-size: 16px;
+    letter-spacing: 0.1em;
     margin-left: 48px;
     color: #212936;
     display: flex;
@@ -59,6 +61,8 @@ const Title = styled.div`
     }
 
     h2 {
+        font-family: 'Clash Display', sans-serif;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
         color: #6C727F;
         font-size: 16px;
@@ -67,8 +71,11 @@ const Title = styled.div`
 `
 
 const About = styled(Link)`
+    font-family: 'Clash Display', sans-serif;
     text-transform: uppercase;
+    font-weight: 600;
     font-size: 16px;
+    letter-spacing: 0.1em;
     margin-right: 48px;
     color: #212936;
     display: flex;

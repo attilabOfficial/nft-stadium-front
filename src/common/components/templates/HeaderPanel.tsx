@@ -13,7 +13,7 @@ import { Web3Context } from '../web3/DappContainer';
 import { NFTByOwnerContainer } from '../../../feature/NFTByOwner/components/NFTByOwnerContainer'
 
 const Panel = styled.div`
-    height: 65vh;
+    height: 700px;
 `
 
 const OwnerSection = styled.div`
@@ -21,17 +21,35 @@ const OwnerSection = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .subtitle {
+        font-family: 'Clash Display', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        margin: 48px 0 6px 0;
+    }
+
+    .owner {
+        font-size: 36px;
+        font-weight: 600;
+        margin: 0 0 48px 0;
+    }
 `
 
 const ClosePanel = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 48px;
+    margin-top: 32px;
     margin-bottom: 48px;
 
     p {
-        margin-right: 10px;
+        font-family: 'Clash Display', sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        letter-spacing: 0.1em;
+        margin: 16px 8px;
     }
 
     :hover {
@@ -56,8 +74,8 @@ const HeaderPanel = () => {
             {HeaderPanelIsOpen && (
                 <Panel>
                     <OwnerSection>
-                        <p>THIS NFTS ARE YOURS</p>
-                        <p>{currentOwner}</p>
+                        <p className='subtitle'>THIS NFTS ARE YOURS</p>
+                        <p className='owner'>{currentOwner}</p>
                     </OwnerSection>
                     <NFTByOwnerContainer />
                     <ClosePanel onClick={clickOnClose}>

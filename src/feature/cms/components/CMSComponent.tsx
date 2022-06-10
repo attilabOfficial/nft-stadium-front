@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 
 const AboutContainer = styled.div`
   position: fixed;
-  z-index: 9999;
+  z-index: 9988;
   background-color: #FFFFFF;
   color: #212936;
   width: 100vw;
@@ -28,7 +28,11 @@ const Close = styled(Link)`
   text-decoration: none;
 
   p {
-    margin: 0 8px;
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    margin: 16px 8px;
     
   }
 

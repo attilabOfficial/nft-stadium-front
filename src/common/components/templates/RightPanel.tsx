@@ -12,7 +12,6 @@ import { RootState } from '../../../store'
 
 const Panel = styled.div`
     background-color: #FFFFFF;
-    font-family: 'Open Sans', sans-serif;
     color: #212936;
     position: fixed;
     right: 2.5vw;
@@ -24,6 +23,18 @@ const Panel = styled.div`
     max-height: 536px;
     padding: 48px;
     border-radius: 12px;
+
+    animation: fadein 0.5s linear;
+    @keyframes fadein {
+
+        0% {
+            opacity: 0;
+        }
+    
+        100% {
+            opacity: 1;
+        }
+    }
 `
 
 const ClosePanel = styled.div`
@@ -33,7 +44,11 @@ const ClosePanel = styled.div`
     margin-bottom: 48px;
 
     p {
-        margin-right: 10px;
+        font-family: 'Clash Display', sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        letter-spacing: 0.1em;
+        margin: 16px 8px;
     }
 
     :hover {
