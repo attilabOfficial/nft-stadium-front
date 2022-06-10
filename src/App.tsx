@@ -14,6 +14,8 @@ import { Routes, Route } from 'react-router-dom';
 import { CMSContainer } from './feature/cms/components/CMSContainer';
 import Page404 from './common/components/templates/Page404'
 import { isContentLoadingSelector } from './feature/cms/store/cmsSlice';
+import { ThemeProvider } from 'styled-components'
+import { curThemeSelector } from './common/store/appStateSlice'
 
 const App = () => {
     const loading = useSelector((state: RootState) => {
@@ -24,21 +26,30 @@ const App = () => {
         }
     })
 
+    const { theme } = useSelector((state: RootState) => ({
+        theme: curThemeSelector(state),
+    }))
+
+    console.log(theme);
+    
+
     return (
         <>
             <GlobalStyleReset />
-            <DappContainer>
-                <Header />
-                <Routes>
-                    <Route path="/" element={<StadiumContainer />} />
-                    <Route path="/about" element={<CMSContainer contentId='about-us'/>} />
-                    <Route path="*" element={<Page404 />} />
-                </Routes>
-                {loading === 'loading' && <Loading />}
-                <RightPanel>
-                    <NFTDetailContainer />
-                </RightPanel>
-            </DappContainer>
+            <ThemeProvider theme={theme}>
+                <DappContainer>
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={<StadiumContainer />} />
+                        <Route path="/about" element={<CMSContainer contentId='about-us'/>} />
+                        <Route path="*" element={<Page404 />} />
+                    </Routes>
+                    {loading === 'loading' && <Loading />}
+                    <RightPanel>
+                        <NFTDetailContainer />
+                    </RightPanel>
+                </DappContainer>
+            </ThemeProvider>
             <Toaster
                 position="top-right"
                 reverseOrder={false}

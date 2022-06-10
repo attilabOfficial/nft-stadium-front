@@ -15,7 +15,7 @@ import walletIcon from '../../images/wallet.svg'
 import HeaderPanel from './HeaderPanel';
 
 const HeaderContainer = styled.div`
-    background-color: #FFFFFF;
+    background-color: ${({ theme }) => theme.colors.primaryColor};
     box-shadow: 0px 12px 48px -4px rgba(0, 0, 0, 0.06);
     border-radius: 0px 0px 24px 24px;
     position: fixed;
