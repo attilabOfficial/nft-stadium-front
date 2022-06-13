@@ -50,6 +50,7 @@ const ClosePanel = styled.div`
         font-size: 16px;
         letter-spacing: 0.1em;
         margin: 16px 8px;
+        color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.whiteFontColor)};
     }
 
     :hover {

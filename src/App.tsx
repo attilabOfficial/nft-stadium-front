@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import GlobalStyleReset from './common/components/templates/GlobalStyleReset'
+import Container from './common/components/templates/Container'
 import Header from './common/components/templates/Header'
 import { Loading } from './common/components/templates/Loading'
 import RightPanel from './common/components/templates/RightPanel'
@@ -16,6 +16,7 @@ import Page404 from './common/components/templates/Page404'
 import { isContentLoadingSelector } from './feature/cms/store/cmsSlice';
 import { ThemeProvider } from 'styled-components'
 import { curThemeSelector } from './common/store/appStateSlice'
+import GlobalStyleReset from './common/components/templates/GlobalStyleReset'
 
 const App = () => {
     const loading = useSelector((state: RootState) => {
@@ -38,16 +39,18 @@ const App = () => {
             <GlobalStyleReset />
             <ThemeProvider theme={theme}>
                 <DappContainer>
-                    <Header />
-                    <Routes>
-                        <Route path="/" element={<StadiumContainer />} />
-                        <Route path="/about" element={<CMSContainer contentId='about-us'/>} />
-                        <Route path="*" element={<Page404 />} />
-                    </Routes>
-                    {loading === 'loading' && <Loading />}
-                    <RightPanel>
-                        <NFTDetailContainer />
-                    </RightPanel>
+                    <Container>
+                        <Header />
+                        <Routes>
+                            <Route path="/" element={<StadiumContainer />} />
+                            <Route path="/about" element={<CMSContainer contentId='about-us'/>} />
+                            <Route path="*" element={<Page404 />} />
+                        </Routes>
+                        {loading === 'loading' && <Loading />}
+                        <RightPanel>
+                            <NFTDetailContainer />
+                        </RightPanel>
+                    </Container>
                 </DappContainer>
             </ThemeProvider>
             <Toaster

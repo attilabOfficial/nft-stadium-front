@@ -7,10 +7,9 @@ import { INFT } from '../../../common/store/nftSlice'
 import ThemesButtons from './ThemesButtons';
 
 const Container = styled.div`
-    margin-top: 102px;
+    padding-top: 102px;
     width: 100vw;
     text-align: center;
-    background-color: #F3F4F6;
 `
 
 const ZoomButtonsContainer = styled.div`
