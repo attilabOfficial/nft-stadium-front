@@ -3,6 +3,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import closeIcon from '../../images/close.svg'
+import closeIconWhite from '../../images/close_w.svg'
 import {
     closeHeaderPanel,
     isHeaderPanelOpenSelector
@@ -11,6 +12,7 @@ import { RootState } from '../../../store'
 import { useContext } from 'react';
 import { Web3Context } from '../web3/DappContainer';
 import { NFTByOwnerContainer } from '../../../feature/NFTByOwner/components/NFTByOwnerContainer'
+import { curThemeSelector } from '../../store/appStateSlice';
 
 const Panel = styled.div`
     height: 700px;
@@ -28,12 +30,15 @@ const OwnerSection = styled.div`
         font-weight: 600;
         letter-spacing: 0.1em;
         margin: 48px 0 6px 0;
+        color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.lightFontColor)};
     }
 
     .owner {
         font-size: 36px;
         font-weight: 600;
         margin: 0 0 48px 0;
+        color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.whiteFontColor)};
+
     }
 `
 
@@ -66,6 +71,20 @@ const HeaderPanel = () => {
         isHeaderPanelOpenSelector(state)
     )
 
+    const currentTheme = useSelector((state: RootState) =>
+        curThemeSelector(state)
+    )
+
+    let curThemeId: any = currentTheme.id;    
+
+    const closeImg = (theme: {theme: string}) => {        
+        if ((theme as unknown as string) !== 'T_001') {
+            return closeIconWhite;
+        } else {
+            return closeIcon;
+        }
+}
+
     const clickOnClose = () => {
         dispatch(closeHeaderPanel())
     }
@@ -81,7 +100,7 @@ const HeaderPanel = () => {
                     <NFTByOwnerContainer />
                     <ClosePanel onClick={clickOnClose}>
                         <p>CLOSE</p>
-                        <img src={closeIcon} alt="" />
+                        <img src={closeImg(curThemeId)} alt="" />
                     </ClosePanel>
                 </Panel>
             )}
