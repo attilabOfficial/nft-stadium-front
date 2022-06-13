@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Page404Container = styled.div`
-  background-color: #ca180b;
-  font-family: 'Open Sans', sans-serif;
+  background-color: #F3F4F6;
+  font-family: 'Clash Grotesk', sans-serif;
   font-size: 3rem;
-  color: white;
+  color: #212936;
   width: 100vw;
   height: 100vh;
 

@@ -3,12 +3,12 @@ import { RootState } from '../../store'
 import { mapSelector } from './nftSlice'
 
 interface IAppState {
-    leftPanelIsOpen: boolean
+    headerPanelIsOpen: boolean
     rightPanelIsOepn: boolean
     curNft: number | undefined
 }
 const initialState = {
-    leftPanelIsOpen: false,
+    headerPanelIsOpen: false,
     rightPanelIsOepn: false,
     curNft: undefined,
 }
@@ -17,11 +17,11 @@ export const appStateSlice = createSlice({
     name: 'appState',
     initialState,
     reducers: {
-        openLeftPanel: (state: IAppState) => {
-            state.leftPanelIsOpen = true
+        openHeaderPanel: (state: IAppState) => {
+            state.headerPanelIsOpen = true
         },
-        closeLeftPanel: (state: IAppState) => {
-            state.leftPanelIsOpen = false
+        closeHeaderPanel: (state: IAppState) => {
+            state.headerPanelIsOpen = false
         },
         openRightPanel: (state: IAppState) => {
             state.rightPanelIsOepn = true
@@ -35,8 +35,8 @@ export const appStateSlice = createSlice({
     },
 })
 
-export const isLeftPanelOpenSelector = (state: RootState) =>
-    state.appState.leftPanelIsOpen
+export const isHeaderPanelOpenSelector = (state: RootState) =>
+    state.appState.headerPanelIsOpen
 export const isRightPanelOpenSelector = (state: RootState) =>
     state.appState.rightPanelIsOepn
 
@@ -49,8 +49,8 @@ export const curNftSelector = (state: RootState) => {
 }
 
 export const {
-    openLeftPanel,
-    closeLeftPanel,
+    openHeaderPanel,
+    closeHeaderPanel,
     openRightPanel,
     closeRightPanel,
     setCurrentNFT,

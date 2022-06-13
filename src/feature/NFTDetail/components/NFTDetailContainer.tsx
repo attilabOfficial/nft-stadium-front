@@ -12,17 +12,20 @@ import { curNftSelector } from '../../../common/store/appStateSlice';
 import { FormattedMessage } from 'react-intl'
 
 const TransLoading = styled.div`
-    background-color: black;
+    background-color: #F3F4F6;
+    colors: white;
     border-radius: 5px;
     padding: 1rem;
     margin-top: 1rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+
     div {
-        border: 13px solid #fff;
-        border-top: 13px solid #a9a9a9;
+        border: 13px solid #6C727F;
+        border-top: 13px solid #fff;
         border-radius: 50%;
         width: 60px;
         height: 60px;
@@ -41,6 +44,8 @@ const TransLoading = styled.div`
 
 export const NFTDetailContainer = () => {
     const web3Context = useContext(Web3Context)
+    const currentOwner = web3Context.selectedAddress
+
     const dispatch = useDispatch<AppDispatch>()
 
     const { currentNFT, loading } = useSelector((state: RootState) => ({
@@ -90,6 +95,7 @@ export const NFTDetailContainer = () => {
             <div>
                 {currentNFT && (
                     <NFTDetailComponent
+                        currentOwner={currentOwner}
                         currentNFT={currentNFT}
                         changeImgFct={changeNFTImg}
                         mintFct={mintNFT}

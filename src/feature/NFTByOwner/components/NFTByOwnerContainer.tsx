@@ -5,6 +5,14 @@ import { NFTByOwnerComponent } from './NFTByOwnerComponent'
 import { nftsByOwnerSelector } from '../../../common/store/nftSlice'
 import { Web3Context } from '../../../common/components/web3/DappContainer'
 import { RootState } from '../../../store'
+import styled from 'styled-components'
+
+const Container = styled.div`
+    overflow: scroll;
+    height: 60%;
+    width: 100%;
+    mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+`
 
 export const NFTByOwnerContainer = () => {
     const web3Context = useContext(Web3Context)
@@ -17,12 +25,12 @@ export const NFTByOwnerContainer = () => {
 
     return (
         <>
-            <div>
+            <Container>
                 <NFTByOwnerComponent
-                    currentOwner={currentOwner}
-                    NFTsOwn={NFTsOwn}
-                />
-            </div>
+                        NFTsOwn={NFTsOwn}
+                        curOwner={currentOwner}
+                    />
+            </Container>
         </>
     )
 }
