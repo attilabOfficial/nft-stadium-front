@@ -9,7 +9,7 @@ const Container = styled.div`
     margin-top: 102px;
     width: 100vw;
     text-align: center;
-    background-color: #F3F4F6;
+    background-color: #f3f4f6;
 `
 
 const ZoomButtonsContainer = styled.div`
@@ -24,11 +24,13 @@ const ZoomButtonsContainer = styled.div`
 
 export const StadiumComponent = ({
     containerRef,
+    centerRef,
     zoomIn,
     zoomOut,
     mapInfo,
 }: {
     containerRef: React.RefObject<HTMLInputElement>
+    centerRef: React.RefObject<HTMLInputElement>
     zoomIn: () => void
     zoomOut: () => void
     mapInfo: INFT[]
@@ -37,11 +39,14 @@ export const StadiumComponent = ({
         return (
             <div>
                 <Container ref={containerRef}>
-                    <AllMap mapInfo={mapInfo} />
+                    <AllMap mapInfo={mapInfo} centerRef={centerRef} />
                 </Container>
                 <ZoomButtonsContainer>
                     <ZoomInButton buttonLabel="zoom_in" fctOnClick={zoomIn} />
-                    <ZoomOutButton buttonLabel="zoom_out" fctOnClick={zoomOut} />
+                    <ZoomOutButton
+                        buttonLabel="zoom_out"
+                        fctOnClick={zoomOut}
+                    />
                 </ZoomButtonsContainer>
             </div>
         )

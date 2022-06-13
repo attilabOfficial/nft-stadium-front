@@ -31,13 +31,25 @@ const StadeGrid = styled.div`
     }
 `
 
-const AllMap = ({ mapInfo }: { mapInfo: INFT[] }) => {
+const AllMap = ({
+    mapInfo,
+    centerRef,
+}: {
+    mapInfo: INFT[]
+    centerRef: React.RefObject<HTMLInputElement>
+}) => {
     return (
         <>
             <GridContainer>
                 <StadeGrid>
                     {mapInfo.map((cell, index) => (
-                        <OneCell key={index} id={cell.id} img={cell.img} owner={cell.owner} />
+                        <OneCell
+                            centerRef={index === 212 ? centerRef : null}
+                            key={index}
+                            id={cell.id}
+                            img={cell.img}
+                            owner={cell.owner}
+                        />
                     ))}
                 </StadeGrid>
             </GridContainer>

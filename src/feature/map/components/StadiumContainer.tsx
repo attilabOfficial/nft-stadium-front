@@ -3,10 +3,7 @@ import React, { useRef } from 'react'
 import { useContext, useEffect } from 'react'
 import { Web3Context } from '../../../common/components/web3/DappContainer'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-    getAllMapInfo,
-    mapSelector,
-} from '../../../common/store/nftSlice'
+import { getAllMapInfo, mapSelector } from '../../../common/store/nftSlice'
 import { StadiumComponent } from './StadiumComponent'
 import { MOCK } from '../../../const'
 import { AppDispatch, RootState } from '../../../store'
@@ -19,6 +16,18 @@ export const StadiumContainer = () => {
     let mapSize = 1
 
     const containerRef: React.RefObject<HTMLInputElement> = useRef(null)
+    const centerRef: React.RefObject<HTMLInputElement> = useRef(null)
+
+    const centerScroll = () => {
+        if (centerRef && centerRef.current) {
+            const elementRect = centerRef.current.getBoundingClientRect()
+            const middleTop =
+                elementRect.top + window.scrollY - window.innerHeight / 2
+            const middleLeft =
+                elementRect.left + window.scrollX - window.innerWidth / 2
+            window.scrollTo(middleLeft, middleTop)
+        }
+    }
 
     const zoomIn = () => {
         if (
@@ -33,6 +42,7 @@ export const StadiumContainer = () => {
             }`
             containerRef.current.style.top = `${mapSize > 1 ? 0 : undefined}`
             containerRef.current.style.left = `${mapSize > 1 ? 0 : undefined}`
+            centerScroll()
         }
     }
 
@@ -44,7 +54,7 @@ export const StadiumContainer = () => {
                 containerRef.current.style
             ) {
                 containerRef.current.style.transform = `scale(${(mapSize -= 0.5)})`
-                console.log('click -')
+                centerScroll()
             }
         }
     }
@@ -58,6 +68,7 @@ export const StadiumContainer = () => {
     return (
         <StadiumComponent
             containerRef={containerRef}
+            centerRef={centerRef}
             mapInfo={mapInfo}
             zoomIn={zoomIn}
             zoomOut={zoomOut}
