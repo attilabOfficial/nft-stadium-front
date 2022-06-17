@@ -4,13 +4,13 @@ import AllMap from './AllMap'
 import ZoomInButton from './ZoomInButton'
 import ZoomOutButton from './ZoomOutButton'
 import { INFT } from '../../../common/store/nftSlice'
+import ThemesButtons from './ThemesButtons';
 
 const Container = styled.div`
-    margin-top: 102px;
+    padding-top: 102px;
     width: 100vw;
     text-align: center;
-    background-color: #f3f4f6;
-`
+    background-color: #f3f4f6;`
 
 const ZoomButtonsContainer = styled.div`
     position: fixed;
@@ -48,6 +48,7 @@ export const StadiumComponent = ({
                         fctOnClick={zoomOut}
                     />
                 </ZoomButtonsContainer>
+                <ThemesButtons />
             </div>
         )
     } else {

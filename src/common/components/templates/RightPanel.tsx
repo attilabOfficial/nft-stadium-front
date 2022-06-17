@@ -3,9 +3,12 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import close from '../../images/close.svg'
+import closeBlue from '../../images/close_b.svg'
+import closeYellow from '../../images/close_y.svg'
 import {
     isRightPanelOpenSelector,
     closeRightPanel,
+    curThemeSelector,
 } from '../../../common/store/appStateSlice'
 
 import { RootState } from '../../../store'
@@ -61,6 +64,22 @@ const RightPanel = ({ children }: { children: React.ReactNode }) => {
     const rightPanelIsOpen = useSelector((state: RootState) =>
         isRightPanelOpenSelector(state)
     )
+    
+    const currentTheme = useSelector((state: RootState) =>
+        curThemeSelector(state)
+    )
+
+    let curThemeId: any = currentTheme.id;    
+
+    const closeImg = (theme: {theme: string}) => {        
+        if ((theme as unknown as string) === 'T_002') {
+            return closeBlue;
+        } else if ((theme as unknown as string) === 'T_003') {
+            return closeYellow;
+        } else {
+            return close;
+        }
+    }
 
     const clickOnClose = () => {
         dispatch(closeRightPanel())
@@ -73,7 +92,7 @@ const RightPanel = ({ children }: { children: React.ReactNode }) => {
                     <div>
                         <ClosePanel onClick={clickOnClose}>
                             <p>CLOSE</p>
-                            <img src={close} alt="" />
+                            <img src={closeImg(curThemeId)} alt="" />
                         </ClosePanel>
                     </div>
                     {children}

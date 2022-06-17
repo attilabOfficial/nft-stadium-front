@@ -11,11 +11,14 @@ import {
 import { openAbout } from '../../../feature/cms/store/cmsSlice'
 import { RootState } from '../../../store'
 import aboutIcon from '../../images/about.svg'
+import aboutIconW from '../../images/aboutW.svg'
 import walletIcon from '../../images/wallet.svg'
-import HeaderPanel from './HeaderPanel';
+import walletIconW from '../../images/walletWhite.svg'
+import HeaderPanel from './HeaderPanel'
+import { curThemeSelector } from '../../store/appStateSlice';
 
 const HeaderContainer = styled.div`
-    background-color: #FFFFFF;
+    background-color: ${({ theme }) => theme.colors.primaryColor};
     box-shadow: 0px 12px 48px -4px rgba(0, 0, 0, 0.06);
     border-radius: 0px 0px 24px 24px;
     position: fixed;
@@ -39,7 +42,7 @@ const Wallet = styled.div`
     font-size: 16px;
     letter-spacing: 0.1em;
     margin-left: 48px;
-    color: #212936;
+    color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.whiteFontColor)};
     display: flex;
 
     img {
@@ -55,7 +58,7 @@ const Title = styled.div`
     text-align: center;
 
     h1 {
-        color: #212936;
+        color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.whiteFontColor)};
         font-size: 24px;
         margin: 20px 0 8px 0;
     }
@@ -64,7 +67,7 @@ const Title = styled.div`
         font-family: 'Clash Display', sans-serif;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: #6C727F;
+        color: ${({ theme }) => theme.colors.lightFontColor};
         font-size: 16px;
         margin: 8px 0 20px 0;
     }
@@ -77,7 +80,7 @@ const About = styled(Link)`
     font-size: 16px;
     letter-spacing: 0.1em;
     margin-right: 48px;
-    color: #212936;
+    color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.whiteFontColor)};
     display: flex;
     text-decoration: none;
 
@@ -108,11 +111,33 @@ const Header = () => {
         dispatch(openAbout())
     }
 
+    const currentTheme = useSelector((state: RootState) =>
+        curThemeSelector(state)
+    )
+
+    let curThemeId: any = currentTheme.id;    
+
+    const aboutImg = (theme: {theme: string}) => {        
+        if ((theme as unknown as string) !== 'T_001') {
+            return aboutIconW;
+        } else {
+            return aboutIcon;
+        }
+    }
+
+    const walletImg = (theme: {theme: string}) => {        
+        if ((theme as unknown as string) !== 'T_001') {
+            return walletIconW;
+        } else {
+            return walletIcon;
+        }
+    }
+
     return (
         <HeaderContainer>
             <HeaderSection>
                 <Wallet onClick={clickOnWallet}>
-                    <img src={walletIcon} alt="" />
+                    <img src={walletImg(curThemeId)} alt="" />
                     <p>My Wallet</p>
                 </Wallet>
                 <Title>
@@ -120,7 +145,7 @@ const Header = () => {
                     <h2>Roazhon Park - Rennes (FR)</h2>
                 </Title>
                 <About to='/about' onClick={clickOnAbout}>
-                    <img src={aboutIcon} alt="" />
+                <img src={aboutImg(curThemeId)} alt="" />
                     <p>About</p>
                 </About>
             </HeaderSection>

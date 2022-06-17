@@ -19,11 +19,16 @@ const NFTDetail = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: ${({ theme }) => theme.colors.darkFontColor};
 
     p {
         overflow: hidden;
         font-size: 14px;
         margin-bottom: 24px;
+
+        span {
+            color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
+        }
     }
 
     form {
@@ -33,7 +38,7 @@ const NFTDetail = styled.div`
     }
 
     button {
-        background-color: #212936;
+        background-color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
         color: #FFFFFF;
         border: none;
         border-radius: 4px;
@@ -88,12 +93,12 @@ const NFTCard = styled.div`
 
 const Field = styled.input`
     height: 46px;
-    border: solid 1px #8F95A0;
+    border: solid 1px ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
     border-radius: 4px 0px 0px 4px;
 `
 
 const Upload = styled.input`
-    background-color: #212936;
+    background-color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
     color: white;
     height: 50px;
     border: none;
@@ -143,7 +148,7 @@ export const NFTDetailComponent = ({
                         </div>
                         <p>#{currentNFT.id}</p>
                     </NFTCard>
-                    <p><b>Owner : </b>{currentNFT.owner.slice(0, 10)}...{currentNFT.owner.toLowerCase() === currentOwner && ' (You)'}</p>
+                    <p><b>Owner : </b>{currentNFT.owner.slice(0, 10)}...{currentNFT.owner.toLowerCase() === currentOwner && <span> (You)</span>}</p>
                     <div>
                         <label><b>Change image</b></label>
                         <form onSubmit={handleSubmit(onSubmit)}>

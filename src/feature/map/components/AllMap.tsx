@@ -4,10 +4,12 @@ import styled from 'styled-components'
 import OneCell from './OneCell'
 import { NBR_COL, NBR_ROW } from '../../../const'
 import { INFT } from '../../../common/store/nftSlice'
-import stadiumWithLines from '../images/stadium-with-lines.svg'
+import stadiumGrey from '../images/stadium-with-lines.svg'
+import stadiumBlue from '../images/stadium-blue-with-lines.svg'
+import stadiumYellow from '../images/stadium-yellow-with-lines.svg'
 
 const GridContainer = styled.div`
-    background: no-repeat center url(${stadiumWithLines});
+    background: no-repeat center url(${({ theme }) => theme.id === 'T_002' ? stadiumBlue : theme.id === 'T_003' ? stadiumYellow : stadiumGrey });
     background-size: contain;
     margin: 0 auto;
     width: 650px;

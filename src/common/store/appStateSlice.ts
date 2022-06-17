@@ -1,16 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../../store'
 import { mapSelector } from './nftSlice'
+import { greyTheme } from '../../themes'
 
 interface IAppState {
     headerPanelIsOpen: boolean
     rightPanelIsOepn: boolean
     curNft: number | undefined
+    curTheme: object
 }
 const initialState = {
     headerPanelIsOpen: false,
     rightPanelIsOepn: false,
     curNft: undefined,
+    curTheme: greyTheme,
 }
 
 export const appStateSlice = createSlice({
@@ -32,6 +35,9 @@ export const appStateSlice = createSlice({
         setCurrentNFT: (state: IAppState, action: PayloadAction<number>) => {
             state.curNft = action.payload
         },
+        setCurrentTheme: (state: IAppState, action: PayloadAction<object>) => {
+            state.curTheme = action.payload
+        },
     },
 })
 
@@ -41,6 +47,8 @@ export const isRightPanelOpenSelector = (state: RootState) =>
     state.appState.rightPanelIsOepn
 
 export const curNftIdSelector = (state: RootState) => state.appState.curNft
+
+export const curThemeSelector = (state: RootState) => state.appState.curTheme
 
 export const curNftSelector = (state: RootState) => {
     const allNft = mapSelector(state)
@@ -54,4 +62,5 @@ export const {
     openRightPanel,
     closeRightPanel,
     setCurrentNFT,
+    setCurrentTheme,
 } = appStateSlice.actions

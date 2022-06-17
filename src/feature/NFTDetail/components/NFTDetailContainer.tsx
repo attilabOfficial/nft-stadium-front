@@ -12,7 +12,7 @@ import { curNftSelector } from '../../../common/store/appStateSlice';
 import { FormattedMessage } from 'react-intl'
 
 const TransLoading = styled.div`
-    background-color: #F3F4F6;
+    background-color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
     colors: white;
     border-radius: 5px;
     padding: 1rem;
@@ -23,9 +23,18 @@ const TransLoading = styled.div`
     align-items: center;
     flex-wrap: wrap;
 
+    h2 {
+        color: white;
+        font-family: 'Clash Display', sans-serif;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 16px;
+        letter-spacing: 0.1em;
+    }
+
     div {
-        border: 13px solid #6C727F;
-        border-top: 13px solid #fff;
+        border: 13px solid white;
+        border-top: 13px solid ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
         border-radius: 50%;
         width: 60px;
         height: 60px;
