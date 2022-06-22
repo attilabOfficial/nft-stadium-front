@@ -40,13 +40,17 @@ const AllMap = ({
     mapInfo: INFT[]
     centerRef: React.RefObject<HTMLInputElement>
 }) => {
+    const center = (NBR_COL * NBR_ROW - 1) / 2;
+    console.log(center);
+    
+
     return (
         <>
             <GridContainer>
                 <StadeGrid>
                     {mapInfo.map((cell, index) => (
                         <OneCell
-                            centerRef={index === 212 ? centerRef : null}
+                            centerRef={index === center ? centerRef : null}
                             key={index}
                             id={cell.id}
                             img={cell.img}

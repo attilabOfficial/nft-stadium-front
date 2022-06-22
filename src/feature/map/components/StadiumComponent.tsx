@@ -10,7 +10,7 @@ const Container = styled.div`
     padding-top: 102px;
     width: 100vw;
     text-align: center;
-    background-color: #f3f4f6;`
+`
 
 const ZoomButtonsContainer = styled.div`
     position: fixed;

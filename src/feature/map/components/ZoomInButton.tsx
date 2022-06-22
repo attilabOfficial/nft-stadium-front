@@ -19,7 +19,7 @@ const Zoom = styled.button`
     :hover {
         cursor: pointer;
         background: no-repeat center url(${zoom_in_white});
-        background-color: ${({ theme }) => theme.colors.primaryColor};
+        background-color: ${({ theme }) => theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor};
     }
 `
 

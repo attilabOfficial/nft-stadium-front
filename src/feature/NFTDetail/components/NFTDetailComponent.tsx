@@ -31,6 +31,12 @@ const NFTDetail = styled.div`
         }
     }
 
+    a {
+        color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
+        text-decoration: none;
+        margin-bottom: 24px;
+    }
+
     form {
         display: flex;
         flex-direction: row;
@@ -149,6 +155,7 @@ export const NFTDetailComponent = ({
                         <p>#{currentNFT.id}</p>
                     </NFTCard>
                     <p><b>Owner : </b>{currentNFT.owner.slice(0, 10)}...{currentNFT.owner.toLowerCase() === currentOwner && <span> (You)</span>}</p>
+                    <a href={`https://testnets.opensea.io/assets/mumbai/0xB11F884C188D2d142c11797B2f855F0f1Af97FA0/${currentNFT.id}`} target='_blank' rel="noreferrer">OpenSea Link</a>
                     <div>
                         <label><b>Change image</b></label>
                         <form onSubmit={handleSubmit(onSubmit)}>
