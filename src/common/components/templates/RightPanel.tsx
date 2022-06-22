@@ -44,7 +44,7 @@ const ClosePanel = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin-bottom: 48px;
+    margin-bottom: 36px;
 
     p {
         font-family: 'Clash Display', sans-serif;

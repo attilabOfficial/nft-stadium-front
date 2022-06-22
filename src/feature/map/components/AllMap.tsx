@@ -2,7 +2,7 @@ import React from 'react'
 
 import styled from 'styled-components'
 import OneCell from './OneCell'
-import { NBR_COL, NBR_ROW } from '../../../const'
+import { NBR_COL, NBR_ROW, MAP_CENTER } from '../../../const'
 import { INFT } from '../../../common/store/nftSlice'
 import stadiumGrey from '../images/stadium-with-lines.svg'
 import stadiumBlue from '../images/stadium-blue-with-lines.svg'
@@ -40,17 +40,15 @@ const AllMap = ({
     mapInfo: INFT[]
     centerRef: React.RefObject<HTMLInputElement>
 }) => {
-    const center = (NBR_COL * NBR_ROW - 1) / 2;
-    console.log(center);
     
-
+    
     return (
         <>
             <GridContainer>
                 <StadeGrid>
                     {mapInfo.map((cell, index) => (
                         <OneCell
-                            centerRef={index === center ? centerRef : null}
+                            centerRef={index === MAP_CENTER ? centerRef : null}
                             key={index}
                             id={cell.id}
                             img={cell.img}

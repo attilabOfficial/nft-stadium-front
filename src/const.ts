@@ -7,6 +7,8 @@ export const TOTAL_CELLS = NBR_COL * NBR_ROW
 
 export const STRAPI_URL = env.STRAPI_URL || ''
 
+export const MAP_CENTER = (NBR_COL * NBR_ROW - 1) / 2
+
 // Mock mode
 export const MOCK = (env.MOCK && env.MOCK === 'true') || false
 
