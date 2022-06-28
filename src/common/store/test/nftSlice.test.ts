@@ -1,9 +1,16 @@
-import { initialState, nftSlice, transformToNFT } from '../nftSlice'
+import {
+    initialState,
+    nftsByOwnerSelector,
+    nftSlice,
+    transformToNFT,
+} from '../nftSlice'
 
 import { AnyAction } from 'redux'
 import { MOCKED_STORE } from './mockedStore'
 import { RootState } from '../../../store'
 import { curNftSelector } from '../appStateSlice'
+import { useContext } from 'react'
+import { Web3Context } from '../../components/web3/DappContainer'
 
 const { reducer } = nftSlice
 
@@ -46,4 +53,17 @@ test('currentNFTSelector', () => {
         img: 'img2',
         link: 'link2',
     })
+})
+
+test('nftsByOwnerSelector', () => {
+    let myState: RootState = { ...MOCKED_STORE }
+
+    expect(nftsByOwnerSelector(myState, 'owner1')).toMatchObject([
+        {
+            id: 0,
+            owner: 'owner1',
+            img: 'img1',
+            link: 'link1',
+        },
+    ])
 })

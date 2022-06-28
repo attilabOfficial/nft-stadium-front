@@ -57,6 +57,7 @@ interface IOneCell {
     owner: string
     centerRef: React.RefObject<HTMLInputElement> | null
 }
+
 const OneCellContainer = (props: IOneCell) => {
     const dispatch = useDispatch()
 
