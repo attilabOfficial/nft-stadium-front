@@ -9,8 +9,6 @@ import { AnyAction } from 'redux'
 import { MOCKED_STORE } from './mockedStore'
 import { RootState } from '../../../store'
 import { curNftSelector } from '../appStateSlice'
-import { useContext } from 'react'
-import { Web3Context } from '../../components/web3/DappContainer'
 
 const { reducer } = nftSlice
 
