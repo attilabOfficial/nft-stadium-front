@@ -9,10 +9,10 @@ import { createContext, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { updateAddressNFT, updateAddressImg } from '../../store/nftSlice'
 import { useEffect } from 'react'
-import { HARDHAT_NETWORK_ID, MOCK } from '../../../const'
+import { REACT_APP_HARDHAT_NETWORK_ID, REACT_APP_MOCK } from '../../../const'
 import { providers } from 'ethers'
 import toast from 'react-hot-toast'
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl'
 
 declare global {
     interface Window {
@@ -20,11 +20,11 @@ declare global {
     }
 }
 
-export const ErrorComponent = ({message}: {message: string}) => {
+export const ErrorComponent = ({ message }: { message: string }) => {
     return (
-      <span >
-        <FormattedMessage id={message} />
-      </span>
+        <span>
+            <FormattedMessage id={message} />
+        </span>
     )
 }
 
@@ -59,9 +59,7 @@ export const DappContainer: React.FC<{ children: React.ReactNode }> = ({
                         updateAddressImg({ id: _imgId.toNumber(), url: _url })
                     )
                     toast.success(
-                        <FormattedMessage 
-                            id='app.toaster.imageAdress'
-                        />
+                        <FormattedMessage id="app.toaster.imageAdress" />
                     )
                 }
             )
@@ -76,9 +74,7 @@ export const DappContainer: React.FC<{ children: React.ReactNode }> = ({
                         updateAddressNFT({ id: id.toNumber(), address: to })
                     )
                     toast.success(
-                        <FormattedMessage 
-                            id='app.toaster.NFTAdress'
-                        />
+                        <FormattedMessage id="app.toaster.NFTAdress" />
                     )
                 }
             )
@@ -116,18 +112,18 @@ export const DappContainer: React.FC<{ children: React.ReactNode }> = ({
         }
     }
     // This method checks if Metamask selected network is Localhost:8545
-    const _checkNetwork = () => { 
+    const _checkNetwork = () => {
         if (
             window.ethereum &&
             //@ts-ignore
-            window.ethereum.networkVersion === HARDHAT_NETWORK_ID
+            window.ethereum.networkVersion === REACT_APP_HARDHAT_NETWORK_ID
         ) {
             return true
         }
         return false
     }
 
-    if (MOCK) {
+    if (REACT_APP_MOCK) {
         return <>{children}</>
     }
 

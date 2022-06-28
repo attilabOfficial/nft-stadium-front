@@ -12,6 +12,7 @@ import { ZERO_ADDRESS } from '../../../const'
 import { RootState } from '../../../store'
 
 import NFTMint from '../../../common/images/NFTMint.svg'
+import { INFT } from '../../../common/store/nftSlice'
 
 interface CellProps {
     border: string
@@ -50,29 +51,37 @@ const CellImg = styled.img`
     grid-area: 1 / 1 / 2 / 2;
 `
 
-const OneCell = ({
-    id,
-    img,
-    owner,
-    centerRef,
-}: {
+interface IOneCell {
     id: number
     img: string
     owner: string
     centerRef: React.RefObject<HTMLInputElement> | null
-}) => {
+}
+const OneCellContainer = (props: IOneCell) => {
     const dispatch = useDispatch()
 
     const clickOnCell = () => {
         dispatch(openRightPanel())
-        console.log('click ion', id)
-        dispatch(setCurrentNFT(id))
+        dispatch(setCurrentNFT(props.id))
     }
 
     const { currentNFT } = useSelector((state: RootState) => ({
         currentNFT: curNftSelector(state),
     }))
 
+    return (
+        <OneCell {...props} currentNFT={currentNFT} clickOnCell={clickOnCell} />
+    )
+}
+
+export const OneCell = ({
+    id,
+    img,
+    owner,
+    centerRef,
+    clickOnCell,
+    currentNFT,
+}: IOneCell & { clickOnCell: () => void; currentNFT?: INFT }) => {
     return (
         <CellContainer
             ref={centerRef}
@@ -90,4 +99,4 @@ const OneCell = ({
     )
 }
 
-export default OneCell
+export default OneCellContainer

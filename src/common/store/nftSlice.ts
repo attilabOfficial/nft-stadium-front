@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 
-import { MOCK, TOTAL_CELLS } from '../../const'
+import { REACT_APP_MOCK, REACT_APP_TOTAL_CELLS } from '../../const'
 import { Contract, utils } from 'ethers'
 import { RootState } from '../../store'
 
@@ -20,7 +20,7 @@ interface INFTSlice {
     nftList: Array<INFT>
 }
 
-const initialState: INFTSlice = {
+export const initialState: INFTSlice = {
     loading: 'idle',
     nftList: [],
     transactionLoading: 'idle',
@@ -33,7 +33,7 @@ const changeImageError = ErrorComponent({
 
 const generateMockMap = () => {
     const data: Array<Array<string>> = [[], [], []]
-    for (let c = 0; c <= TOTAL_CELLS - 1; c++) {
+    for (let c = 0; c <= REACT_APP_TOTAL_CELLS - 1; c++) {
         data[0][c] = `owner_${c}`
         data[1][c] = `https://picsum.photos/id/${c}/200`
         data[2][c] = `link${c}`
@@ -44,7 +44,7 @@ const generateMockMap = () => {
 export const getAllMapInfo = createAsyncThunk(
     'web3/connect',
     async (contract?: Contract) => {
-        if (MOCK) {
+        if (REACT_APP_MOCK) {
             return generateMockMap()
         } else if (contract) {
             const stadium = await contract.getStadium()
