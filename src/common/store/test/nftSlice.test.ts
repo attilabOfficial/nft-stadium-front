@@ -2,8 +2,8 @@ import { initialState, nftSlice, transformToNFT } from '../nftSlice'
 
 import { AnyAction } from 'redux'
 import { MOCKED_STORE } from './mockedStore'
-import { RootState, store } from '../../../store'
-import { curNftSelector, openRightPanel } from '../appStateSlice'
+import { RootState } from '../../../store'
+import { curNftSelector } from '../appStateSlice'
 
 const { reducer } = nftSlice
 
@@ -46,11 +46,4 @@ test('currentNFTSelector', () => {
         img: 'img2',
         link: 'link2',
     })
-})
-
-// Exemple de test d'action
-test('OpenRightPannel', () => {
-    const myStore = store
-    myStore.dispatch(openRightPanel())
-    expect(myStore.getState().appState.rightPanelIsOepn).toBe(true)
 })
