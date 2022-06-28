@@ -2,7 +2,7 @@ import React from 'react'
 
 import styled from 'styled-components'
 import OneCell from './OneCell'
-import { NBR_COL, NBR_ROW } from '../../../const'
+import { REACT_APP_NBR_COL, REACT_APP_NBR_ROW } from '../../../const'
 import { INFT } from '../../../common/store/nftSlice'
 import stadiumGrey from '../images/stadium-with-lines.svg'
 import stadiumBlue from '../images/stadium-blue-with-lines.svg'
@@ -24,8 +24,8 @@ const StadeGrid = styled.div`
     heigth: 100%;
     display: grid;
     gap: 1px;
-    grid-template-columns: repeat(${NBR_COL}, 1fr);
-    grid-template-rows: repeat(${NBR_ROW}, 1fr);
+    grid-template-columns: repeat(${REACT_APP_NBR_COL}, 1fr);
+    grid-template-rows: repeat(${REACT_APP_NBR_ROW}, 1fr);
     border: solid 1px transparent;
 
     :hover {

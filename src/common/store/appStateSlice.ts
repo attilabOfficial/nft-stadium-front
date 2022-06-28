@@ -9,7 +9,7 @@ interface IAppState {
     curNft: number | undefined
     curTheme: object
 }
-const initialState = {
+const initialState: IAppState = {
     headerPanelIsOpen: false,
     rightPanelIsOepn: false,
     curNft: undefined,
