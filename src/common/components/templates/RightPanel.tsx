@@ -12,9 +12,10 @@ import {
 } from '../../../common/store/appStateSlice'
 
 import { RootState } from '../../../store'
+import { ITheme } from '../../../themes'
 
 const Panel = styled.div`
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     color: #212936;
     position: fixed;
     right: 2.5vw;
@@ -29,11 +30,10 @@ const Panel = styled.div`
 
     animation: fadein 0.5s linear;
     @keyframes fadein {
-
         0% {
             opacity: 0;
         }
-    
+
         100% {
             opacity: 1;
         }
@@ -64,20 +64,20 @@ const RightPanel = ({ children }: { children: React.ReactNode }) => {
     const rightPanelIsOpen = useSelector((state: RootState) =>
         isRightPanelOpenSelector(state)
     )
-    
+
     const currentTheme = useSelector((state: RootState) =>
         curThemeSelector(state)
     )
 
-    let curThemeId: any = currentTheme.id;    
+    let curThemeId: ITheme['id'] = currentTheme.id
 
-    const closeImg = (theme: {theme: string}) => {        
+    const closeImg = (theme: ITheme['id']) => {
         if ((theme as unknown as string) === 'T_002') {
-            return closeBlue;
+            return closeBlue
         } else if ((theme as unknown as string) === 'T_003') {
-            return closeYellow;
+            return closeYellow
         } else {
-            return close;
+            return close
         }
     }
 

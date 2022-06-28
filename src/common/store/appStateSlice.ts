@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../../store'
 import { mapSelector } from './nftSlice'
-import { greyTheme } from '../../themes'
+import { greyTheme, ITheme } from '../../themes'
 
 interface IAppState {
     headerPanelIsOpen: boolean
     rightPanelIsOepn: boolean
     curNft: number | undefined
-    curTheme: object
+    curTheme: ITheme
 }
 const initialState: IAppState = {
     headerPanelIsOpen: false,
@@ -35,7 +35,7 @@ export const appStateSlice = createSlice({
         setCurrentNFT: (state: IAppState, action: PayloadAction<number>) => {
             state.curNft = action.payload
         },
-        setCurrentTheme: (state: IAppState, action: PayloadAction<object>) => {
+        setCurrentTheme: (state: IAppState, action: PayloadAction<ITheme>) => {
             state.curTheme = action.payload
         },
     },

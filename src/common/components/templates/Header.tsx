@@ -15,7 +15,8 @@ import aboutIconW from '../../images/aboutW.svg'
 import walletIcon from '../../images/wallet.svg'
 import walletIconW from '../../images/walletWhite.svg'
 import HeaderPanel from './HeaderPanel'
-import { curThemeSelector } from '../../store/appStateSlice';
+import { curThemeSelector } from '../../store/appStateSlice'
+import { ITheme } from '../../../themes'
 
 const HeaderContainer = styled.div`
     background-color: ${({ theme }) => theme.colors.primaryColor};
@@ -42,7 +43,10 @@ const Wallet = styled.div`
     font-size: 16px;
     letter-spacing: 0.1em;
     margin-left: 48px;
-    color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.whiteFontColor)};
+    color: ${({ theme }) =>
+        theme.id === 'T_001'
+            ? theme.colors.darkFontColor
+            : theme.colors.whiteFontColor};
     display: flex;
 
     img {
@@ -58,7 +62,10 @@ const Title = styled.div`
     text-align: center;
 
     h1 {
-        color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.whiteFontColor)};
+        color: ${({ theme }) =>
+            theme.id === 'T_001'
+                ? theme.colors.darkFontColor
+                : theme.colors.whiteFontColor};
         font-size: 24px;
         margin: 20px 0 8px 0;
     }
@@ -80,7 +87,10 @@ const About = styled(Link)`
     font-size: 16px;
     letter-spacing: 0.1em;
     margin-right: 48px;
-    color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.whiteFontColor)};
+    color: ${({ theme }) =>
+        theme.id === 'T_001'
+            ? theme.colors.darkFontColor
+            : theme.colors.whiteFontColor};
     display: flex;
     text-decoration: none;
 
@@ -93,6 +103,22 @@ const About = styled(Link)`
     }
 `
 
+const aboutImg = (theme: ITheme['id']) => {
+    if ((theme as unknown as string) !== 'T_001') {
+        return aboutIconW
+    } else {
+        return aboutIcon
+    }
+}
+
+const walletImg = (theme: ITheme['id']) => {
+    if ((theme as unknown as string) !== 'T_001') {
+        return walletIconW
+    } else {
+        return walletIcon
+    }
+}
+
 const Header = () => {
     const dispatch = useDispatch()
     const { headerPanelOpen } = useSelector((state: RootState) => ({
@@ -104,7 +130,7 @@ const Header = () => {
             dispatch(openHeaderPanel())
         } else {
             dispatch(closeHeaderPanel())
-        }    
+        }
     }
 
     const clickOnAbout = () => {
@@ -115,23 +141,7 @@ const Header = () => {
         curThemeSelector(state)
     )
 
-    let curThemeId: any = currentTheme.id;    
-
-    const aboutImg = (theme: {theme: string}) => {        
-        if ((theme as unknown as string) !== 'T_001') {
-            return aboutIconW;
-        } else {
-            return aboutIcon;
-        }
-    }
-
-    const walletImg = (theme: {theme: string}) => {        
-        if ((theme as unknown as string) !== 'T_001') {
-            return walletIconW;
-        } else {
-            return walletIcon;
-        }
-    }
+    let curThemeId: ITheme['id'] = currentTheme.id
 
     return (
         <HeaderContainer>
@@ -144,8 +154,8 @@ const Header = () => {
                     <h1>NFT Stadium</h1>
                     <h2>Roazhon Park - Rennes (FR)</h2>
                 </Title>
-                <About to='/about' onClick={clickOnAbout}>
-                <img src={aboutImg(curThemeId)} alt="" />
+                <About to="/about" onClick={clickOnAbout}>
+                    <img src={aboutImg(curThemeId)} alt="" />
                     <p>About</p>
                 </About>
             </HeaderSection>

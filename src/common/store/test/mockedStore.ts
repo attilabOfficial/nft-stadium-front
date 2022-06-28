@@ -1,4 +1,5 @@
 import { RootState } from '../../../store'
+import { greyTheme } from '../../../themes'
 
 export const MOCKED_STORE: RootState = {
     nfts: {
@@ -13,6 +14,7 @@ export const MOCKED_STORE: RootState = {
         headerPanelIsOpen: false,
         rightPanelIsOepn: false,
         curNft: undefined,
+        curTheme: greyTheme,
     },
     cmsState: { content: {}, loading: 'idle', aboutOpen: false },
 }

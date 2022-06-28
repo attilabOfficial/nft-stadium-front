@@ -1,4 +1,16 @@
-export const greyTheme = {
+export interface ITheme {
+    id: string
+    name: string
+    colors: {
+        backgroundColor: string
+        primaryColor: string
+        darkFontColor: string
+        lightFontColor: string
+        whiteFontColor: string
+    }
+}
+
+export const greyTheme: ITheme = {
     id: 'T_001',
     name: 'grey',
     colors: {
@@ -10,7 +22,7 @@ export const greyTheme = {
     },
 }
 
-export const blueTheme = {
+export const blueTheme: ITheme = {
     id: 'T_002',
     name: 'blue',
     colors: {
@@ -22,7 +34,7 @@ export const blueTheme = {
     },
 }
 
-export const yellowTheme = {
+export const yellowTheme: ITheme = {
     id: 'T_003',
     name: 'yellow',
     colors: {
