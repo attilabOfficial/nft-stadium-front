@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 
-import { OneCell } from '../OneCell'
+import OneCell from '../OneCell'
 
 test('OneCell render the NFT mint with img', () => {
     render(
@@ -24,7 +24,7 @@ test('OneCell render the NFT mint with no img', () => {
         <OneCell
             id={1}
             // here :
-            img={"NFTMint.svg"}
+            img={'NFTMint.svg'}
             owner="192"
             centerRef={null}
             clickOnCell={() => {}}
@@ -32,20 +32,20 @@ test('OneCell render the NFT mint with no img', () => {
     )
 
     const renderedImg = screen.getByRole('img')
-    expect(renderedImg).toHaveAttribute('src', "NFTMint.svg")
+    expect(renderedImg).toHaveAttribute('src', 'NFTMint.svg')
 })
 
-test("OneCell render nothing when the NFT is not mint", () => {
+test('OneCell render nothing when the NFT is not mint', () => {
     render(
         <OneCell
             id={1}
-            img={""}
+            img={''}
             owner="0x0000000000000000000000000000000000000000"
             centerRef={null}
             clickOnCell={() => {}}
         />
     )
-    
+
     const renderedImg = screen.queryByRole('img')
     expect(renderedImg).not.toBeInTheDocument()
 })
