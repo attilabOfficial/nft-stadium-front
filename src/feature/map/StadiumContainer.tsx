@@ -1,21 +1,21 @@
 import React, { useRef } from 'react'
 
 import { useContext, useEffect } from 'react'
-import { Web3Context } from '../../../common/components/web3/DappContainer'
+import { Web3Context } from '../../common/components/web3/DappContainer'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     getAllMapInfo,
     INFT,
     mapSelector,
-} from '../../../common/store/nftSlice'
-import { StadiumComponent } from './StadiumComponent'
-import { REACT_APP_MOCK } from '../../../const'
-import { AppDispatch, RootState } from '../../../store'
+} from '../../common/store/nftSlice'
+import { StadiumComponent } from './components/StadiumComponent'
+import { REACT_APP_MOCK } from '../../const'
+import { AppDispatch, RootState } from '../../store'
 import {
     curNftSelector,
     openRightPanel,
     setCurrentNFT,
-} from '../../../common/store/appStateSlice'
+} from '../../common/store/appStateSlice'
 
 export const StadiumContainer = () => {
     const web3Context = useContext(Web3Context)
