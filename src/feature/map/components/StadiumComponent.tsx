@@ -10,7 +10,6 @@ const Container = styled.div`
     padding-top: 102px;
     width: 100vw;
     text-align: center;
-    background-color: #f3f4f6;
 `
 
 const ZoomButtonsContainer = styled.div`
@@ -33,7 +32,7 @@ export const StadiumComponent = ({
     currentNFT,
 }: {
     containerRef: React.RefObject<HTMLInputElement>
-    centerRef: React.RefObject<HTMLInputElement>
+    centerRef: React.RefObject<HTMLInputElement> | null
     zoomIn: () => void
     zoomOut: () => void
     mapInfo: INFT[]

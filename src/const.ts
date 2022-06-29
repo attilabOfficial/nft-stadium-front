@@ -1,6 +1,6 @@
 // change grid properties here
 export const REACT_APP_NBR_COL = process.env.NBR_COL || 25
-export const REACT_APP_NBR_ROW = process.env.NBR_ROW || 15
+export const REACT_APP_NBR_ROW = process.env.NBR_ROW || 17
 export const REACT_APP_TOTAL_CELLS =
     Number(REACT_APP_NBR_COL) * Number(REACT_APP_NBR_ROW)
 

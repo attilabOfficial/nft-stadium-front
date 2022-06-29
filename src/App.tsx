@@ -31,9 +31,6 @@ const App = () => {
         theme: curThemeSelector(state),
     }))
 
-    console.log(theme);
-    
-
     return (
         <>
             <GlobalStyleReset />

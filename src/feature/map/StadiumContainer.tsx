@@ -34,7 +34,7 @@ export const StadiumContainer = () => {
     let mapSize = 1
 
     const containerRef: React.RefObject<HTMLInputElement> = useRef(null)
-    const centerRef: React.RefObject<HTMLInputElement> = useRef(null)
+    const centerRef: React.RefObject<HTMLInputElement> | null = useRef(null)
 
     const centerScroll = () => {
         if (centerRef && centerRef.current) {

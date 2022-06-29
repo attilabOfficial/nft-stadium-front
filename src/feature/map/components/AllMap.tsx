@@ -46,7 +46,7 @@ const AllMap = ({
     currentNFT,
 }: {
     mapInfo: INFT[]
-    centerRef: React.RefObject<HTMLInputElement>
+    centerRef: React.RefObject<HTMLInputElement>  | null
     clickOnCell: (id: INFT['id']) => void
     currentNFT?: INFT
 }) => {

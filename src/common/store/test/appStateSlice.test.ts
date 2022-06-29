@@ -36,10 +36,16 @@ test('CloseHeaderPanel', () => {
     expect(myStore.getState().appState.headerPanelIsOpen).toBe(false)
 })
 
-// themes test
+// themes test (Dont know wich on to choose)
 test('setCurrentTheme', () => {
     let myState: RootState = { ...MOCKED_STORE }
     myState.appState.curTheme = blueTheme
 
     expect(curThemeSelector(myState)).toMatchObject(blueTheme)
+})
+
+test('setCurrentTheme2', () => {
+    const myStore = store
+    myStore.dispatch(setCurrentTheme(blueTheme))
+    expect(myStore.getState().appState.curTheme).toBe(blueTheme)
 })
