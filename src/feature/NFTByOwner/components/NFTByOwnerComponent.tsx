@@ -1,8 +1,8 @@
 import React from 'react'
 
 import styled from 'styled-components'
-import { NFTCard } from './NFTCard'
 import { INFT } from '../../../common/store/nftSlice'
+import { NFTCardContainer } from './NFTCardContainer'
 
 const NFTSection = styled.div`
     ul {
@@ -24,7 +24,7 @@ export const NFTByOwnerComponent = ({
         <NFTSection>
             <ul>
                 {NFTsOwn.map((nft: INFT) => (
-                    <NFTCard key={nft.id} nft={nft} curOwner={curOwner} />
+                    <NFTCardContainer key={nft.id} nft={nft} />
                 ))}
             </ul>
         </NFTSection>

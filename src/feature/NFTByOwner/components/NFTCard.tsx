@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { INFT } from '../../../common/store/nftSlice';
-import NFTMint from '../../../common/images/NFTMint.svg'
-import { closeHeaderPanel, openRightPanel, setCurrentNFT } from '../../../common/store/appStateSlice';
-import { useDispatch } from 'react-redux';
+import NFTMint from '../../../common/images/NFTMint.svg';
 
 const CardElement = styled.li`
     background-color: #FFFFFF;
@@ -38,17 +36,10 @@ const CardElement = styled.li`
     }
 `
 
-export const NFTCard = ({ nft, curOwner }: { nft: INFT, curOwner: string }) => {
-    const dispatch = useDispatch()
-
-    const clickOnNft = () => {
-        dispatch(closeHeaderPanel())
-        dispatch(openRightPanel())
-        dispatch(setCurrentNFT(nft.id))
-    }
+export const NFTCard = ({ nft, clickOnNft }: { nft: INFT, clickOnNft: () => void }) => {
 
     return (
-        <CardElement onClick={clickOnNft}>
+        <CardElement onClick={clickOnNft} >
             <div>
                 {(nft.img === '') ? (<img src={NFTMint} alt='' />) : (<img src={nft.img} alt='' />)}
             </div>
