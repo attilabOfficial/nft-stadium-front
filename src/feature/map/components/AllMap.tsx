@@ -9,7 +9,13 @@ import stadiumBlue from '../images/stadium-blue-with-lines.svg'
 import stadiumYellow from '../images/stadium-yellow-with-lines.svg'
 
 const GridContainer = styled.div`
-    background: no-repeat center url(${({ theme }) => theme.id === 'T_002' ? stadiumBlue : theme.id === 'T_003' ? stadiumYellow : stadiumGrey });
+    background: no-repeat center
+        url(${({ theme }) =>
+            theme.id === 'T_002'
+                ? stadiumBlue
+                : theme.id === 'T_003'
+                ? stadiumYellow
+                : stadiumGrey});
     background-size: contain;
     margin: 0 auto;
     width: 650px;
@@ -36,9 +42,13 @@ const StadeGrid = styled.div`
 const AllMap = ({
     mapInfo,
     centerRef,
+    clickOnCell,
+    currentNFT,
 }: {
     mapInfo: INFT[]
-    centerRef: React.RefObject<HTMLInputElement>
+    centerRef: React.RefObject<HTMLInputElement>  | null
+    clickOnCell: (id: INFT['id']) => void
+    currentNFT?: INFT
 }) => {
     return (
         <>
@@ -51,6 +61,8 @@ const AllMap = ({
                             id={cell.id}
                             img={cell.img}
                             owner={cell.owner}
+                            clickOnCell={clickOnCell}
+                            currentNFT={currentNFT}
                         />
                     ))}
                 </StadeGrid>

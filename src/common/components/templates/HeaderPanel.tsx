@@ -13,6 +13,7 @@ import { useContext } from 'react';
 import { Web3Context } from '../web3/DappContainer';
 import { NFTByOwnerContainer } from '../../../feature/NFTByOwner/components/NFTByOwnerContainer'
 import { curThemeSelector } from '../../store/appStateSlice';
+import { ITheme } from '../../../themes'
 
 const Panel = styled.div`
     height: 700px;
@@ -63,6 +64,14 @@ const ClosePanel = styled.div`
     }
 `
 
+const closeImg = (theme: ITheme['id']) => {        
+    if ((theme as unknown as string) !== 'T_001') {
+        return closeIconWhite;
+    } else {
+        return closeIcon;
+    }
+}
+
 const HeaderPanel = () => {
     const web3Context = useContext(Web3Context)
     const currentOwner = web3Context.selectedAddress
@@ -75,15 +84,7 @@ const HeaderPanel = () => {
         curThemeSelector(state)
     )
 
-    let curThemeId: any = currentTheme.id;    
-
-    const closeImg = (theme: {theme: string}) => {        
-        if ((theme as unknown as string) !== 'T_001') {
-            return closeIconWhite;
-        } else {
-            return closeIcon;
-        }
-}
+    let curThemeId: ITheme['id'] = currentTheme.id;
 
     const clickOnClose = () => {
         dispatch(closeHeaderPanel())

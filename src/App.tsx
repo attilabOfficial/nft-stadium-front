@@ -5,7 +5,7 @@ import Header from './common/components/templates/Header'
 import { Loading } from './common/components/templates/Loading'
 import RightPanel from './common/components/templates/RightPanel'
 import { DappContainer } from './common/components/web3/DappContainer'
-import { StadiumContainer } from './feature/map/components/StadiumContainer'
+import { StadiumContainer } from './feature/map/StadiumContainer'
 import { isMapLoadingSelector } from './common/store/nftSlice'
 import { NFTDetailContainer } from './feature/NFTDetail/components/NFTDetailContainer'
 import { RootState } from './store'
@@ -30,9 +30,6 @@ const App = () => {
     const { theme } = useSelector((state: RootState) => ({
         theme: curThemeSelector(state),
     }))
-
-    console.log(theme);
-    
 
     return (
         <>

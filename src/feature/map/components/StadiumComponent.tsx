@@ -4,13 +4,13 @@ import AllMap from './AllMap'
 import ZoomInButton from './ZoomInButton'
 import ZoomOutButton from './ZoomOutButton'
 import { INFT } from '../../../common/store/nftSlice'
-import ThemesButtons from './ThemesButtons';
+import ThemesButtons from './ThemesButtons'
 
 const Container = styled.div`
     padding-top: 102px;
     width: 100vw;
     text-align: center;
-    background-color: #f3f4f6;`
+`
 
 const ZoomButtonsContainer = styled.div`
     position: fixed;
@@ -28,18 +28,27 @@ export const StadiumComponent = ({
     zoomIn,
     zoomOut,
     mapInfo,
+    clickOnCell,
+    currentNFT,
 }: {
     containerRef: React.RefObject<HTMLInputElement>
-    centerRef: React.RefObject<HTMLInputElement>
+    centerRef: React.RefObject<HTMLInputElement> | null
     zoomIn: () => void
     zoomOut: () => void
     mapInfo: INFT[]
+    clickOnCell: (id: INFT['id']) => void
+    currentNFT?: INFT
 }) => {
     if (mapInfo && mapInfo.length > 0) {
         return (
             <div>
                 <Container ref={containerRef}>
-                    <AllMap mapInfo={mapInfo} centerRef={centerRef} />
+                    <AllMap
+                        mapInfo={mapInfo}
+                        centerRef={centerRef}
+                        clickOnCell={clickOnCell}
+                        currentNFT={currentNFT}
+                    />
                 </Container>
                 <ZoomButtonsContainer>
                     <ZoomInButton buttonLabel="zoom_in" fctOnClick={zoomIn} />
