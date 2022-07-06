@@ -19,7 +19,7 @@ const NFTDetail = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: ${({ theme }) => theme.colors.darkFontColor};
+    color: ${({ theme }) => theme === true && theme.colors.darkFontColor};
 
     p {
         overflow: hidden;
@@ -27,7 +27,7 @@ const NFTDetail = styled.div`
         margin-bottom: 24px;
 
         span {
-            color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
+            color: ${({ theme }) => theme === true && (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
         }
     }
 
@@ -38,7 +38,7 @@ const NFTDetail = styled.div`
     }
 
     button {
-        background-color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
+        background-color: ${({ theme }) => theme === true &&  (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
         color: #FFFFFF;
         border: none;
         border-radius: 4px;
@@ -93,12 +93,12 @@ const NFTCard = styled.div`
 
 const Field = styled.input`
     height: 46px;
-    border: solid 1px ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
+    border: solid 1px ${({ theme }) => theme === true && (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
     border-radius: 4px 0px 0px 4px;
 `
 
 const Upload = styled.input`
-    background-color: ${({ theme }) => (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
+    background-color: ${({ theme }) => theme === true && (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
     color: white;
     height: 50px;
     border: none;

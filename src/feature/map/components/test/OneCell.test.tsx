@@ -3,6 +3,8 @@ import React from 'react'
 
 import OneCell from '../OneCell'
 
+import NFTMint from '../../../../common/images/NFTMint.svg'
+
 test('OneCell render the NFT mint with img', () => {
     render(
         <OneCell
@@ -24,7 +26,7 @@ test('OneCell render the NFT mint with no img', () => {
         <OneCell
             id={1}
             // here :
-            img={'NFTMint.svg'}
+            img={NFTMint}
             owner="192"
             centerRef={null}
             clickOnCell={() => {}}
@@ -32,7 +34,7 @@ test('OneCell render the NFT mint with no img', () => {
     )
 
     const renderedImg = screen.getByRole('img')
-    expect(renderedImg).toHaveAttribute('src', 'NFTMint.svg')
+    expect(renderedImg).toHaveAttribute('src', NFTMint)
 })
 
 test('OneCell render nothing when the NFT is not mint', () => {

@@ -1,5 +1,5 @@
 import { RootState, store } from '../../../store'
-import { blueTheme, ITheme } from '../../../themes'
+import { blueTheme } from '../../../themes'
 import {
     closeHeaderPanel,
     openHeaderPanel,
