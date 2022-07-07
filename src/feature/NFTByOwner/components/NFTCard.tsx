@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
-import { INFT } from '../../../common/store/nftSlice';
-import NFTMint from '../../../common/images/NFTMint.svg';
+import React from 'react'
+import styled from 'styled-components'
+import { INFT } from '../../../common/store/nftSlice'
+import NFTMint from '../../../common/images/NFTMint.svg'
 
 const CardElement = styled.li`
-    background-color: #FFFFFF;
-    border: 1px solid #E5E7EB;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
     border-radius: 4px;
     width: 184px;
     height: 225px;
@@ -36,12 +36,21 @@ const CardElement = styled.li`
     }
 `
 
-export const NFTCard = ({ nft, clickOnNft }: { nft: INFT, clickOnNft: () => void }) => {
-
+export const NFTCard = ({
+    nft,
+    clickOnNft,
+}: {
+    nft: INFT
+    clickOnNft: (id: INFT['id']) => void
+}) => {
     return (
-        <CardElement onClick={clickOnNft} >
+        <CardElement onClick={() => clickOnNft(nft.id)}>
             <div>
-                {(nft.img === '') ? (<img src={NFTMint} alt='' />) : (<img src={nft.img} alt='' />)}
+                {nft.img === '' ? (
+                    <img src={NFTMint} alt="" />
+                ) : (
+                    <img src={nft.img} alt="" />
+                )}
             </div>
             <p>#{nft.id}</p>
         </CardElement>
