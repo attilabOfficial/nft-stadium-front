@@ -4,6 +4,7 @@ import { render, screen } from '@testing-library/react'
 import { NFTDetailComponent } from '../components/NFTDetailComponent'
 
 import NFTMint from '../../../common/images/NFTMint.svg'
+import { greyTheme } from '../../../themes';
 
 test('Render the Current NFT Detail mint with image', () => {
     // let myState: RootState = { ...MOCKED_STORE }
@@ -14,6 +15,7 @@ test('Render the Current NFT Detail mint with image', () => {
           currentNFT={{ id: 0, owner: 'owner1', img: 'img1', link: 'link1' }}
           changeImgFct={() => {}}
           mintFct={() => {}}
+          curTheme={greyTheme}
       />
     )
 
@@ -29,6 +31,7 @@ test('Render the Current NFT Detail mint without image', () => {
         currentNFT={{ id: 0, owner: '', img: NFTMint, link: 'link1' }}
         changeImgFct={() => {}}
         mintFct={() => {}}
+        curTheme={greyTheme}
     />
   )
 
@@ -44,6 +47,7 @@ test('Render the Current NFT Detail not mint', () => {
         currentNFT={{ id: 0, owner: '0x0000000000000000000000000000000000000000', img: '', link: '' }}
         changeImgFct={() => {}}
         mintFct={() => {}}
+        curTheme={greyTheme}
     />
   )
 

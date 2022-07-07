@@ -7,7 +7,7 @@ import { Web3Context } from '../../../common/components/web3/DappContainer'
 import { mint, changeImg } from '../../../common/store/nftSlice'
 import { AppDispatch, RootState } from '../../../store'
 import styled from 'styled-components'
-import { curNftSelector } from '../../../common/store/appStateSlice';
+import { curNftSelector, curThemeSelector } from '../../../common/store/appStateSlice';
 
 import { FormattedMessage } from 'react-intl'
 
@@ -54,6 +54,7 @@ const TransLoading = styled.div`
 export const NFTDetailContainer = () => {
     const web3Context = useContext(Web3Context)
     const currentOwner = web3Context.selectedAddress
+    const curTheme = useSelector(curThemeSelector)
 
     const dispatch = useDispatch<AppDispatch>()
 
@@ -108,6 +109,7 @@ export const NFTDetailContainer = () => {
                         currentNFT={currentNFT}
                         changeImgFct={changeNFTImg}
                         mintFct={mintNFT}
+                        curTheme={curTheme}
                     />
                 )}
             </div>
