@@ -1,11 +1,16 @@
 import React from 'react'
 import { useContext } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { NFTByOwnerComponent } from './NFTByOwnerComponent'
-import { nftsByOwnerSelector } from '../../../common/store/nftSlice'
+import { INFT, nftsByOwnerSelector } from '../../../common/store/nftSlice'
 import { Web3Context } from '../../../common/components/web3/DappContainer'
-import { RootState } from '../../../store'
+import { AppDispatch, RootState } from '../../../store'
 import styled from 'styled-components'
+import {
+    closeHeaderPanel,
+    openRightPanel,
+    setCurrentNFT,
+} from '../../../common/store/appStateSlice'
 
 const Container = styled.div`
     overflow: scroll;
@@ -22,14 +27,22 @@ export const NFTByOwnerContainer = () => {
     const { NFTsOwn } = useSelector((state: RootState) => ({
         NFTsOwn: nftsByOwnerSelector(state, currentOwner),
     }))
+    const dispatch: AppDispatch = useDispatch()
+
+    const clickOnNft = (id: INFT['id']) => {
+        dispatch(closeHeaderPanel())
+        dispatch(openRightPanel())
+        dispatch(setCurrentNFT(id))
+    }
 
     return (
         <>
             <Container>
                 <NFTByOwnerComponent
-                        NFTsOwn={NFTsOwn}
-                        curOwner={currentOwner}
-                    />
+                    NFTsOwn={NFTsOwn}
+                    curOwner={currentOwner}
+                    clickOnNft={clickOnNft}
+                />
             </Container>
         </>
     )

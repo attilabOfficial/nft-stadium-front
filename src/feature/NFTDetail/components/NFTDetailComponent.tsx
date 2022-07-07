@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import { ZERO_ADDRESS } from '../../../const'
 import { INFT } from '../../../common/store/nftSlice'
 
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 
 import NFTMint from '../../../common/images/NFTMint.svg'
 import NFTToMint from '../../../common/images/NFTToMint.svg'
@@ -27,7 +27,11 @@ const NFTDetail = styled.div`
         margin-bottom: 24px;
 
         span {
-            color: ${({ theme }) => theme === true && (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
+            color: ${({ theme }) =>
+                theme === true &&
+                (theme.id === 'T_001'
+                    ? theme.colors.darkFontColor
+                    : theme.colors.primaryColor)};
         }
     }
 
@@ -38,8 +42,12 @@ const NFTDetail = styled.div`
     }
 
     button {
-        background-color: ${({ theme }) => theme === true &&  (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
-        color: #FFFFFF;
+        background-color: ${({ theme }) =>
+            theme === true &&
+            (theme.id === 'T_001'
+                ? theme.colors.darkFontColor
+                : theme.colors.primaryColor)};
+        color: #ffffff;
         border: none;
         border-radius: 4px;
         padding: 9px 16px;
@@ -58,7 +66,7 @@ const NFTDetail = styled.div`
 `
 
 const NFTCard = styled.div`
-    border: 1px solid #E5E7EB;
+    border: 1px solid #e5e7eb;
     border-radius: 4px;
     width: 184px;
     height: 225px;
@@ -76,7 +84,6 @@ const NFTCard = styled.div`
         flex-direction: column;
         justify-content: center;
 
-
         img {
             max-width: 160px;
             max-height: 160px;
@@ -93,12 +100,21 @@ const NFTCard = styled.div`
 
 const Field = styled.input`
     height: 46px;
-    border: solid 1px ${({ theme }) => theme === true && (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
+    border: solid 1px
+        ${({ theme }) =>
+            theme === true &&
+            (theme.id === 'T_001'
+                ? theme.colors.darkFontColor
+                : theme.colors.primaryColor)};
     border-radius: 4px 0px 0px 4px;
 `
 
 const Upload = styled.input`
-    background-color: ${({ theme }) => theme === true && (theme.id === 'T_001' ? theme.colors.darkFontColor : theme.colors.primaryColor)};
+    background-color: ${({ theme }) =>
+        theme === true &&
+        (theme.id === 'T_001'
+            ? theme.colors.darkFontColor
+            : theme.colors.primaryColor)};
     color: white;
     height: 50px;
     border: none;
@@ -125,12 +141,16 @@ export const NFTDetailComponent = ({
     changeImgFct: (newImg: string) => void
     mintFct: () => void
 }) => {
-    const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>({
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<IFormInput>({
         resolver: yupResolver(uploadImgSchema),
-      });
+    })
 
     const onSubmit = (data: IFormInput) => {
-        console.log(data);
+        console.log(data)
         changeImgFct(data.uploadImg)
     }
 
@@ -140,19 +160,32 @@ export const NFTDetailComponent = ({
                 <>
                     <NFTCard>
                         <div>
-                        {currentNFT.img !== '' ? (
-                            <img src={currentNFT.img} alt="NFT" />
-                        ) : ( 
-                            <img src={NFTMint} alt="NFT" /> 
-                        )}
+                            {currentNFT.img !== '' ? (
+                                <img src={currentNFT.img} alt="NFT" />
+                            ) : (
+                                <img src={NFTMint} alt="NFT" />
+                            )}
                         </div>
                         <p>#{currentNFT.id}</p>
                     </NFTCard>
-                    <p><b>Owner : </b>{currentNFT.owner.slice(0, 10)}...{currentNFT.owner.toLowerCase() === currentOwner && <span> (You)</span>}</p>
+                    <p>
+                        <b>Owner : </b>
+                        {currentNFT.owner.slice(0, 10)}...
+                        {currentNFT.owner.toLowerCase() === currentOwner && (
+                            <span> (You)</span>
+                        )}
+                    </p>
                     <div>
-                        <label><b>Change image</b></label>
+                        <label>
+                            <b>Change image</b>
+                        </label>
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <Field {...register("uploadImg")} type="string" name='uploadImg' placeholder='Browse your image' />
+                            <Field
+                                {...register('uploadImg')}
+                                type="string"
+                                name="uploadImg"
+                                placeholder="Browse your image"
+                            />
                             <Upload type="submit" id="submit" />
                         </form>
                         <p> {errors.uploadImg?.message} </p>
@@ -166,7 +199,9 @@ export const NFTDetailComponent = ({
                         </div>
                         <p>#{currentNFT.id}</p>
                     </NFTCard>
-                    <p><b>Owner : </b>Nobody yet ! Maybe you ?</p>
+                    <p>
+                        <b>Owner : </b>Nobody yet ! Maybe you ?
+                    </p>
                     <button onClick={mintFct}>
                         <img src={credit} alt="" />
                         <p>Buy it now !</p>
